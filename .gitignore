@@ -4,7 +4,7 @@ venv/
 ENV/
 
 # ignore generated databases
-.db
+*.db
 
 # ignore PyCharm settings
 .idea/

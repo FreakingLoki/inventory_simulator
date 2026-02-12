@@ -1,14 +1,14 @@
 id,category,sub-category,name,color,unit,price,inventory,incoming,restock_date
-101,Siding,None,Double 4-inch Vinyl Siding,White,Square,150,1000,500,5/15/2026
-102,Siding,None,Double 4-inch Vinyl Siding,Grey,Square,175,500,150,5/15/2026
-103,Siding,None,Double 4-inch Vinyl Siding,Blue,Square,160,400,150,5/15/2026
-104,Siding,None,Double 4-inch Vinyl Siding,Red,Square,160,400,150,5/15/2026
-105,Siding,None,Double 4-inch Vinyl Siding,Brown,Square,160,300,150,5/15/2026
-111,Siding,None,Triple 3-inch Vinyl Siding,White,Square,175,500,250,5/15/2026
-112,Siding,None,Triple 3-inch Vinyl Siding,Grey,Square,190,300,100,5/15/2026
-113,Siding,None,Triple 3-inch Vinyl Siding,Blue,Square,185,250,125,5/15/2026
-114,Siding,None,Triple 3-inch Vinyl Siding,Red,Square,180,250,100,5/15/2026
-115,Siding,None,Triple 3-inch Vinyl Siding,Brown,Square,180,250,100,5/15/2026
+101,Siding,Hero,Double 4-inch Vinyl Siding,White,Square,150,1000,500,5/15/2026
+102,Siding,Hero,Double 4-inch Vinyl Siding,Grey,Square,175,500,150,5/15/2026
+103,Siding,Hero,Double 4-inch Vinyl Siding,Blue,Square,160,400,150,5/15/2026
+104,Siding,Hero,Double 4-inch Vinyl Siding,Red,Square,160,400,150,5/15/2026
+105,Siding,Hero,Double 4-inch Vinyl Siding,Brown,Square,160,300,150,5/15/2026
+111,Siding,Hero,Triple 3-inch Vinyl Siding,White,Square,175,500,250,5/15/2026
+112,Siding,Hero,Triple 3-inch Vinyl Siding,Grey,Square,190,300,100,5/15/2026
+113,Siding,Hero,Triple 3-inch Vinyl Siding,Blue,Square,185,250,125,5/15/2026
+114,Siding,Hero,Triple 3-inch Vinyl Siding,Red,Square,180,250,100,5/15/2026
+115,Siding,Hero,Triple 3-inch Vinyl Siding,Brown,Square,180,250,100,5/15/2026
 200,Siding,Starter Strip,Starter Strip 12ft,White,Piece,12,275,150,5/15/2026
 201,Siding,J-Channel,J-Channel 5/8-inch,White,Piece,8.5,300,100,5/15/2026
 202,Siding,J-Channel,J-Channel 5/8-inch,Grey,Piece,9.25,300,100,5/15/2026

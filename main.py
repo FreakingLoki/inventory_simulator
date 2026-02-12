@@ -76,45 +76,116 @@ def check_setup():
         print("local_inventory.db: Not found")
         return False
 
-def generate_quote(main_inventory, product_id, quantity):
-    if product_id not in main_inventory:
-        print(f"Product with id {product_id} not found!")
-        return
+def display_quote(hero, quantity, accessories):
+    main_total = float(hero['price']) * quantity
 
-    main_item = main_inventory[product_id]
-    main_total = float(main_item['price']) * quantity
+    print("\n" + "-" * 60)
+    print(f"{'Quote':^60}")
+    print("-" * 60)
+    print(f"Main Item: {hero['name']} ({hero['color']})")
+    print(f"Quantity: {quantity} {hero['unit']}")
+    print(f"Subtotal: ${main_total:,.2f}")
 
-    print(f"------------------------------------------------------------------------------------------")
-    print(f"--------------------------------- BUILDING PRODUCT QUOTE ---------------------------------")
-    print(f"------------------------------------------------------------------------------------------")
-    print(f"{main_item['name']} ({main_item['color']})")
-    print(f"Quantity: {quantity} {main_item['unit']}")
-    print(f"Base Price: ${main_total:,.2f}")
-    print(f"----------------------------------- SUGGESTED ADD-ONS ------------------------------------")
+    # check if there are any accessories to recommend
+    if accessories == "None" or not accessories:
+        print("-" * 60)
+        print(f"{'Grand Total:':^45} ${main_total:>12,.2f}")
+    else:
+        print("\n" + "-" * 20 + " Suggested Add-Ons " + "-" * 20)
+        grand_total = main_total
 
-    grand_total = main_total
-
-    for acc_name in main_item['accessories']:
-        # need to find the accessor object to get its price
-        acc_item = next((item for item in main_inventory.values() if item['name'] == acc_name), None)
-
-        if acc_item:
-            # add 2 pieces of trim and starter per quare of siding
-            # add 1 box of nails per 5 squares
-            if "Nails" in acc_name:
-                acc_qty = math.ceil(quantity / 5)
-            else:
-                acc_qty = math.ceil(quantity * 2)
-
-            acc_cost = float(acc_item['price']) * acc_qty
+        for acc in accessories:
+            acc_qty = math.ceil(quantity * acc['quantity_multiplier'])
+            acc_cost = float(acc['price']) * acc_qty
             grand_total += acc_cost
-            print(f"- {acc_name:.<25} qty: {acc_qty:>2} | ${acc_cost:>8,.2f}")
 
-    print(f"-------------------------------------- GRAND TOTAL ---------------------------------------")
-    print(F"Total Before Accessories: ${main_total:,.2f}")
-    print(f"Total Incl. Accessories: ${grand_total:,.2f}")
+            print(f"- {acc['name']:.<35} qty: {acc_qty:>3} | ${acc_cost:>10,.2f}")
 
-def main_menu(main_inventory):
+        print("-" * 60)
+        print(f"{'Total Before Accessories:':<45} ${main_total:>12,.2f}")
+        print(f"{'Grand Total (Including Accessories):':<45} ${grand_total:>12,.2f}")
+
+    print("-" * 60 + "\n")
+
+def generate_quote(product_id, quantity):
+    connection = None
+    try:
+        connection = sqlite3.connect('local_inventory.db')
+        connection.row_factory = sqlite3.Row
+        cursor = connection.cursor()
+
+        # grab the product info from the database
+        cursor.execute("SELECT * FROM products WHERE id = ?", (product_id,))
+        item = cursor.fetchone()
+
+        if not item:
+            print(f"Error: {product_id} not found.")
+            return
+
+        # determine the sub-category of the item
+        # if the sub-category is "None" then it is a "hero" item
+        is_hero = item['sub-category'] == "Hero"
+
+        # if the item is not a hero item
+        if not is_hero:
+            # generate a simple quote without recommended add-ons
+            accessories = "None"
+            display_quote(item, quantity, accessories)
+            return
+
+        # if the item is a hero item the following block will execute
+        # start by checking the rule for this item's category
+        cursor.execute("SELECT color_matching_type FROM rules WHERE category = ?", (item['category'],))
+        rule_row = cursor.fetchone()
+        rule = rule_row['color_matching_type'] if rule_row else "None"
+
+        # determine if the accessories match the hero product's color
+        # only if color matching rule is optional
+        accessory_color = item['color']
+        if rule == "Optional":
+            choice = input(f"Accessories match {item['color']}? (y/n): ").lower()
+            if choice == 'n':
+                accessory_color = input("Enter accessory color:").capitalize()
+
+        # grab the accessories' information
+        #TODO getting this sql error here: no such column: p.sub_category
+        sql_query = """
+            SELECT p.name, p.price, r.quantity_multiplier, p.unit
+            FROM products p
+            JOIN requirements r ON p.sub_category = r.required_accessory
+            WHERE r.category = ? AND p.color = ?
+        """
+        cursor.execute(sql_query, (item['category'], accessory_color))
+        accessories = cursor.fetchall()
+
+        # call the function to display the quote with the add-on recommendations
+        display_quote(item, quantity, accessories)
+
+    except sqlite3.Error as e:
+        print(f"Error: Database error occurred:\n{e}")
+    finally:
+        if connection:
+            connection.close()
+
+
+def display_inventory_list(only_heroes=True):
+    connection = sqlite3.connect('local_inventory.db')
+    cursor = connection.cursor()
+
+    query = "SELECT id, category, name, color FROM products"
+    if only_heroes:
+        query += " WHERE [sub-category] = 'Hero'"
+
+    cursor.execute(query)
+    rows = cursor.fetchall()
+
+    print(f"\n{'ID':<5} | {'Category':<10} | {'Name':<25} | {'Color'}")
+    print("-" * 60)
+    for row in rows:
+        print(f"{row[0]:<5} | {row[1]:<10} | {row[2]:<25} | {row[3]}")
+    connection.close()
+
+def main_menu():
     while True:
         print(f" ----- Main Menu -----")
         print("01: Generate A Quote")
@@ -127,31 +198,16 @@ def main_menu(main_inventory):
         match choice:
             case '01':
                 p_id = input("Enter Product ID: ")
-
-                # check for a valid product id
-                if p_id not in main_inventory:
-                    print(f"Error: Product ID '{p_id}' not found.")
-                    continue
-
                 try:
-                    qty = float(input("Enter Quantity (Squares): "))
-                    generate_quote(main_inventory, p_id, qty)
+                    qty = float(input("Enter Quantity: "))
+                    generate_quote(p_id, qty)
                 except ValueError:
                     print("Invalid quantity. Please enter a number.")
 
-            case '02':
-                print("ID | Category | Name | Color")
-                print("-" * 40)
-                for p in main_inventory.values():
-                    # only show 'Hero' products, not accessories
-                    if p['category'] == 'Siding':
-                        print(f"{p['id']: <3} | {p['category']: <7} | {p['name']: <20} | {p['color']}")
-
-            case '03':
-                print("ID | Category | Name | Color")
-                print("-" * 40)
-                for p in main_inventory.values():
-                    print(f"{p['id']: <3} | {p['category']: <7} | {p['name']: <20} | {p['color']}")
+            case '02' | '03':
+                # this line displays only the hero items if the user selects option 02
+                # otherwise it displays all items
+                display_inventory_list(only_heroes=(choice == '02'))
 
             case '99':
                 print("Exiting...")
@@ -163,10 +219,10 @@ def main_menu(main_inventory):
 
 
 if __name__ == "__main__":
-    # verify environment setup
-    check_setup()
-    # load inventory information
-    inventory = load_data()
-
-    # launch the interactive menu
-    main_menu(inventory)
+    # initialize the database
+    initialize_local_database()
+    if check_setup():
+        # launch the interactive menu
+        main_menu()
+    else:
+        print("Setup check failed. You may need to manually verify your CSV files and database.")
