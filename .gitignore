@@ -1,0 +1,14 @@
+# ignore the virtual environment
+.venv/
+venv/
+ENV/
+
+# ignore generated databases
+.db
+
+# ignore PyCharm settings
+.idea/
+
+# ignore compiled Python files
+__pycache__/
+*.py[cod]

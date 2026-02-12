@@ -1,0 +1,5 @@
+category,color_matching_type
+Siding,Optional
+Roofing,Required
+Insulation,Ignore
+Sheetrock,Ignore
