@@ -1,4 +1,4 @@
-id,category,sub-category,name,color,unit,price,inventory,incoming,restock_date
+id,category,sub_category,name,color,unit,price,inventory,incoming,restock_date
 101,Siding,Hero,Double 4-inch Vinyl Siding,White,Square,150,1000,500,5/15/2026
 102,Siding,Hero,Double 4-inch Vinyl Siding,Grey,Square,175,500,150,5/15/2026
 103,Siding,Hero,Double 4-inch Vinyl Siding,Blue,Square,160,400,150,5/15/2026

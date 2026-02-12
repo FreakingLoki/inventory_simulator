@@ -122,9 +122,9 @@ def generate_quote(product_id, quantity):
             print(f"Error: {product_id} not found.")
             return
 
-        # determine the sub-category of the item
-        # if the sub-category is "None" then it is a "hero" item
-        is_hero = item['sub-category'] == "Hero"
+        # determine the sub_category of the item
+        # if the sub_category is "None" then it is a "hero" item
+        is_hero = item['sub_category'] == "Hero"
 
         # if the item is not a hero item
         if not is_hero:
@@ -174,7 +174,7 @@ def display_inventory_list(only_heroes=True):
 
     query = "SELECT id, category, name, color FROM products"
     if only_heroes:
-        query += " WHERE [sub-category] = 'Hero'"
+        query += " WHERE [sub_category] = 'Hero'"
 
     cursor.execute(query)
     rows = cursor.fetchall()
