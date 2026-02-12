@@ -4,6 +4,9 @@ import math
 import sqlite3
 import pandas as pd
 
+#TODO add a stock-warning if a quote is generated for more product than what is on hand
+#TODO maybe add a script to auto-generate some of the csv file content (to randomize inventory stock levels and restock dates)
+#TODO start building a good README.md
 
 
 def initialize_local_database():
@@ -200,9 +203,11 @@ def main_menu():
                 p_id = input("Enter Product ID: ")
                 try:
                     qty = float(input("Enter Quantity: "))
+                    if qty <= 0:
+                        raise ValueError("Invalid quantity. Please enter a positive number greater than 0")
                     generate_quote(p_id, qty)
-                except ValueError:
-                    print("Invalid quantity. Please enter a number.")
+                except ValueError as e:
+                    print(f"Error:\n{e}")
 
             case '02' | '03':
                 # this line displays only the hero items if the user selects option 02
