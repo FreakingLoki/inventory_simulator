@@ -4,8 +4,6 @@ import math
 import sqlite3
 import pandas as pd
 
-#TODO add a stock-warning if a quote is generated for more product than what is on hand
-#TODO if a user requests a quote for more product than is in inventory, check the restock date and inform the user within the quote
 #TODO maybe add a script to auto-generate some of the csv file content (to randomize inventory stock levels and restock dates)
 #TODO start building a good README.md
 
@@ -80,7 +78,8 @@ def check_setup():
         print("local_inventory.db: Not found")
         return False
 
-def display_quote(hero, quantity, accessories):
+
+def display_quote(hero, quantity, accessories, warnings=None):
     main_total = float(hero['price']) * quantity
 
     print("\n" + "-" * 60)
@@ -108,6 +107,13 @@ def display_quote(hero, quantity, accessories):
         print("-" * 60)
         print(f"{'Total Before Accessories:':<45} ${main_total:>12,.2f}")
         print(f"{'Grand Total (Including Accessories):':<45} ${grand_total:>12,.2f}")
+
+    # if there are stock level warnings, print them after the main quote
+    if warnings:
+        print("\n" + "!" * 20 + " STOCK ALERTS " + "!" *20)
+        for msg in warnings:
+            print(f"{msg}")
+        print("!" * 54)
 
     print("-" * 60 + "\n")
 
@@ -179,6 +185,17 @@ def generate_quote(product_id, quantity):
             print(f"Error: {product_id} not found.")
             return
 
+        # create a list of warnings for low- or no-stock items
+        stock_warnings = []
+        current_stock = item['inventory']
+        if quantity > current_stock:
+            restock_qty, restock_date = get_restock_info(product_id)
+            stock_warnings.append(
+                f"MAIN ITEM: {item['name']} ({item['color']})\n"
+                f"           Only {current_stock} on hand. (Need {quantity:.2f})\n"
+                f"           {restock_qty} more arriving {restock_date}."
+            )
+
         # determine the sub_category of the item
         # if the sub_category is "None" then it is a "hero" item
         is_hero = item['sub_category'] == "Hero"
@@ -187,7 +204,7 @@ def generate_quote(product_id, quantity):
         if not is_hero:
             # generate a simple quote without recommended add-ons
             accessories = "None"
-            display_quote(item, quantity, accessories)
+            display_quote(item, quantity, accessories, stock_warnings)
             return
 
         # if the item is a hero item the following block will execute
@@ -206,7 +223,7 @@ def generate_quote(product_id, quantity):
 
         # grab the accessories' information
         sql_query = """
-            SELECT p.name, p.price, r.quantity_multiplier, p.unit
+            SELECT p.name, p.price, p.inventory, p.incoming, p.restock_date, r.quantity_multiplier, p.unit
             FROM products p
             JOIN requirements r ON p.sub_category = r.required_accessory
             WHERE r.category = ? AND p.color = ?
@@ -214,8 +231,18 @@ def generate_quote(product_id, quantity):
         cursor.execute(sql_query, (item['category'], accessory_color))
         accessories = cursor.fetchall()
 
+        for acc in accessories:
+            # calculate how many are needed based on the hero quantity
+            needed_qty = math.ceil(quantity * acc['quantity_multiplier'])
+            if needed_qty > acc['inventory']:
+                stock_warnings.append(
+                    f"ACCESSORY: {acc['name']} ({accessory_color})\n"
+                    f"           Only {acc['inventory']} on hand (Need {needed_qty}).\n"
+                    f"           {acc['incoming']} more arriving {acc['restock_date']}."
+                )
+
         # call the function to display the quote with the add-on recommendations
-        display_quote(item, quantity, accessories)
+        display_quote(item, quantity, accessories, stock_warnings)
 
     except sqlite3.Error as e:
         print(f"Error: Database error occurred:\n{e}")

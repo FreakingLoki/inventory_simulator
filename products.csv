@@ -22,6 +22,6 @@ id,category,sub_category,name,color,unit,price,inventory,incoming,restock_date
 215,Siding,Finish Trim,Finish Trim,Brown,Piece,5.5,150,50,5/15/2026
 221,Siding,Siding Nails,Vinyl Siding Nails 2lb,White,Box,14,100,50,4/12/2026
 222,Siding,Siding Nails,Vinyl Siding Nails 2lb,Grey,Box,15.5,75,50,4/12/2026
-223,Siding,Siding Nails,Vinyl Siding Nails 2lb,Blue,Box,15,50,0,None
-224,Siding,Siding Nails,Vinyl Siding Nails 2lb,Red,Box,15,50,0,None
-225,Siding,Siding Nails,Vinyl Siding Nails 2lb,Brown,Box,15,50,0,None
+223,Siding,Siding Nails,Vinyl Siding Nails 2lb,Blue,Box,15,50,0,0/0/0000
+224,Siding,Siding Nails,Vinyl Siding Nails 2lb,Red,Box,15,50,0,0/0/0000
+225,Siding,Siding Nails,Vinyl Siding Nails 2lb,Brown,Box,15,50,0,0/0/0000
