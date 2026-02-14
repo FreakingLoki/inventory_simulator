@@ -5,6 +5,7 @@ import sqlite3
 import pandas as pd
 
 #TODO add a stock-warning if a quote is generated for more product than what is on hand
+#TODO if a user requests a quote for more product than is in inventory, check the restock date and inform the user within the quote
 #TODO maybe add a script to auto-generate some of the csv file content (to randomize inventory stock levels and restock dates)
 #TODO start building a good README.md
 
@@ -110,6 +111,59 @@ def display_quote(hero, quantity, accessories):
 
     print("-" * 60 + "\n")
 
+def get_stock_level(product_id):
+    connection = None
+    try:
+        connection = sqlite3.connect('local_inventory.db')
+        connection.row_factory = sqlite3.Row
+        cursor = connection.cursor()
+
+        sql_query = "SELECT inventory FROM products WHERE id = ?"
+        cursor.execute(sql_query, (product_id,))
+        item = cursor.fetchone()
+
+        if not item:
+            print(f"Error: product with id {product_id} not found.")
+            return None
+
+        else:
+            on_hand_count = item['inventory']
+            print(f"On Hand count: {on_hand_count}")
+            return on_hand_count
+
+    except sqlite3.Error as e:
+        print(f"Error: A database error occurred:\n{e}")
+    finally:
+        if connection:
+            connection.close()
+
+def get_restock_info(product_id):
+    connection = None
+    try:
+        connection = sqlite3.connect('local_inventory.db')
+        connection.row_factory = sqlite3.Row
+        cursor = connection.cursor()
+
+        sql_query = "SELECT incoming, restock_date FROM products WHERE id = ?"
+        cursor.execute(sql_query, (product_id,))
+        item = cursor.fetchone()
+
+        if not item:
+            print(f"Error: product with id {product_id} not found.")
+            return None
+
+        else:
+            restock_amount = item['incoming']
+            restock_date = item['restock_date']
+
+            return restock_amount, restock_date
+
+    except sqlite3.Error as e:
+        print(f"Error: A database error occurred:\n{e}")
+    finally:
+        if connection:
+            connection.close()
+
 def generate_quote(product_id, quantity):
     connection = None
     try:
@@ -151,7 +205,6 @@ def generate_quote(product_id, quantity):
                 accessory_color = input("Enter accessory color:").capitalize()
 
         # grab the accessories' information
-        #TODO getting this sql error here: no such column: p.sub_category
         sql_query = """
             SELECT p.name, p.price, r.quantity_multiplier, p.unit
             FROM products p
