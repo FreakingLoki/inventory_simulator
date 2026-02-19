@@ -190,11 +190,18 @@ def generate_quote(product_id, quantity):
         current_stock = item['inventory']
         if quantity > current_stock:
             restock_qty, restock_date = get_restock_info(product_id)
-            stock_warnings.append(
-                f"MAIN ITEM: {item['name']} ({item['color']})\n"
-                f"           Only {current_stock} on hand. (Need {quantity:.2f})\n"
-                f"           {restock_qty} more arriving {restock_date}."
-            )
+            if restock_qty > 0:
+                stock_warnings.append(
+                    f"MAIN ITEM: {item['name']} ({item['color']})\n"
+                    f"           Only {current_stock} on hand. (Need {quantity:.2f})\n"
+                    f"           {restock_qty} more arriving {restock_date}."
+                )
+            else:
+                stock_warnings.append(
+                    f"MAIN ITEM: {item['name']} ({item['color']})\n"
+                    f"           Only {current_stock} on hand. (Need {quantity:.2f})\n"
+                    f"           There are no currently incoming shipments."
+                )
 
         # determine the sub_category of the item
         # if the sub_category is "None" then it is a "hero" item
@@ -235,11 +242,18 @@ def generate_quote(product_id, quantity):
             # calculate how many are needed based on the hero quantity
             needed_qty = math.ceil(quantity * acc['quantity_multiplier'])
             if needed_qty > acc['inventory']:
-                stock_warnings.append(
-                    f"ACCESSORY: {acc['name']} ({accessory_color})\n"
-                    f"           Only {acc['inventory']} on hand (Need {needed_qty}).\n"
-                    f"           {acc['incoming']} more arriving {acc['restock_date']}."
-                )
+                if acc['incoming'] > 0:
+                    stock_warnings.append(
+                        f"ACCESSORY: {acc['name']} ({accessory_color})\n"
+                        f"           Only {acc['inventory']} on hand (Need {needed_qty}).\n"
+                        f"           {acc['incoming']} more arriving {acc['restock_date']}."
+                    )
+                else:
+                    stock_warnings.append(
+                        f"ACCESSORY: {acc['name']} ({accessory_color})\n"
+                        f"           Only {acc['inventory']} on hand (Need {needed_qty}).\n"
+                        f"           There are no currently incoming shipments."
+                    )
 
         # call the function to display the quote with the add-on recommendations
         display_quote(item, quantity, accessories, stock_warnings)
