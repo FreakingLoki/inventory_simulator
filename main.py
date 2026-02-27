@@ -98,7 +98,9 @@ def display_quote(hero, quantity, accessories, warnings=None):
             acc_cost = float(acc['price']) * acc_qty
             grand_total += acc_cost
 
-            print(f"- {acc['name']:.<35} qty: {acc_qty:>3} | ${acc_cost:>10,.2f}")
+            # Added acc['brand'] here so it shows "Vertex Premium Ridge Cap..."
+            display_name = f"{acc['brand']} {acc['name']}"
+            print(f"- {display_name:.<35} qty: {acc_qty:>3} | ${acc_cost:>10,.2f}")
 
         print("-" * 60)
         print(f"{'Total Before Accessories:':<45} ${main_total:>12,.2f}")
@@ -226,12 +228,14 @@ def generate_quote(product_id, quantity):
 
         # grab the accessories' information
         sql_query = """
-            SELECT p.name, p.price, p.inventory, p.incoming, p.restock_date, r.quantity_multiplier, p.unit
-            FROM products p
-            JOIN requirements r ON p.sub_category = r.required_accessory
-            WHERE r.category = ? AND p.color = ?
-        """
-        cursor.execute(sql_query, (item['category'], accessory_color))
+                    SELECT p.brand, p.name, p.price, p.inventory, p.incoming, p.restock_date, r.quantity_multiplier, p.unit
+                    FROM products p
+                    JOIN requirements r ON p.sub_category = r.required_accessory
+                    WHERE r.category = ? 
+                      AND p.brand = ? 
+                      AND (p.color = ? OR p.color = 'Universal')
+                """
+        cursor.execute(sql_query, (item['category'], item['brand'], accessory_color))
         accessories = cursor.fetchall()
 
         for acc in accessories:
