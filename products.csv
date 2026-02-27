@@ -25,3 +25,27 @@ id,category,sub_category,name,color,unit,price,inventory,incoming,restock_date
 223,Siding,Siding Nails,Vinyl Siding Nails 2lb,Blue,Box,15,50,0,0/0/0000
 224,Siding,Siding Nails,Vinyl Siding Nails 2lb,Red,Box,15,50,0,0/0/0000
 225,Siding,Siding Nails,Vinyl Siding Nails 2lb,Brown,Box,15,50,0,0/0/0000
+301,Roofing,Hero,Architectural Shingle,Black,Bundle,35,6000,400,5/26/2026
+302,Roofing,Hero,Architectural Shingle,Grey,Bundle,32.5,4000,200,5/27/2026
+303,Roofing,Hero,Architectural Shingle,Red,Bundle,38,1200,40,5/27/2026
+304,Roofing,Hero,Architectural Shingle,Blue,Bundle,38,1000,120,5/28/2026
+305,Roofing,Hero,Architectural Shingle,Green,Bundle,38,1280,240,5/29/2026
+306,Roofing,Hero,Architectural Shingle,Brown,Bundle,37.5,1500,160,6/4/2026
+307,Roofing,Hero,Three-Tab Shingle,Black,Bundle,25,400,40,5/28/2026
+308,Roofing,Hero,Three-Tab Shingle,Grey,Bundle,22.5,200,40,5/28/2026
+309,Roofing,Hero,Three-Tab Shingle,Brown,Bundle,22.5,200,40,5/28/2026
+400,Roofing,Shingle Starter,Leading Edge,Black,Bundle,15,1400,50,6/17/2026
+401,Roofing,Cap,Ridge Cap,Black,Bundle,20,300,25,6/1/2026
+402,Roofing,Cap,Ridge Cap,Grey,Bundle,20,300,50,6/1/2026
+403,Roofing,Cap,Ridge Cap,Red,Bundle,18,150,25,6/1/2026
+404,Roofing,Cap,Ridge Cap,Blue,Bundle,18,150,25,6/1/2026
+405,Roofing,Cap,Ridge Cap,Green,Bundle,18,150,25,6/1/2026
+406,Roofing,Cap,Ridge Cap,Brown,Bundle,20,200,75,6/4/2026
+500,Roofing,Underlayment,Penetration Shield,Blue,Roll,85,1475,250,7/14/2026
+501,Roofing,Underlayment,Ice and Water Shield,Black,Roll,115,1250,125,7/14/2026
+502,Roofing,Roofing Nails,Roofing Nails 2lb,Mill,Box,20,100,100,6/4/2026
+503,Roofing,Roofing Nails,Roofing Nails 5lb,Mill,Box,45,50,100,6/4/2026
+504,Roofing,Roofing Nails,Roofing Nails 15lb,Mill,Box,125,75,50,6/4/2026
+505,Roofing,Drip Edge,Aluminum Drip Edge 10ft,Mill,Piece,25,400,20,8/16/2026
+506,Roofing,Ridge Vent,Ridge Vent Roll 20ft,Black,Box,45,600,15,8/12/2026
+507,Roofing,Ridge Vent,Ridge Vent Stick 5ft,Black,Box,24.75,750,150,8/12/2026
