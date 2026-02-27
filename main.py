@@ -81,7 +81,7 @@ def display_quote(hero, quantity, accessories, warnings=None):
     print("\n" + "-" * 60)
     print(f"{'Quote':^60}")
     print("-" * 60)
-    print(f"Main Item: {hero['name']} ({hero['color']})")
+    print(f"Main Item: {hero['brand']} {hero['name']} ({hero['color']})")
     print(f"Quantity: {quantity} {hero['unit']}")
     print(f"Subtotal: ${main_total:,.2f}")
 
@@ -263,19 +263,22 @@ def generate_quote(product_id, quantity):
 
 def display_inventory_list(only_heroes=True):
     connection = sqlite3.connect('local_inventory.db')
+    connection.row_factory = sqlite3.Row  # Use names, not indices!
     cursor = connection.cursor()
 
-    query = "SELECT id, category, name, color FROM products"
+    query = "SELECT id, category, brand, name, color FROM products"
     if only_heroes:
-        query += " WHERE [sub_category] = 'Hero'"
+        query += " WHERE sub_category = 'Hero'"
 
     cursor.execute(query)
     rows = cursor.fetchall()
 
-    print(f"\n{'ID':<5} | {'Category':<10} | {'Name':<25} | {'Color'}")
-    print("-" * 60)
+    # I adjusted the widths to make sure the Brand and Name have room
+    print(f"\n{'ID':<7} | {'Category':<10} | {'Brand':<15} | {'Name':<30} | {'Color'}")
+    print("-" * 80)
     for row in rows:
-        print(f"{row[0]:<5} | {row[1]:<10} | {row[2]:<25} | {row[3]}")
+        print(f"{row['id']:<7} | {row['category']:<10} | {row['brand']:<15} | {row['name']:<30} | {row['color']}")
+
     connection.close()
 
 def main_menu():
