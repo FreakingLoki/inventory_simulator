@@ -180,6 +180,39 @@ class InsulationCategory(BaseCategory):
             price, unit = details
             self.add_product("Insulation", "Accessory", acc, "N/A", unit, price)
 
+
+def write_requirements():
+    """ a function for populating the requirements.csv file with the "default" option quote multipliers"""
+
+    reqs = [
+        # Siding
+        {"category": "Siding", "required_accessory": "Starter Strip", "quantity_multiplier": 2.0},
+        {"category": "Siding", "required_accessory": "J-Channel", "quantity_multiplier": 2.0},
+        {"category": "Siding", "required_accessory": "Finish Trim", "quantity_multiplier": 1.0},
+        {"category": "Siding", "required_accessory": "Trim Nails (1lb)", "quantity_multiplier": 0.66},
+
+        # Roofing (Multipliers based on Bundles)
+        {"category": "Roofing", "required_accessory": "Ridge Cap", "quantity_multiplier": 0.25},
+        {"category": "Roofing", "required_accessory": "Starter Strip", "quantity_multiplier": 0.20},
+        {"category": "Roofing", "required_accessory": "Ice & Water Shield", "quantity_multiplier": 0.15},
+        {"category": "Roofing", "required_accessory": "Synthetic Underlayment", "quantity_multiplier": 0.10},
+
+        # Sheetrock
+        {"category": "Sheetrock", "required_accessory": "Screws", "quantity_multiplier": 0.03},
+        # 1 box per 33 sheets
+        {"category": "Sheetrock", "required_accessory": "Mud", "quantity_multiplier": 0.33},
+        {"category": "Sheetrock", "required_accessory": "Tape", "quantity_multiplier": 0.10},
+
+         # Insulation
+        {"category": "Insulation", "required_accessory": "6-mil Poly Vapor Barrier", "quantity_multiplier": 0.05},
+        {"category": "Insulation", "required_accessory": "Insulation Fabric Backing", "quantity_multiplier": 0.05}
+    ]
+
+    with open('requirements.csv', 'w', newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=["category", "required_accessory", "quantity_multiplier"])
+        writer.writeheader()
+        writer.writerows(reqs)
+
 # --- EXECUTION BLOCK ---
 if __name__ == "__main__":
     all_data = []
@@ -219,3 +252,6 @@ if __name__ == "__main__":
             writer.writeheader()
             writer.writerows(all_data)
         print(f"Success! {len(all_data)} products generated using Class-Based logic.")
+
+    # add the requirements.csv information
+    write_requirements()

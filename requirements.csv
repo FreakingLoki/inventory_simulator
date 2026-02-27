@@ -1,5 +1,15 @@
 category,required_accessory,quantity_multiplier
 Siding,Starter Strip,2
 Siding,J-Channel,2
-Siding,Finish Trim,2
-Siding,Siding Nails,0.66
+Siding,Finish Trim,1
+Siding,Trim Nails,0.66
+Roofing,Ridge Cap,0.25
+Roofing,Shingle Starter,0.2
+Roofing,Ice and Water,0.15
+Roofing,Underlayment,0.1
+Sheetrock,Screws,1
+Sheetrock,Mud,0.33
+Sheetrock,Tape,0.1
+Insulation,Vapor Barrier,0.05
+Insulation,Fabric Backing,0.05
+Insulation,Support Wires,1
