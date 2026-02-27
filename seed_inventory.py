@@ -144,33 +144,73 @@ class SheetrockCategory(BaseCategory):
         # Tape
         self.add_product("Sheetrock", "Tape", "Fiberglass Mesh Tape", "White", "Roll", 7.50)
 
+class InsulationCategory(BaseCategory):
+    """Logic for generating various insulation types and accessories."""
+    def generate_insulation(self):
+        # 1. Hero Products
+        # Material: (Base Price, Unit, List of R-Values)
+        styles = {
+            "Fiberglass Batt": (45.00, "Bag", ["R-13", "R-19", "R-30"]),
+            "Woodfiber Batt": (65.00, "Bag", ["R-13", "R-21", "R-30"]), # TimberHP style
+            "Blowing Wool": (35.00, "Bag", ["R-38", "R-49", "R-60"]),
+            "Rigid Foamboard": (32.00, "Sheet", ["R-5", "R-7.5", "R-10"])
+        }
+
+        for style, details in styles.items():
+            price, unit, r_values = details
+            for r in r_values:
+                # We'll use the R-Value in the 'Color' column since color is N/A
+                self.add_product(
+                    category="Insulation",
+                    sub_category="Hero",
+                    name=f"{style} Insulation",
+                    color=r,
+                    unit=unit,
+                    base_price=price
+                )
+
+        # 2. Accessories
+        accessories = {
+            "6-mil Poly Vapor Barrier": (95.00, "Roll"),
+            "Insulation Fabric Backing": (120.00, "Roll"),
+            "Insulation Support Wires": (15.00, "Box")
+        }
+
+        for acc, details in accessories.items():
+            price, unit = details
+            self.add_product("Insulation", "Accessory", acc, "N/A", unit, price)
+
 # --- EXECUTION BLOCK ---
 if __name__ == "__main__":
     all_data = []
 
-    # 1. Define the 3-Tier Brand Strategy
     brands = [
-        {"name": "Vertex Premium", "markup": 1.40, "siding_id": 100000, "roofing_id": 200000},
-        {"name": "Summit Mid-Tier", "markup": 1.15, "siding_id": 130000, "roofing_id": 230000},
-        {"name": "EcoShield Budget", "markup": 1.00, "siding_id": 160000, "roofing_id": 260000}
+        {"name": "Vertex Premium", "markup": 1.40, "s_id": 100000, "r_id": 200000},
+        {"name": "Summit Mid-Tier", "markup": 1.15, "s_id": 130000, "r_id": 230000},
+        {"name": "EcoShield Budget", "markup": 1.00, "s_id": 160000, "r_id": 260000}
     ]
 
     for b in brands:
-        # Siding Generation
-        siding = SidingCategory(b['name'], b['markup'], b['siding_id'])
+        # Siding & Roofing for all
+        siding = SidingCategory(b['name'], b['markup'], b['s_id'])
         siding.generate_siding()
         all_data.extend(siding.products)
 
-        # Roofing Generation
-        roofing = RoofingCategory(b['name'], b['markup'], b['roofing_id'])
+        roofing = RoofingCategory(b['name'], b['markup'], b['r_id'])
         roofing.generate_roofing()
         all_data.extend(roofing.products)
 
-        # Only EcoShield gets the Sheetrock line
+        # Budget-specific lines
         if b['name'] == "EcoShield Budget":
-            sheetrock = SheetrockCategory(b['name'], b['markup'], 300000)
-            sheetrock.generate_sheetrock()
-            all_data.extend(sheetrock.products)
+            # Sheetrock (300k range)
+            drywall = SheetrockCategory(b['name'], b['markup'], 300000)
+            drywall.generate_sheetrock()
+            all_data.extend(drywall.products)
+
+            # Insulation (400k range)
+            insul = InsulationCategory(b['name'], b['markup'], 400000)
+            insul.generate_insulation()
+            all_data.extend(insul.products)
 
     # write to the CSV file
     if all_data:
