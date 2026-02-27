@@ -4,10 +4,6 @@ import math
 import sqlite3
 import pandas as pd
 
-#TODO maybe add a script to auto-generate some of the csv file content (to randomize inventory stock levels and restock dates)
-#TODO sanitize the restock info, so that if none are on order (incoming qty = 0 and/or restock date = 0/00/0000) we just inform the user that none are on order
-
-
 def initialize_local_database():
     # connect to (or if required, create) the database file
     connection = None

@@ -96,6 +96,37 @@ This led to an issue where the SQL JOIN query trying to subtract the value of a 
 the name of the column in square brackets or double quotes, but I decided to rename the column
 to `sub_category` to be more universally code friendly.
 
+## Planned Future Features
+### Expansion of Products
+This project was started with a handmade products.csv file which only included a handful of siding
+items and accessories in just a few colors. My first task to really expand this project is to add
+each of the main product categories I'd like to add (sheetrock, shingle roofing, and insulation) based
+on some research and my knowledge of the industry.
+
+### Accurate Job Lot Quotes
+I plan to add additional options for the user to more accurately quote required accessories for
+roofing, insulation, siding, and sheetrock jobs. As of now, each category uses a flat multiplier
+to roughly estimate the amount of accessories to recommend to a customer to pair with each "hero"
+product quote.
+
+### Inventory Script
+The main idea here is to randomize the inventory levels (within some logical bounds), 
+restock amount, and restock dates of every item in the products.csv file to simulate
+a working business. This script could also be used to add new lines of products, new
+accessories and act as a general inventory maintenance tool.
+
+### Order History
+After a quote is generated, the user should be asked if the customer would like to order
+the quoted items. Then, the details should be added (such as a customer account number, 
+order date, and shipment address), and the entire set of data (products ordered, amount 
+paid, plus the customer information) should be saved to a database. Additionally, a script
+will be built to construct some generated historical data.
+
+### Business Analysis Tools
+Once the order history component has been built, adding this feature would allow a user to
+run data analysis tools to draw conclusions about the simulated business. Sales trends,
+popular items, and more could be useful tools to have.
+
 ## How to Run
 To run this project locally, follow these steps:
 
