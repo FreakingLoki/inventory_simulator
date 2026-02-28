@@ -81,7 +81,7 @@ def display_quote(hero, quantity, accessories, warnings=None):
     print("\n" + "-" * 60)
     print(f"{'Quote':^60}")
     print("-" * 60)
-    print(f"Main Item: {hero['brand']} {hero['name']} ({hero['color']})")
+    print(f"Main Item: {hero['brand']} {hero['name']} ({hero['sub_type']})")
     print(f"Quantity: {quantity} {hero['unit']}")
     print(f"Subtotal: ${main_total:,.2f}")
 
@@ -190,13 +190,13 @@ def generate_quote(product_id, quantity):
             restock_qty, restock_date = get_restock_info(product_id)
             if restock_qty > 0:
                 stock_warnings.append(
-                    f"MAIN ITEM: {item['name']} ({item['color']})\n"
+                    f"MAIN ITEM: {item['name']} ({item['sub_type']})\n"
                     f"           Only {current_stock} on hand. (Need {quantity:.2f})\n"
                     f"           {restock_qty} more arriving {restock_date}."
                 )
             else:
                 stock_warnings.append(
-                    f"MAIN ITEM: {item['name']} ({item['color']})\n"
+                    f"MAIN ITEM: {item['name']} ({item['sub_type']})\n"
                     f"           Only {current_stock} on hand. (Need {quantity:.2f})\n"
                     f"           There are no currently incoming shipments."
                 )
@@ -220,11 +220,11 @@ def generate_quote(product_id, quantity):
 
         # determine if the accessories match the hero product's color
         # only if color matching rule is optional
-        accessory_color = item['color']
-        if rule == "Optional":
-            choice = input(f"Accessories match {item['color']}? (y/n): ").lower()
+        accessory_color = item['sub_type']
+        if item['category'] == "Siding" and rule == "Optional":
+            choice = input(f"Accessories match {item['sub_type']}? (y/n): ").lower()
             if choice == 'n':
-                accessory_color = input("Enter accessory color:").capitalize()
+                accessory_color = input("Enter accessory sub-type or color: ").capitalize()
 
         # grab the accessories' information
         sql_query = """
@@ -233,7 +233,7 @@ def generate_quote(product_id, quantity):
                     JOIN requirements r ON p.sub_category = r.required_accessory
                     WHERE r.category = ? 
                       AND p.brand = ? 
-                      AND (p.color = ? OR p.color = 'Universal')
+                      AND (p.sub_type = ? OR p.sub_type = 'Universal')
                 """
         cursor.execute(sql_query, (item['category'], item['brand'], accessory_color))
         accessories = cursor.fetchall()
@@ -270,7 +270,7 @@ def display_inventory_list(only_heroes=True):
     connection.row_factory = sqlite3.Row  # Use names, not indices!
     cursor = connection.cursor()
 
-    query = "SELECT id, category, brand, name, color FROM products"
+    query = "SELECT id, category, brand, name, sub_type FROM products"
     if only_heroes:
         query += " WHERE sub_category = 'Hero'"
 
@@ -278,10 +278,10 @@ def display_inventory_list(only_heroes=True):
     rows = cursor.fetchall()
 
     # I adjusted the widths to make sure the Brand and Name have room
-    print(f"\n{'ID':<7} | {'Category':<10} | {'Brand':<15} | {'Name':<30} | {'Color'}")
+    print(f"\n{'ID':<7} | {'Category':<10} | {'Brand':<15} | {'Name':<30} | {'Sub-Type'}")
     print("-" * 80)
     for row in rows:
-        print(f"{row['id']:<7} | {row['category']:<10} | {row['brand']:<15} | {row['name']:<30} | {row['color']}")
+        print(f"{row['id']:<7} | {row['category']:<10} | {row['brand']:<15} | {row['name']:<30} | {row['sub_type']}")
 
     connection.close()
 
