@@ -1,4 +1,4 @@
-id,brand,category,sub_category,name,color,unit,price,inventory,incoming,restock_date
+id,brand,category,sub_category,name,sub_type,unit,price,inventory,incoming,restock_date
 100001,Vertex Premium,Siding,Hero,Double-4 Siding,Snow White,Square,252.0,50,0,0/00/0000
 100002,Vertex Premium,Siding,Hero,Double-4 Siding,Pebble,Square,252.0,50,0,0/00/0000
 100003,Vertex Premium,Siding,Hero,Double-4 Siding,Sandstone,Square,252.0,50,0,0/00/0000
@@ -71,15 +71,39 @@ id,brand,category,sub_category,name,color,unit,price,inventory,incoming,restock_
 100070,Vertex Premium,Siding,Finish Trim,Finish Trim,Olive,PC,21.0,100,0,0/00/0000
 100071,Vertex Premium,Siding,Finish Trim,Finish Trim,Burgundy,PC,21.0,100,0,0/00/0000
 100072,Vertex Premium,Siding,Finish Trim,Finish Trim,Sunset,PC,21.0,100,0,0/00/0000
-100073,Vertex Premium,Siding,Hero,Luxury Stone-Style Siding,Dark Grey,Square,630.0,50,0,0/00/0000
-100074,Vertex Premium,Siding,Stone Ledge,Stone Ledge,Dark Grey,PC,63.0,50,0,0/00/0000
-100075,Vertex Premium,Siding,Stone Corner,Stone Corner,Dark Grey,PC,91.0,50,0,0/00/0000
-100076,Vertex Premium,Siding,Hero,Luxury Stone-Style Siding,Light Grey,Square,630.0,50,0,0/00/0000
-100077,Vertex Premium,Siding,Stone Ledge,Stone Ledge,Light Grey,PC,63.0,50,0,0/00/0000
-100078,Vertex Premium,Siding,Stone Corner,Stone Corner,Light Grey,PC,91.0,50,0,0/00/0000
-100079,Vertex Premium,Siding,Hero,Luxury Stone-Style Siding,Sandy Tan,Square,630.0,50,0,0/00/0000
-100080,Vertex Premium,Siding,Stone Ledge,Stone Ledge,Sandy Tan,PC,63.0,50,0,0/00/0000
-100081,Vertex Premium,Siding,Stone Corner,Stone Corner,Sandy Tan,PC,91.0,50,0,0/00/0000
+100073,Vertex Premium,Siding,Starter Strip,Starter Strip,Snow White,PC,14.0,100,0,0/00/0000
+100074,Vertex Premium,Siding,Starter Strip,Starter Strip,Pebble,PC,14.0,100,0,0/00/0000
+100075,Vertex Premium,Siding,Starter Strip,Starter Strip,Sandstone,PC,14.0,100,0,0/00/0000
+100076,Vertex Premium,Siding,Starter Strip,Starter Strip,Midnight Blue,PC,14.0,100,0,0/00/0000
+100077,Vertex Premium,Siding,Starter Strip,Starter Strip,Sage Green,PC,14.0,100,0,0/00/0000
+100078,Vertex Premium,Siding,Starter Strip,Starter Strip,Honeycrisp,PC,14.0,100,0,0/00/0000
+100079,Vertex Premium,Siding,Starter Strip,Starter Strip,Iron Grey,PC,14.0,100,0,0/00/0000
+100080,Vertex Premium,Siding,Starter Strip,Starter Strip,Sky Blue,PC,14.0,100,0,0/00/0000
+100081,Vertex Premium,Siding,Starter Strip,Starter Strip,Coffe,PC,14.0,100,0,0/00/0000
+100082,Vertex Premium,Siding,Starter Strip,Starter Strip,Olive,PC,14.0,100,0,0/00/0000
+100083,Vertex Premium,Siding,Starter Strip,Starter Strip,Burgundy,PC,14.0,100,0,0/00/0000
+100084,Vertex Premium,Siding,Starter Strip,Starter Strip,Sunset,PC,14.0,100,0,0/00/0000
+100085,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Snow White,PC,11.9,100,0,0/00/0000
+100086,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Pebble,PC,11.9,100,0,0/00/0000
+100087,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Sandstone,PC,11.9,100,0,0/00/0000
+100088,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Midnight Blue,PC,11.9,100,0,0/00/0000
+100089,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Sage Green,PC,11.9,100,0,0/00/0000
+100090,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Honeycrisp,PC,11.9,100,0,0/00/0000
+100091,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Iron Grey,PC,11.9,100,0,0/00/0000
+100092,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Sky Blue,PC,11.9,100,0,0/00/0000
+100093,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Coffe,PC,11.9,100,0,0/00/0000
+100094,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Olive,PC,11.9,100,0,0/00/0000
+100095,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Burgundy,PC,11.9,100,0,0/00/0000
+100096,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Sunset,PC,11.9,100,0,0/00/0000
+100097,Vertex Premium,Siding,Hero,Luxury Stone-Style Siding,Dark Grey,Square,630.0,50,0,0/00/0000
+100098,Vertex Premium,Siding,Stone Ledge,Stone Ledge,Dark Grey,PC,63.0,50,0,0/00/0000
+100099,Vertex Premium,Siding,Stone Corner,Stone Corner,Dark Grey,PC,91.0,50,0,0/00/0000
+100100,Vertex Premium,Siding,Hero,Luxury Stone-Style Siding,Light Grey,Square,630.0,50,0,0/00/0000
+100101,Vertex Premium,Siding,Stone Ledge,Stone Ledge,Light Grey,PC,63.0,50,0,0/00/0000
+100102,Vertex Premium,Siding,Stone Corner,Stone Corner,Light Grey,PC,91.0,50,0,0/00/0000
+100103,Vertex Premium,Siding,Hero,Luxury Stone-Style Siding,Sandy Tan,Square,630.0,50,0,0/00/0000
+100104,Vertex Premium,Siding,Stone Ledge,Stone Ledge,Sandy Tan,PC,63.0,50,0,0/00/0000
+100105,Vertex Premium,Siding,Stone Corner,Stone Corner,Sandy Tan,PC,91.0,50,0,0/00/0000
 200001,Vertex Premium,Roofing,Hero,3-Tab Shingles,Onyx Black,Bundle,126.0,50,0,0/00/0000
 200002,Vertex Premium,Roofing,Hero,3-Tab Shingles,Estate Grey,Bundle,126.0,50,0,0/00/0000
 200003,Vertex Premium,Roofing,Hero,3-Tab Shingles,Weathered Wood,Bundle,126.0,50,0,0/00/0000
@@ -105,7 +129,7 @@ id,brand,category,sub_category,name,color,unit,price,inventory,incoming,restock_
 200023,Vertex Premium,Roofing,Ridge Cap,Ridge Cap,Forest Green,Bundle,63.0,50,0,0/00/0000
 200024,Vertex Premium,Roofing,Ridge Cap,Ridge Cap,Desert Tan,Bundle,63.0,50,0,0/00/0000
 200025,Vertex Premium,Roofing,Starter Strip,Starter Strip,Universal,Roll,49.0,50,0,0/00/0000
-200026,Vertex Premium,Roofing,Ice & Water Shield,Ice & Water Shield,Universal,Roll,119.0,50,0,0/00/0000
+200026,Vertex Premium,Roofing,Ice and Water Shield,Ice and Water Shield,Universal,Roll,119.0,50,0,0/00/0000
 200027,Vertex Premium,Roofing,Synthetic Underlayment,Synthetic Underlayment,Universal,Roll,154.0,50,0,0/00/0000
 130001,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Snow White,Square,207.0,50,0,0/00/0000
 130002,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Pebble,Square,207.0,50,0,0/00/0000
@@ -179,15 +203,39 @@ id,brand,category,sub_category,name,color,unit,price,inventory,incoming,restock_
 130070,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Olive,PC,17.25,100,0,0/00/0000
 130071,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Burgundy,PC,17.25,100,0,0/00/0000
 130072,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Sunset,PC,17.25,100,0,0/00/0000
-130073,Summit Mid-Tier,Siding,Hero,Luxury Stone-Style Siding,Dark Grey,Square,517.5,50,0,0/00/0000
-130074,Summit Mid-Tier,Siding,Stone Ledge,Stone Ledge,Dark Grey,PC,51.75,50,0,0/00/0000
-130075,Summit Mid-Tier,Siding,Stone Corner,Stone Corner,Dark Grey,PC,74.75,50,0,0/00/0000
-130076,Summit Mid-Tier,Siding,Hero,Luxury Stone-Style Siding,Light Grey,Square,517.5,50,0,0/00/0000
-130077,Summit Mid-Tier,Siding,Stone Ledge,Stone Ledge,Light Grey,PC,51.75,50,0,0/00/0000
-130078,Summit Mid-Tier,Siding,Stone Corner,Stone Corner,Light Grey,PC,74.75,50,0,0/00/0000
-130079,Summit Mid-Tier,Siding,Hero,Luxury Stone-Style Siding,Sandy Tan,Square,517.5,50,0,0/00/0000
-130080,Summit Mid-Tier,Siding,Stone Ledge,Stone Ledge,Sandy Tan,PC,51.75,50,0,0/00/0000
-130081,Summit Mid-Tier,Siding,Stone Corner,Stone Corner,Sandy Tan,PC,74.75,50,0,0/00/0000
+130073,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Snow White,PC,11.5,100,0,0/00/0000
+130074,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Pebble,PC,11.5,100,0,0/00/0000
+130075,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Sandstone,PC,11.5,100,0,0/00/0000
+130076,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Midnight Blue,PC,11.5,100,0,0/00/0000
+130077,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Sage Green,PC,11.5,100,0,0/00/0000
+130078,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Honeycrisp,PC,11.5,100,0,0/00/0000
+130079,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Iron Grey,PC,11.5,100,0,0/00/0000
+130080,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Sky Blue,PC,11.5,100,0,0/00/0000
+130081,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Coffe,PC,11.5,100,0,0/00/0000
+130082,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Olive,PC,11.5,100,0,0/00/0000
+130083,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Burgundy,PC,11.5,100,0,0/00/0000
+130084,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Sunset,PC,11.5,100,0,0/00/0000
+130085,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Snow White,PC,9.77,100,0,0/00/0000
+130086,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Pebble,PC,9.77,100,0,0/00/0000
+130087,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Sandstone,PC,9.77,100,0,0/00/0000
+130088,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Midnight Blue,PC,9.77,100,0,0/00/0000
+130089,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Sage Green,PC,9.77,100,0,0/00/0000
+130090,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Honeycrisp,PC,9.77,100,0,0/00/0000
+130091,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Iron Grey,PC,9.77,100,0,0/00/0000
+130092,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Sky Blue,PC,9.77,100,0,0/00/0000
+130093,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Coffe,PC,9.77,100,0,0/00/0000
+130094,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Olive,PC,9.77,100,0,0/00/0000
+130095,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Burgundy,PC,9.77,100,0,0/00/0000
+130096,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Sunset,PC,9.77,100,0,0/00/0000
+130097,Summit Mid-Tier,Siding,Hero,Luxury Stone-Style Siding,Dark Grey,Square,517.5,50,0,0/00/0000
+130098,Summit Mid-Tier,Siding,Stone Ledge,Stone Ledge,Dark Grey,PC,51.75,50,0,0/00/0000
+130099,Summit Mid-Tier,Siding,Stone Corner,Stone Corner,Dark Grey,PC,74.75,50,0,0/00/0000
+130100,Summit Mid-Tier,Siding,Hero,Luxury Stone-Style Siding,Light Grey,Square,517.5,50,0,0/00/0000
+130101,Summit Mid-Tier,Siding,Stone Ledge,Stone Ledge,Light Grey,PC,51.75,50,0,0/00/0000
+130102,Summit Mid-Tier,Siding,Stone Corner,Stone Corner,Light Grey,PC,74.75,50,0,0/00/0000
+130103,Summit Mid-Tier,Siding,Hero,Luxury Stone-Style Siding,Sandy Tan,Square,517.5,50,0,0/00/0000
+130104,Summit Mid-Tier,Siding,Stone Ledge,Stone Ledge,Sandy Tan,PC,51.75,50,0,0/00/0000
+130105,Summit Mid-Tier,Siding,Stone Corner,Stone Corner,Sandy Tan,PC,74.75,50,0,0/00/0000
 230001,Summit Mid-Tier,Roofing,Hero,3-Tab Shingles,Onyx Black,Bundle,103.5,50,0,0/00/0000
 230002,Summit Mid-Tier,Roofing,Hero,3-Tab Shingles,Estate Grey,Bundle,103.5,50,0,0/00/0000
 230003,Summit Mid-Tier,Roofing,Hero,3-Tab Shingles,Weathered Wood,Bundle,103.5,50,0,0/00/0000
@@ -213,7 +261,7 @@ id,brand,category,sub_category,name,color,unit,price,inventory,incoming,restock_
 230023,Summit Mid-Tier,Roofing,Ridge Cap,Ridge Cap,Forest Green,Bundle,51.75,50,0,0/00/0000
 230024,Summit Mid-Tier,Roofing,Ridge Cap,Ridge Cap,Desert Tan,Bundle,51.75,50,0,0/00/0000
 230025,Summit Mid-Tier,Roofing,Starter Strip,Starter Strip,Universal,Roll,40.25,50,0,0/00/0000
-230026,Summit Mid-Tier,Roofing,Ice & Water Shield,Ice & Water Shield,Universal,Roll,97.75,50,0,0/00/0000
+230026,Summit Mid-Tier,Roofing,Ice and Water Shield,Ice and Water Shield,Universal,Roll,97.75,50,0,0/00/0000
 230027,Summit Mid-Tier,Roofing,Synthetic Underlayment,Synthetic Underlayment,Universal,Roll,126.5,50,0,0/00/0000
 160001,EcoShield Budget,Siding,Hero,Double-4 Siding,Snow White,Square,180.0,50,0,0/00/0000
 160002,EcoShield Budget,Siding,Hero,Double-4 Siding,Pebble,Square,180.0,50,0,0/00/0000
@@ -287,15 +335,39 @@ id,brand,category,sub_category,name,color,unit,price,inventory,incoming,restock_
 160070,EcoShield Budget,Siding,Finish Trim,Finish Trim,Olive,PC,15.0,100,0,0/00/0000
 160071,EcoShield Budget,Siding,Finish Trim,Finish Trim,Burgundy,PC,15.0,100,0,0/00/0000
 160072,EcoShield Budget,Siding,Finish Trim,Finish Trim,Sunset,PC,15.0,100,0,0/00/0000
-160073,EcoShield Budget,Siding,Hero,Luxury Stone-Style Siding,Dark Grey,Square,450.0,50,0,0/00/0000
-160074,EcoShield Budget,Siding,Stone Ledge,Stone Ledge,Dark Grey,PC,45.0,50,0,0/00/0000
-160075,EcoShield Budget,Siding,Stone Corner,Stone Corner,Dark Grey,PC,65.0,50,0,0/00/0000
-160076,EcoShield Budget,Siding,Hero,Luxury Stone-Style Siding,Light Grey,Square,450.0,50,0,0/00/0000
-160077,EcoShield Budget,Siding,Stone Ledge,Stone Ledge,Light Grey,PC,45.0,50,0,0/00/0000
-160078,EcoShield Budget,Siding,Stone Corner,Stone Corner,Light Grey,PC,65.0,50,0,0/00/0000
-160079,EcoShield Budget,Siding,Hero,Luxury Stone-Style Siding,Sandy Tan,Square,450.0,50,0,0/00/0000
-160080,EcoShield Budget,Siding,Stone Ledge,Stone Ledge,Sandy Tan,PC,45.0,50,0,0/00/0000
-160081,EcoShield Budget,Siding,Stone Corner,Stone Corner,Sandy Tan,PC,65.0,50,0,0/00/0000
+160073,EcoShield Budget,Siding,Starter Strip,Starter Strip,Snow White,PC,10.0,100,0,0/00/0000
+160074,EcoShield Budget,Siding,Starter Strip,Starter Strip,Pebble,PC,10.0,100,0,0/00/0000
+160075,EcoShield Budget,Siding,Starter Strip,Starter Strip,Sandstone,PC,10.0,100,0,0/00/0000
+160076,EcoShield Budget,Siding,Starter Strip,Starter Strip,Midnight Blue,PC,10.0,100,0,0/00/0000
+160077,EcoShield Budget,Siding,Starter Strip,Starter Strip,Sage Green,PC,10.0,100,0,0/00/0000
+160078,EcoShield Budget,Siding,Starter Strip,Starter Strip,Honeycrisp,PC,10.0,100,0,0/00/0000
+160079,EcoShield Budget,Siding,Starter Strip,Starter Strip,Iron Grey,PC,10.0,100,0,0/00/0000
+160080,EcoShield Budget,Siding,Starter Strip,Starter Strip,Sky Blue,PC,10.0,100,0,0/00/0000
+160081,EcoShield Budget,Siding,Starter Strip,Starter Strip,Coffe,PC,10.0,100,0,0/00/0000
+160082,EcoShield Budget,Siding,Starter Strip,Starter Strip,Olive,PC,10.0,100,0,0/00/0000
+160083,EcoShield Budget,Siding,Starter Strip,Starter Strip,Burgundy,PC,10.0,100,0,0/00/0000
+160084,EcoShield Budget,Siding,Starter Strip,Starter Strip,Sunset,PC,10.0,100,0,0/00/0000
+160085,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Snow White,PC,8.5,100,0,0/00/0000
+160086,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Pebble,PC,8.5,100,0,0/00/0000
+160087,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Sandstone,PC,8.5,100,0,0/00/0000
+160088,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Midnight Blue,PC,8.5,100,0,0/00/0000
+160089,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Sage Green,PC,8.5,100,0,0/00/0000
+160090,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Honeycrisp,PC,8.5,100,0,0/00/0000
+160091,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Iron Grey,PC,8.5,100,0,0/00/0000
+160092,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Sky Blue,PC,8.5,100,0,0/00/0000
+160093,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Coffe,PC,8.5,100,0,0/00/0000
+160094,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Olive,PC,8.5,100,0,0/00/0000
+160095,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Burgundy,PC,8.5,100,0,0/00/0000
+160096,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Sunset,PC,8.5,100,0,0/00/0000
+160097,EcoShield Budget,Siding,Hero,Luxury Stone-Style Siding,Dark Grey,Square,450.0,50,0,0/00/0000
+160098,EcoShield Budget,Siding,Stone Ledge,Stone Ledge,Dark Grey,PC,45.0,50,0,0/00/0000
+160099,EcoShield Budget,Siding,Stone Corner,Stone Corner,Dark Grey,PC,65.0,50,0,0/00/0000
+160100,EcoShield Budget,Siding,Hero,Luxury Stone-Style Siding,Light Grey,Square,450.0,50,0,0/00/0000
+160101,EcoShield Budget,Siding,Stone Ledge,Stone Ledge,Light Grey,PC,45.0,50,0,0/00/0000
+160102,EcoShield Budget,Siding,Stone Corner,Stone Corner,Light Grey,PC,65.0,50,0,0/00/0000
+160103,EcoShield Budget,Siding,Hero,Luxury Stone-Style Siding,Sandy Tan,Square,450.0,50,0,0/00/0000
+160104,EcoShield Budget,Siding,Stone Ledge,Stone Ledge,Sandy Tan,PC,45.0,50,0,0/00/0000
+160105,EcoShield Budget,Siding,Stone Corner,Stone Corner,Sandy Tan,PC,65.0,50,0,0/00/0000
 260001,EcoShield Budget,Roofing,Hero,3-Tab Shingles,Onyx Black,Bundle,90.0,50,0,0/00/0000
 260002,EcoShield Budget,Roofing,Hero,3-Tab Shingles,Estate Grey,Bundle,90.0,50,0,0/00/0000
 260003,EcoShield Budget,Roofing,Hero,3-Tab Shingles,Weathered Wood,Bundle,90.0,50,0,0/00/0000
@@ -309,18 +381,18 @@ id,brand,category,sub_category,name,color,unit,price,inventory,incoming,restock_
 260011,EcoShield Budget,Roofing,Ridge Cap,Ridge Cap,Forest Green,Bundle,45.0,50,0,0/00/0000
 260012,EcoShield Budget,Roofing,Ridge Cap,Ridge Cap,Desert Tan,Bundle,45.0,50,0,0/00/0000
 260013,EcoShield Budget,Roofing,Starter Strip,Starter Strip,Universal,Roll,35.0,50,0,0/00/0000
-260014,EcoShield Budget,Roofing,Ice & Water Shield,Ice & Water Shield,Universal,Roll,85.0,50,0,0/00/0000
+260014,EcoShield Budget,Roofing,Ice and Water Shield,Ice and Water Shield,Universal,Roll,85.0,50,0,0/00/0000
 260015,EcoShield Budget,Roofing,Synthetic Underlayment,Synthetic Underlayment,Universal,Roll,110.0,50,0,0/00/0000
 300001,EcoShield Budget,Sheetrock,Hero,1/4-inch x 4x8 Thin Profile,Standard,Sheet,14.5,50,0,0/00/0000
 300002,EcoShield Budget,Sheetrock,Hero,1/2-inch x 4x8 Standard Profile,Standard,Sheet,16.0,50,0,0/00/0000
 300003,EcoShield Budget,Sheetrock,Hero,1/2-inch x 4x8 Moisture Resistant,Green,Sheet,21.0,50,0,0/00/0000
 300004,EcoShield Budget,Sheetrock,Hero,5/8-inch x 4x8 Fire Resistant,Type X,Sheet,24.0,50,0,0/00/0000
-300005,EcoShield Budget,Sheetrock,Screws,1-1/4 inch Drywall Screws,Zinc,Box,12.0,50,0,0/00/0000
-300006,EcoShield Budget,Sheetrock,Screws,1-5/8 inch Drywall Screws,Zinc,Box,12.0,50,0,0/00/0000
-300007,EcoShield Budget,Sheetrock,Mud,All-Purpose Joint Compound,White,Bucket,18.0,50,0,0/00/0000
-300008,EcoShield Budget,Sheetrock,Mud,Heavy Duty Taping Compound,White,Bucket,22.0,50,0,0/00/0000
-300009,EcoShield Budget,Sheetrock,Mud,Moisture Resistant Mud,White,Bucket,28.0,50,0,0/00/0000
-300010,EcoShield Budget,Sheetrock,Tape,Fiberglass Mesh Tape,White,Roll,7.5,50,0,0/00/0000
+300005,EcoShield Budget,Sheetrock,Screws,1-1/4 inch Drywall Screws,Standard,Box,12.0,50,0,0/00/0000
+300006,EcoShield Budget,Sheetrock,Screws,1-5/8 inch Drywall Screws,Type X,Box,12.0,50,0,0/00/0000
+300007,EcoShield Budget,Sheetrock,Mud,All-Purpose Joint Compound,Standard,Bucket,18.0,50,0,0/00/0000
+300008,EcoShield Budget,Sheetrock,Mud,Heavy Duty Taping Compound,Standard,Bucket,22.0,50,0,0/00/0000
+300009,EcoShield Budget,Sheetrock,Mud,Moisture Resistant Mud,Green,Bucket,28.0,50,0,0/00/0000
+300010,EcoShield Budget,Sheetrock,Tape,Fiberglass Mesh Tape,Universal,Roll,7.5,50,0,0/00/0000
 400001,EcoShield Budget,Insulation,Hero,Fiberglass Batt Insulation,R-13,Bag,45.0,50,0,0/00/0000
 400002,EcoShield Budget,Insulation,Hero,Fiberglass Batt Insulation,R-19,Bag,45.0,50,0,0/00/0000
 400003,EcoShield Budget,Insulation,Hero,Fiberglass Batt Insulation,R-30,Bag,45.0,50,0,0/00/0000
@@ -333,6 +405,6 @@ id,brand,category,sub_category,name,color,unit,price,inventory,incoming,restock_
 400010,EcoShield Budget,Insulation,Hero,Rigid Foamboard Insulation,R-5,Sheet,32.0,50,0,0/00/0000
 400011,EcoShield Budget,Insulation,Hero,Rigid Foamboard Insulation,R-7.5,Sheet,32.0,50,0,0/00/0000
 400012,EcoShield Budget,Insulation,Hero,Rigid Foamboard Insulation,R-10,Sheet,32.0,50,0,0/00/0000
-400013,EcoShield Budget,Insulation,Accessory,6-mil Poly Vapor Barrier,N/A,Roll,95.0,50,0,0/00/0000
-400014,EcoShield Budget,Insulation,Accessory,Insulation Fabric Backing,N/A,Roll,120.0,50,0,0/00/0000
-400015,EcoShield Budget,Insulation,Accessory,Insulation Support Wires,N/A,Box,15.0,50,0,0/00/0000
+400013,EcoShield Budget,Insulation,6-mil Poly Vapor Barrier,6-mil Poly Vapor Barrier,Universal,Roll,95.0,50,0,0/00/0000
+400014,EcoShield Budget,Insulation,Insulation Fabric Backing,Insulation Fabric Backing,Universal,Roll,120.0,50,0,0/00/0000
+400015,EcoShield Budget,Insulation,Insulation Support Wires,Insulation Support Wires,Universal,Box,15.0,50,0,0/00/0000
