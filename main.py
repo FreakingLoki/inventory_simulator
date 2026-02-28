@@ -1,34 +1,49 @@
+# ----- IMPORTS SECTION -----
+
 import os
 import sys
 import math
 import sqlite3
 import pandas as pd
 
+# ----- FUNCTIONS DEFINITIONS -----
+
 def initialize_local_database():
-    # connect to (or if required, create) the database file
+    """This function creates the local copy of the database if it does not already exist
+    if it does already exist, it updates the local copy of the database"""
+
+    # set the connection to none as a default
     connection = None
     try:
+        # connect to the database
         connection = sqlite3.connect('local_inventory.db')
 
         # use Pandas to read the CSV files
+        # read the files from CSV to DataFrames
         products_df = pd.read_csv('products.csv')
         requirements_df = pd.read_csv('requirements.csv')
         rules_df = pd.read_csv('category_rules.csv')
 
-        # load the data into SQL tables
+        # load the data into SQL tables from the DataFrames
         # the 'replace' tag ensures that if the CSV files are updated, the database is updated when the program is launched
         products_df.to_sql('products', connection, if_exists='replace', index=False)
         requirements_df.to_sql('requirements', connection, if_exists='replace', index=False)
         rules_df.to_sql('rules', connection, if_exists='replace', index=False)
 
     except Exception as e:
+        # if there's a problem, notify the user
         print(f"Database initialization/sync error:\n{e}")
 
     finally:
-        connection.close()
-        print("Database synchronized with CSV files")
+        # always close the connection when finished
+        if connection:
+            connection.close()
+            print("Database synchronized with CSV files")
 
 def check_setup():
+    """This function verifies the integrity of the local environment to ensure that the
+    program will run in a predictable manner"""
+
     print("--- Environment Check ---")
 
     # check if we are inside a virtual environment
@@ -45,14 +60,17 @@ def check_setup():
         print("Verifying integrity of database...")
         connection = None
         try:
+            # if the database file exists, connect to it
             connection = sqlite3.connect('local_inventory.db')
             cursor = connection.cursor()
             # query the database for a list of all tables
             cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
             tables = [row[0] for row in cursor.fetchall()]
 
+            # list of tables that should be in the database
             expected_tables = ['products', 'requirements', 'rules']
             # check if the expected tables are present
+            # if they're present, return true, if not return false
             if all(table in tables for table in expected_tables):
                 print("Database: All tables found")
                 print("Database Integrity: Good")
@@ -65,17 +83,22 @@ def check_setup():
 
         except sqlite3.Error as e:
             print(f"Database verification error:\n{e}")
+            # return false if a database error occurs
             return False
         finally:
+            # if we connected to the database, close the connection
             if connection:
                 connection.close()
 
     else:
+        # if the database file was not found return false
         print("local_inventory.db: Not found")
         return False
 
 
 def display_quote(hero, quantity, accessories, warnings=None):
+    """This function is the main formatting tool for displaying job quotes to the user after they're generated
+    it takes in the item, quantity, list of accessories, and any stock warnings"""
     main_total = float(hero['price']) * quantity
 
     print("\n" + "-" * 60)
@@ -86,6 +109,8 @@ def display_quote(hero, quantity, accessories, warnings=None):
     print(f"Subtotal: ${main_total:,.2f}")
 
     # check if there are any accessories to recommend
+    # if not, skip the accessories section
+    # if there are, print their details and add their prices to the grand total
     if accessories == "None" or not accessories:
         print("-" * 60)
         print(f"{'Grand Total:':^45} ${main_total:>12,.2f}")
@@ -97,8 +122,6 @@ def display_quote(hero, quantity, accessories, warnings=None):
             acc_qty = math.ceil(quantity * acc['quantity_multiplier'])
             acc_cost = float(acc['price']) * acc_qty
             grand_total += acc_cost
-
-            # Added acc['brand'] here so it shows "Vertex Premium Ridge Cap..."
             display_name = f"{acc['brand']} {acc['name']}"
             print(f"- {display_name:.<35} qty: {acc_qty:>3} | ${acc_cost:>10,.2f}")
 
@@ -116,20 +139,25 @@ def display_quote(hero, quantity, accessories, warnings=None):
     print("-" * 60 + "\n")
 
 def get_stock_level(product_id):
+    """This function checks the stock level of a product"""
     connection = None
     try:
+        # establish the connection to the database
         connection = sqlite3.connect('local_inventory.db')
         connection.row_factory = sqlite3.Row
         cursor = connection.cursor()
 
+        # grab the inventory count of th eproduct
         sql_query = "SELECT inventory FROM products WHERE id = ?"
         cursor.execute(sql_query, (product_id,))
         item = cursor.fetchone()
 
+        # if the product id number isn't found in the database, warn the user and exit the function
         if not item:
             print(f"Error: product with id {product_id} not found.")
             return None
 
+        # otherwise, return the inventory count of the given product
         else:
             on_hand_count = item['inventory']
             print(f"On Hand count: {on_hand_count}")
@@ -142,24 +170,28 @@ def get_stock_level(product_id):
             connection.close()
 
 def get_restock_info(product_id):
+    """This function grabs the restock information of a given product"""
     connection = None
     try:
+        # connect to the database
         connection = sqlite3.connect('local_inventory.db')
         connection.row_factory = sqlite3.Row
         cursor = connection.cursor()
 
+        # grab the restock information of the given product
         sql_query = "SELECT incoming, restock_date FROM products WHERE id = ?"
         cursor.execute(sql_query, (product_id,))
         item = cursor.fetchone()
 
+        # if the item isn't found, warn the user and exit the function
         if not item:
             print(f"Error: product with id {product_id} not found.")
             return None
 
+        # return the incoming stock amount and the date
         else:
             restock_amount = item['incoming']
             restock_date = item['restock_date']
-
             return restock_amount, restock_date
 
     except sqlite3.Error as e:
@@ -169,8 +201,11 @@ def get_restock_info(product_id):
             connection.close()
 
 def generate_quote(product_id, quantity):
+    """This function takes in a product id number and a quantity and generates a quote for that product and also
+    recommends appropriate accessory add-ons based on the product being quoted"""
     connection = None
     try:
+        # connect to the database
         connection = sqlite3.connect('local_inventory.db')
         connection.row_factory = sqlite3.Row
         cursor = connection.cursor()
@@ -179,6 +214,7 @@ def generate_quote(product_id, quantity):
         cursor.execute("SELECT * FROM products WHERE id = ?", (product_id,))
         item = cursor.fetchone()
 
+        # if the product id number isn't found in the database, warn the user and exit the function
         if not item:
             print(f"Error: {product_id} not found.")
             return
@@ -266,26 +302,36 @@ def generate_quote(product_id, quantity):
 
 
 def display_inventory_list(only_heroes=True):
-    connection = sqlite3.connect('local_inventory.db')
-    connection.row_factory = sqlite3.Row  # Use names, not indices!
-    cursor = connection.cursor()
+    """This function creates and displays a list of all of the items in the database, the default option only
+    displays "hero" products, with the option to display all products"""
+    connection = None
+    try:
+        # connect to the database
+        connection = sqlite3.connect('local_inventory.db')
+        connection.row_factory = sqlite3.Row  # Use names, not indices!
+        cursor = connection.cursor()
 
-    query = "SELECT id, category, brand, name, sub_type FROM products"
-    if only_heroes:
-        query += " WHERE sub_category = 'Hero'"
+        # select either all of the products, or only the hero products depending on the value of only_heroes
+        query = "SELECT id, category, brand, name, sub_type FROM products"
+        if only_heroes:
+            query += " WHERE sub_category = 'Hero'"
+        cursor.execute(query)
+        rows = cursor.fetchall()
 
-    cursor.execute(query)
-    rows = cursor.fetchall()
+        # print the list of products
+        print(f"\n{'ID':<7} | {'Category':<10} | {'Brand':<15} | {'Name':<30} | {'Sub-Type'}")
+        print("-" * 80)
+        for row in rows:
+            print(f"{row['id']:<7} | {row['category']:<10} | {row['brand']:<15} | {row['name']:<30} | {row['sub_type']}")
 
-    # I adjusted the widths to make sure the Brand and Name have room
-    print(f"\n{'ID':<7} | {'Category':<10} | {'Brand':<15} | {'Name':<30} | {'Sub-Type'}")
-    print("-" * 80)
-    for row in rows:
-        print(f"{row['id']:<7} | {row['category']:<10} | {row['brand']:<15} | {row['name']:<30} | {row['sub_type']}")
-
-    connection.close()
+    except sqlite3.Error as e:
+        print(f"Error: Database error occurred:{e}")
+    finally:
+        if connection:
+            connection.close()
 
 def main_menu():
+    """This is the main menu function which serves as the main interface of the application"""
     while True:
         print(f" ----- Main Menu -----")
         print("01: Generate A Quote")
@@ -293,15 +339,19 @@ def main_menu():
         print("03: List All Products")
         print("99: Exit")
 
+        # get the user's menu selection
         choice = input("\nEnter Selection: ")
 
+        #check the user's input choice
         match choice:
             case '01':
                 p_id = input("Enter Product ID: ")
                 try:
+                    # get a positive quantity
                     qty = float(input("Enter Quantity: "))
                     if qty <= 0:
                         raise ValueError("Invalid quantity. Please enter a positive number greater than 0")
+                    # if the product id and the quantity are appropriate, generate the quote as requested
                     generate_quote(p_id, qty)
                 except ValueError as e:
                     print(f"Error:\n{e}")
