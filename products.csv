@@ -128,7 +128,7 @@ id,brand,category,sub_category,name,sub_type,unit,price,inventory,incoming,resto
 200022,Vertex Premium,Roofing,Ridge Cap,Ridge Cap,Brick Red,Bundle,63.0,50,0,0/00/0000
 200023,Vertex Premium,Roofing,Ridge Cap,Ridge Cap,Forest Green,Bundle,63.0,50,0,0/00/0000
 200024,Vertex Premium,Roofing,Ridge Cap,Ridge Cap,Desert Tan,Bundle,63.0,50,0,0/00/0000
-200025,Vertex Premium,Roofing,Starter Strip,Starter Strip,Universal,Roll,49.0,50,0,0/00/0000
+200025,Vertex Premium,Roofing,Shingle Starter,Shingle Starter,Universal,Roll,49.0,50,0,0/00/0000
 200026,Vertex Premium,Roofing,Ice and Water Shield,Ice and Water Shield,Universal,Roll,119.0,50,0,0/00/0000
 200027,Vertex Premium,Roofing,Synthetic Underlayment,Synthetic Underlayment,Universal,Roll,154.0,50,0,0/00/0000
 130001,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Snow White,Square,207.0,50,0,0/00/0000
@@ -260,7 +260,7 @@ id,brand,category,sub_category,name,sub_type,unit,price,inventory,incoming,resto
 230022,Summit Mid-Tier,Roofing,Ridge Cap,Ridge Cap,Brick Red,Bundle,51.75,50,0,0/00/0000
 230023,Summit Mid-Tier,Roofing,Ridge Cap,Ridge Cap,Forest Green,Bundle,51.75,50,0,0/00/0000
 230024,Summit Mid-Tier,Roofing,Ridge Cap,Ridge Cap,Desert Tan,Bundle,51.75,50,0,0/00/0000
-230025,Summit Mid-Tier,Roofing,Starter Strip,Starter Strip,Universal,Roll,40.25,50,0,0/00/0000
+230025,Summit Mid-Tier,Roofing,Shingle Starter,Shingle Starter,Universal,Roll,40.25,50,0,0/00/0000
 230026,Summit Mid-Tier,Roofing,Ice and Water Shield,Ice and Water Shield,Universal,Roll,97.75,50,0,0/00/0000
 230027,Summit Mid-Tier,Roofing,Synthetic Underlayment,Synthetic Underlayment,Universal,Roll,126.5,50,0,0/00/0000
 160001,EcoShield Budget,Siding,Hero,Double-4 Siding,Snow White,Square,180.0,50,0,0/00/0000
@@ -380,7 +380,7 @@ id,brand,category,sub_category,name,sub_type,unit,price,inventory,incoming,resto
 260010,EcoShield Budget,Roofing,Ridge Cap,Ridge Cap,Brick Red,Bundle,45.0,50,0,0/00/0000
 260011,EcoShield Budget,Roofing,Ridge Cap,Ridge Cap,Forest Green,Bundle,45.0,50,0,0/00/0000
 260012,EcoShield Budget,Roofing,Ridge Cap,Ridge Cap,Desert Tan,Bundle,45.0,50,0,0/00/0000
-260013,EcoShield Budget,Roofing,Starter Strip,Starter Strip,Universal,Roll,35.0,50,0,0/00/0000
+260013,EcoShield Budget,Roofing,Shingle Starter,Shingle Starter,Universal,Roll,35.0,50,0,0/00/0000
 260014,EcoShield Budget,Roofing,Ice and Water Shield,Ice and Water Shield,Universal,Roll,85.0,50,0,0/00/0000
 260015,EcoShield Budget,Roofing,Synthetic Underlayment,Synthetic Underlayment,Universal,Roll,110.0,50,0,0/00/0000
 300001,EcoShield Budget,Sheetrock,Hero,1/4-inch x 4x8 Thin Profile,Standard,Sheet,14.5,50,0,0/00/0000

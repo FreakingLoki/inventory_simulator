@@ -89,7 +89,7 @@ class RoofingCategory(BaseCategory):
         # These are usually standard colors or universal
         accessories = {
             "Ridge Cap": 45.00,  # Matches colors
-            "Starter Strip": 35.00,  # Universal/Black
+            "Shingle Starter": 35.00,  # Universal/Black
             "Ice and Water Shield": 85.00,  # Roll
             "Synthetic Underlayment": 110.00  # Roll
         }
@@ -189,7 +189,7 @@ def write_requirements():
 
         # Roofing (Multipliers based on Bundles)
         {"category": "Roofing", "required_accessory": "Ridge Cap", "quantity_multiplier": 0.25},
-        {"category": "Roofing", "required_accessory": "Starter Strip", "quantity_multiplier": 0.20},
+        {"category": "Roofing", "required_accessory": "Shingle Starter", "quantity_multiplier": 0.20},
         {"category": "Roofing", "required_accessory": "Ice and Water Shield", "quantity_multiplier": 0.15},
         {"category": "Roofing", "required_accessory": "Synthetic Underlayment", "quantity_multiplier": 0.10},
 
