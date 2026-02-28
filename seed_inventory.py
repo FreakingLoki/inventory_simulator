@@ -15,18 +15,17 @@ class BaseCategory:
         self.current_id += 1
         return self.current_id
 
-    def add_product(self, category, sub_category, name, color, unit, base_price, inventory=50):
-        """Helper to format and store a product entry."""
-        price = round(base_price * self.markup, 2)
+    def add_product(self, category, sub_category, name, sub_type, unit, base_price, inventory=50):
+        """ Helper method to format and store a product entry"""
         self.products.append({
             "id": self.get_next_id(),
             "brand": self.brand_name,
             "category": category,
             "sub_category": sub_category,
             "name": name,
-            "color": color,
+            "sub_type": sub_type,
             "unit": unit,
-            "price": price,
+            "price": round(base_price * self.markup, 2),
             "inventory": inventory,
             "incoming": 0,
             "restock_date": "0/00/0000"
@@ -52,7 +51,7 @@ class SidingCategory(BaseCategory):
                 self.add_product("Siding", "Hero", f"{profile} Siding", color, "Square", price)
 
         # 2. Generate Standard Accessories
-        acc_types = {"J-Channel": 12.50, "Finish Trim": 15.00}
+        acc_types = {"J-Channel": 12.50, "Finish Trim": 15.00, "Starter Strip": 10.00, "Trim Nails (1lb)": 8.50}
         for acc, price in acc_types.items():
             for color in standard_colors:
                 self.add_product("Siding", acc, acc, color, "PC", price, inventory=100)
@@ -91,7 +90,7 @@ class RoofingCategory(BaseCategory):
         accessories = {
             "Ridge Cap": 45.00,  # Matches colors
             "Starter Strip": 35.00,  # Universal/Black
-            "Ice & Water Shield": 85.00,  # Roll
+            "Ice and Water Shield": 85.00,  # Roll
             "Synthetic Underlayment": 110.00  # Roll
         }
 
@@ -107,7 +106,7 @@ class SheetrockCategory(BaseCategory):
     """Specific logic for generating Drywall/Sheetrock and accessories."""
     def generate_sheetrock(self):
         # 1. Generate the Boards (Hero Products)
-        # Structure: {Sub-category: (Base Price, Thickness/Description, Color/Type)}
+        # Structure: {Sub-category: (Base Price, Thickness/Description, Sub-Type)}
         boards = {
             "Thin Profile": (14.50, "1/4-inch x 4x8", "Standard"),
             "Standard Profile": (16.00, "1/2-inch x 4x8", "Standard"),
@@ -116,33 +115,29 @@ class SheetrockCategory(BaseCategory):
         }
 
         for sub, details in boards.items():
-            price, size, color = details
+            price, size, sub_type = details
             self.add_product(
                 category="Sheetrock",
                 sub_category="Hero",
                 name=f"{size} {sub}",
-                color=color,
+                sub_type=sub_type,
                 unit="Sheet",
                 base_price=price
             )
 
         # 2. Generate Accessories
         # Screws
-        screw_types = ["1-1/4 inch Drywall Screws", "1-5/8 inch Drywall Screws"]
-        for screw in screw_types:
-            self.add_product("Sheetrock", "Screws", screw, "Zinc", "Box", 12.00)
+        self.add_product("Sheetrock", "Screws", "1-1/4 inch Drywall Screws", "Standard", "Box", 12.00)
+        self.add_product("Sheetrock", "Screws", "1-5/8 inch Drywall Screws", "Type X", "Box", 12.00)
 
         # Joint Compound (Mud)
-        mud_types = {
-            "All-Purpose Joint Compound": 18.00,
-            "Heavy Duty Taping Compound": 22.00,
-            "Moisture Resistant Mud": 28.00
-        }
-        for mud, price in mud_types.items():
-            self.add_product("Sheetrock", "Mud", mud, "White", "Bucket", price)
+        self.add_product("Sheetrock", "Mud", "All-Purpose Joint Compound", "Standard", "Bucket", 18.00)
+        self.add_product("Sheetrock", "Mud", "Heavy Duty Taping Compound", "Standard", "Bucket",
+                         22.00)  # Optional secondary
+        self.add_product("Sheetrock", "Mud", "Moisture Resistant Mud", "Green", "Bucket", 28.00)
 
         # Tape
-        self.add_product("Sheetrock", "Tape", "Fiberglass Mesh Tape", "White", "Roll", 7.50)
+        self.add_product("Sheetrock", "Tape", "Fiberglass Mesh Tape", "Universal", "Roll", 7.50)
 
 class InsulationCategory(BaseCategory):
     """Logic for generating various insulation types and accessories."""
@@ -159,12 +154,12 @@ class InsulationCategory(BaseCategory):
         for style, details in styles.items():
             price, unit, r_values = details
             for r in r_values:
-                # We'll use the R-Value in the 'Color' column since color is N/A
+                # We'll use the R-Value in the 'sub_type'
                 self.add_product(
                     category="Insulation",
                     sub_category="Hero",
                     name=f"{style} Insulation",
-                    color=r,
+                    sub_type=r,
                     unit=unit,
                     base_price=price
                 )
@@ -178,7 +173,8 @@ class InsulationCategory(BaseCategory):
 
         for acc, details in accessories.items():
             price, unit = details
-            self.add_product("Insulation", "Accessory", acc, "N/A", unit, price)
+            # CHANGE: Use 'acc' (the name) as the sub_category so SQL can JOIN it
+            self.add_product("Insulation", acc, acc, "Universal", unit, price)
 
 
 def write_requirements():
@@ -194,7 +190,7 @@ def write_requirements():
         # Roofing (Multipliers based on Bundles)
         {"category": "Roofing", "required_accessory": "Ridge Cap", "quantity_multiplier": 0.25},
         {"category": "Roofing", "required_accessory": "Starter Strip", "quantity_multiplier": 0.20},
-        {"category": "Roofing", "required_accessory": "Ice & Water Shield", "quantity_multiplier": 0.15},
+        {"category": "Roofing", "required_accessory": "Ice and Water Shield", "quantity_multiplier": 0.15},
         {"category": "Roofing", "required_accessory": "Synthetic Underlayment", "quantity_multiplier": 0.10},
 
         # Sheetrock
