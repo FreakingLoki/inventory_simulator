@@ -96,13 +96,24 @@ This led to an issue where the SQL JOIN query trying to subtract the value of a 
 the name of the column in square brackets or double quotes, but I decided to rename the column
 to `sub_category` to be more universally code friendly.
 
-## Planned Future Features
-### Expansion of Products
-This project was started with a handmade products.csv file which only included a handful of siding
-items and accessories in just a few colors. My first task to really expand this project is to add
-each of the main product categories I'd like to add (sheetrock, shingle roofing, and insulation) based
-on some research and my knowledge of the industry.
+### The 'color' Category
+While constructing the products.csv, I started with the Siding category. As many of us know, 
+vinyl siding comes in many different colors with accessories that match (or contrast with) the
+main panel color. In general, in the industry, darker colors often cost more than lighter colors.
+Because of this trend, I included a `color` colum in the comma separated value file `products.csv`.
+For a while, this worked fine, and it continued to work until I approached the sheetrock and
+insulation categories. Shingle roofing also comes in various colors, but in sheetrock and insulation,
+the color of the product doesn't matter as much as the R-value or the thickness of the product. At first,
+I decided to use the `color` column the way it was already being used; as a filter. Then, I realized
+it was named poorly, AND I realized that the design of my database was too rigid. I needed to normalize
+the database to allow for all the product categories to make logical use of this filter. I had to
+adjust the architecture of the project to adapt to the changing needs. At this point I was already using
+the `seed_inventory.py` script to generate the `products.csv` file, so the main changes were to that script
+and the references to the `color` category in the `main.py` script. I settled on a more suitable name for
+this column, `sub_type`, which works better because the color, length, or thickness of a material can
+easily be thought of as the sub-type of that product.
 
+## Planned Future Features
 ### Accurate Job Lot Quotes
 I plan to add additional options for the user to more accurately quote required accessories for
 roofing, insulation, siding, and sheetrock jobs. As of now, each category uses a flat multiplier
