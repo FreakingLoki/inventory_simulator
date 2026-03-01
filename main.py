@@ -99,6 +99,7 @@ def check_setup():
 def display_quote(hero, quantity, accessories, warnings=None):
     """This function is the main formatting tool for displaying job quotes to the user after they're generated
     it takes in the item, quantity, list of accessories, and any stock warnings"""
+
     main_total = float(hero['price']) * quantity
 
     print("\n" + "-" * 60)
@@ -140,6 +141,7 @@ def display_quote(hero, quantity, accessories, warnings=None):
 
 def get_stock_level(product_id):
     """This function checks the stock level of a product"""
+
     connection = None
     try:
         # establish the connection to the database
@@ -171,6 +173,7 @@ def get_stock_level(product_id):
 
 def get_restock_info(product_id):
     """This function grabs the restock information of a given product"""
+
     connection = None
     try:
         # connect to the database
@@ -203,6 +206,7 @@ def get_restock_info(product_id):
 def generate_quote(product_id, quantity):
     """This function takes in a product id number and a quantity and generates a quote for that product and also
     recommends appropriate accessory add-ons based on the product being quoted"""
+
     connection = None
     try:
         # connect to the database
@@ -304,6 +308,7 @@ def generate_quote(product_id, quantity):
 def display_inventory_list(only_heroes=True):
     """This function creates and displays a list of all of the items in the database, the default option only
     displays "hero" products, with the option to display all products"""
+
     connection = None
     try:
         # connect to the database
@@ -332,6 +337,7 @@ def display_inventory_list(only_heroes=True):
 
 def main_menu():
     """This is the main menu function which serves as the main interface of the application"""
+
     while True:
         print(f" ----- Main Menu -----")
         print("01: Generate A Quote")

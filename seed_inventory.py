@@ -134,6 +134,8 @@ class SheetrockCategory(BaseCategory):
     """Specific logic for generating Drywall/Sheetrock and accessories."""
 
     def generate_sheetrock(self):
+        """This method generates the sheetrock hero products and accessories"""
+
         # 1. generate the boards (Hero Products)
         # Structure: {Sub-category: (Base Price, Thickness/Description, Sub-Type)}
         boards = {
