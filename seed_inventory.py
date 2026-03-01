@@ -1,22 +1,35 @@
-import csv
-import math
+# ----- IMPORTS SECTION -----
 
+import csv
+
+# ----- CLASS DEFINITIONS -----
 
 class BaseCategory:
-    """The blueprint for all product categories."""
+    """The base blueprint for all product categories. Al products have a brand, a markup level, and an id number"""
 
     def __init__(self, brand_name, markup, start_id):
+        """The init method sets the default values for the included parameters"""
+
         self.brand_name = brand_name
         self.markup = markup
+        # start_id allows for separating the "id number blocks" in a logical manner
         self.current_id = start_id
         self.products = []
 
     def get_next_id(self):
+        """This method is used to define the product id number"""
+
+        # siding starts at      100000
+        # roofing starts at     200000
+        # sheetrock starts at   300000
+        # insulation starts at  400000
         self.current_id += 1
         return self.current_id
 
     def add_product(self, category, sub_category, name, sub_type, unit, base_price, inventory=50):
         """ Helper method to format and store a product entry"""
+
+        # add the product to the main product list with all of the required details
         self.products.append({
             "id": self.get_next_id(),
             "brand": self.brand_name,
@@ -36,28 +49,35 @@ class SidingCategory(BaseCategory):
     """Specific logic for generating Siding and its unique accessories."""
 
     def generate_siding(self):
+        """This method generates each siding profile in the various brands and colors in which it is available"""
+
+        # the main panel profiles available for the vinyl siding
         profiles = {
             "Double-4": 180.00,
             "Board and Batten": 210.00,
             "Dutchlap": 195.00,
             "Shake-Style": 280.00
         }
+        # the available colors of the siding products
         standard_colors = ["Snow White", "Pebble", "Sandstone", "Midnight Blue", "Sage Green", "Honeycrisp", "Iron Grey",
                            "Sky Blue", "Coffe", "Olive", "Burgundy", "Sunset"]
 
-        # 1. Generate Hero Profiles
+        # 1. generate "hero" profiles, aka the main siding panels and add them to the product list
         for profile, price in profiles.items():
             for color in standard_colors:
                 self.add_product("Siding", "Hero", f"{profile} Siding", color, "Square", price)
 
-        # 2. Generate Standard Accessories
+        # 2. generate the siding accessories and add them to the product list
         acc_types = {"J-Channel": 12.50, "Finish Trim": 15.00, "Starter Strip": 10.00, "Trim Nails (1lb)": 8.50}
         for acc, price in acc_types.items():
             for color in standard_colors:
                 self.add_product("Siding", acc, acc, color, "PC", price, inventory=100)
 
-        # 3. Special Stone-Style Section
+        # 3. generate the special stone-style siding panels and the accessories that go with them
+        # the stone panels are only available in three colors
         stone_colors = ["Dark Grey", "Light Grey", "Sandy Tan"]
+
+        # add the stone panel product to the product list
         for color in stone_colors:
             self.add_product("Siding", "Hero", "Luxury Stone-Style Siding", color, "Square", 450.00)
             # Stone-specific accessories
@@ -69,31 +89,39 @@ class RoofingCategory(BaseCategory):
     """Specific logic for generating Shingle Roofing and accessories."""
 
     def generate_roofing(self):
-        # Define styles based on brand tier
-        # We can check the markup to decide which styles to add
-        styles = {"3-Tab": 90.00}  # Everyone gets budget 3-tab
+        """This is the method that generates the roofing products and accessories"""
 
-        if self.markup >= 1.15:  # Mid-tier and Premium get the fancy stuff
+        # Define styles based on brand tier
+        # use the markup to determine which brands offer which shingle styles
+        styles = {"3-Tab": 90.00}  # every brand offers the basic three-tab style
+
+        # Mid-tier and Premium get the fancy stuff
+        if self.markup >= 1.15:
             styles["Architectural"] = 125.00
             styles["Executive Slate-Style"] = 210.00
 
         colors = ["Onyx Black", "Estate Grey", "Weathered Wood", "Brick Red", "Forest Green", "Desert Tan"]
 
-        # 1. Generate Hero Shingles
+        # 1. generate the "hero" products, aka the shingles and add them to the product list
         for style, price in styles.items():
             for color in colors:
-                # Shingles are sold by the 'Bundle' (usually 3 bundles per square)
+                # Shingles are sold by the bundle (usually 3 bundles per square)
                 self.add_product("Roofing", "Hero", f"{style} Shingles", color, "Bundle", price)
 
-        # 2. Generate Brand-Specific Accessories
+        # 2. generate the shingle accessories
         # These are usually standard colors or universal
         accessories = {
-            "Ridge Cap": 45.00,  # Matches colors
-            "Shingle Starter": 35.00,  # Universal/Black
-            "Ice and Water Shield": 85.00,  # Roll
-            "Synthetic Underlayment": 110.00  # Roll
+            # ridge cap typically color matches the shingles
+            "Ridge Cap": 45.00,
+            # shingle starter is always black/universal, need to call this shingle starter instead of the
+            # industry standard starter strip to differentiate from the vinyl accessory with the same name
+            "Shingle Starter": 35.00,
+            # the rolled goods
+            "Ice and Water Shield": 85.00,
+            "Synthetic Underlayment": 110.00
         }
 
+        # add the accessories to the product list
         for acc, price in accessories.items():
             if acc == "Ridge Cap":
                 for color in colors:
@@ -104,8 +132,9 @@ class RoofingCategory(BaseCategory):
 
 class SheetrockCategory(BaseCategory):
     """Specific logic for generating Drywall/Sheetrock and accessories."""
+
     def generate_sheetrock(self):
-        # 1. Generate the Boards (Hero Products)
+        # 1. generate the boards (Hero Products)
         # Structure: {Sub-category: (Base Price, Thickness/Description, Sub-Type)}
         boards = {
             "Thin Profile": (14.50, "1/4-inch x 4x8", "Standard"),
@@ -114,6 +143,7 @@ class SheetrockCategory(BaseCategory):
             "Fire Resistant": (24.00, "5/8-inch x 4x8", "Type X")
         }
 
+        # add the sheetrock boards to the product list
         for sub, details in boards.items():
             price, size, sub_type = details
             self.add_product(
@@ -125,7 +155,7 @@ class SheetrockCategory(BaseCategory):
                 base_price=price
             )
 
-        # 2. Generate Accessories
+        # 2. generate the sheetrock accessories and add them to the product list
         # Screws
         self.add_product("Sheetrock", "Screws", "1-1/4 inch Drywall Screws", "Standard", "Box", 12.00)
         self.add_product("Sheetrock", "Screws", "1-5/8 inch Drywall Screws", "Type X", "Box", 12.00)
@@ -141,8 +171,12 @@ class SheetrockCategory(BaseCategory):
 
 class InsulationCategory(BaseCategory):
     """Logic for generating various insulation types and accessories."""
+
     def generate_insulation(self):
-        # 1. Hero Products
+        """This is the method that generates the insulation products and accessories"""
+
+        # 1. generate the "hero" products
+        # use a dictionary formatted as:
         # Material: (Base Price, Unit, List of R-Values)
         styles = {
             "Fiberglass Batt": (45.00, "Bag", ["R-13", "R-19", "R-30"]),
@@ -151,10 +185,11 @@ class InsulationCategory(BaseCategory):
             "Rigid Foamboard": (32.00, "Sheet", ["R-5", "R-7.5", "R-10"])
         }
 
+        # add the hero products to the product list
         for style, details in styles.items():
             price, unit, r_values = details
             for r in r_values:
-                # We'll use the R-Value in the 'sub_type'
+                # use the R-Value is the 'sub_type'
                 self.add_product(
                     category="Insulation",
                     sub_category="Hero",
@@ -164,18 +199,19 @@ class InsulationCategory(BaseCategory):
                     base_price=price
                 )
 
-        # 2. Accessories
+        # 2. generate the accessories
         accessories = {
             "6-mil Poly Vapor Barrier": (95.00, "Roll"),
             "Insulation Fabric Backing": (120.00, "Roll"),
             "Insulation Support Wires": (15.00, "Box")
         }
 
+        # add the accessories to the product list
         for acc, details in accessories.items():
             price, unit = details
-            # CHANGE: Use 'acc' (the name) as the sub_category so SQL can JOIN it
             self.add_product("Insulation", acc, acc, "Universal", unit, price)
 
+# ----- FUNCTION DEFINITIONS -----
 
 def write_requirements():
     """ a function for populating the requirements.csv file with the "default" option quote multipliers"""
@@ -195,24 +231,28 @@ def write_requirements():
 
         # Sheetrock
         {"category": "Sheetrock", "required_accessory": "Screws", "quantity_multiplier": 0.03},
-        # 1 box per 33 sheets
         {"category": "Sheetrock", "required_accessory": "Mud", "quantity_multiplier": 0.33},
         {"category": "Sheetrock", "required_accessory": "Tape", "quantity_multiplier": 0.10},
 
          # Insulation
         {"category": "Insulation", "required_accessory": "6-mil Poly Vapor Barrier", "quantity_multiplier": 0.05},
-        {"category": "Insulation", "required_accessory": "Insulation Fabric Backing", "quantity_multiplier": 0.05}
+        {"category": "Insulation", "required_accessory": "Insulation Fabric Backing", "quantity_multiplier": 0.05},
+        {"category": "Insulation", "required_accessory": "Insulation Support Wires", "quantity_multiplier": 0.10}
     ]
 
+    # add the accessory quote multipliers to the requirement.csv file
     with open('requirements.csv', 'w', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=["category", "required_accessory", "quantity_multiplier"])
         writer.writeheader()
         writer.writerows(reqs)
 
-# --- EXECUTION BLOCK ---
+# ----- EXECUTION BLOCK ----
+
 if __name__ == "__main__":
     all_data = []
 
+    # define the brands with blocks of id numbers reserved for each brand within the main blocks of id numbers for
+    # each product category
     brands = [
         {"name": "Vertex Premium", "markup": 1.40, "s_id": 100000, "r_id": 200000},
         {"name": "Summit Mid-Tier", "markup": 1.15, "s_id": 130000, "r_id": 230000},

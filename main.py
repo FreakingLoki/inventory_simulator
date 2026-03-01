@@ -368,7 +368,7 @@ def main_menu():
             case _:
                 print("Invalid choice, try again.")
 
-
+# ----- EXECUTION BLOCK -----
 
 if __name__ == "__main__":
     # initialize the database
