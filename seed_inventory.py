@@ -68,7 +68,8 @@ class SidingCategory(BaseCategory):
                 self.add_product("Siding", "Hero", f"{profile} Siding", color, "Square", price)
 
         # 2. generate the siding accessories and add them to the product list
-        acc_types = {"J-Channel": 12.50, "Finish Trim": 15.00, "Starter Strip": 10.00, "Trim Nails (1lb)": 8.50}
+        acc_types = {"J-Channel": 12.50, "Finish Trim": 15.00, "Starter Strip": 10.00, "Trim Nails (1lb)": 8.50,
+                     "Outside Corner Post": 17.50, "Inside Corner Post": 16.50}
         for acc, price in acc_types.items():
             for color in standard_colors:
                 self.add_product("Siding", acc, acc, color, "PC", price, inventory=100)
@@ -224,6 +225,8 @@ def write_requirements():
         {"category": "Siding", "required_accessory": "J-Channel", "quantity_multiplier": 2.0},
         {"category": "Siding", "required_accessory": "Finish Trim", "quantity_multiplier": 1.0},
         {"category": "Siding", "required_accessory": "Trim Nails (1lb)", "quantity_multiplier": 0.66},
+        {"category": "Siding", "required_accessory": "Outside Corner Post", "quantity_multiplier": 0.1},
+        {"category": "Siding", "required_accessory": "Inside Corner Post", "quantity_multiplier": 0.1},
 
         # Roofing (Multipliers based on Bundles)
         {"category": "Roofing", "required_accessory": "Ridge Cap", "quantity_multiplier": 0.25},
