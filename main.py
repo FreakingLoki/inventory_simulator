@@ -6,6 +6,43 @@ import math
 import sqlite3
 import pandas as pd
 
+# ----- GLOBAL CONSTANTS -----
+
+SIDING_FACTORS = {
+    "stick_length": 12.5,       # all siding accessories are sold in 12.5 ft lengths
+    "window_j_ft": 13.0,        # linear feet of j-channel, on average, per window
+    "window_finish_ft": 3.0,    # linear feet of finish trim per window
+    "door_j_ft": 16.5,          # linear feet of j-channel for an average exterior door
+    "gable_pitch_mult": 1.25,   # multiplier for the bottom edge of roof gables
+    "sqft_per_square": 100.0,   # conversion between 'squares' and square feet
+    "corner_post_length": 10.0, # inside and outside corners are sold in 10 foot lengths
+    "avg_wall_height": 9.0,     # the height of an average wall, used for corner post estimates
+}
+
+ROOFING_FACTORS = {
+    "bundle_per_square": 3.0,       # three bundles cover 100 sqft
+    "ridge_cap_coverage": 30.0,     # each bundle of cap covers 30 ft of ridge
+    "starter_coverage": 100.0,      # each bundle of shingle starter covers 100 ft of edge
+    "ice_water_sqft": 200.0,        # the ice and water rolls cover 200 sqft
+    "ice_water_width_ft": 3.0,      # standard width of a roll
+    "underlayment_square": 1000.0,  # the underlayment rolls cover 1000 sqft
+    "sqft_per_square": 100.0        # conversion between 'squares' and square feet
+}
+
+SHEETROCK_FACTORS = {
+    "sqft_per_panel": 32.0,         # square feet of coverage per panel
+    "tape_coverage": 50.0,          # linear feet of coverage per roll of tape
+    "screws_sqft_per_pound": 150,    # square feet of coverage per pound of nails
+    "mud_sqft_per_pail": 600,       # square feet of coverage per pail of mud
+}
+
+INSULATION_FACTORS = {
+    "sqft_per_bag": 50.0,       # square feet of wall coverage per bag of insulation
+    "sqft_per_board": 32.0,     # square feet of wall coverage per foam board
+    "sqft_per_roll": 100.0,     # square feet of wall coverage per accessory roll
+    "sqft_per_wire_box": 200,   # square feet of material supported per box of wire supports
+}
+
 # ----- FUNCTIONS DEFINITIONS -----
 
 def initialize_local_database():
@@ -149,7 +186,7 @@ def get_stock_level(product_id):
         connection.row_factory = sqlite3.Row
         cursor = connection.cursor()
 
-        # grab the inventory count of th eproduct
+        # grab the inventory count of the product
         sql_query = "SELECT inventory FROM products WHERE id = ?"
         cursor.execute(sql_query, (product_id,))
         item = cursor.fetchone()
@@ -172,7 +209,7 @@ def get_stock_level(product_id):
             connection.close()
 
 def get_restock_info(product_id):
-    """This function grabs the restock information of a given product"""
+    """This function grabs the restocking information of a given product"""
 
     connection = None
     try:
@@ -181,7 +218,7 @@ def get_restock_info(product_id):
         connection.row_factory = sqlite3.Row
         cursor = connection.cursor()
 
-        # grab the restock information of the given product
+        # grab the restocking information of the given product
         sql_query = "SELECT incoming, restock_date FROM products WHERE id = ?"
         cursor.execute(sql_query, (product_id,))
         item = cursor.fetchone()
@@ -202,6 +239,188 @@ def get_restock_info(product_id):
     finally:
         if connection:
             connection.close()
+
+def get_calculation_mode():
+    """Prompts the user to determine how they'd like to handle calculation accessory add-ons"""
+
+    print("\n--- Accessory Calculation Options ---")
+    print("1: Standard Estimate (Uses industry-average ratios)")
+    print("2: Site-Specific Estimate (Enter window/door/corner counts)")
+    print("3: Custom Quantities (Enter exact accessory counts)")
+    print("4: Skip Add-ons (Quote hero product only)")
+
+    choice = input("\nSelect Calculation Method (1-4): ")
+    return choice
+
+def get_site_specs(category):
+    """This function collect job-site measurements and counts for more precise quotes (calc mode 2)"""
+
+    specs = {}
+
+    if category == "Siding":
+        print("\n--- Siding Site Details ---")
+        specs['windows'] = int(input("Number of Windows: ") or 0)
+        specs['doors'] = int(input("Number of Doors: ") or 0)
+        specs['foundation_ft'] = float(input("Total Foundation Linear Feet: ") or 0)
+        specs['gable_width'] = float(input("Total Width of Gable Bases (ft): ") or 0)
+        specs['outside_corners'] = int(input("Number of Outside Corners: ") or 0)
+        specs['inside_corners'] = int(input("Number of Inside Corners: ") or 0)
+
+
+    elif category == "Roofing":
+        print("\n--- Roofing Site Details ---")
+        specs['ridges_ft'] = float(input("Total Linear Feet of Ridges: ") or 0)
+        specs['eaves_ft'] = float(input("Total Linear Feet of Eaves: ") or 0)
+        specs['rakes_ft'] = float(input("Total Linear Feet of Rakes: ") or 0)
+        specs['valleys_ft'] = float(input("Total Linear Feet of Valleys: ") or 0)
+        specs['total_sqft'] = float(input("Total Roof Square Footage (Deck Area): ") or 0)
+
+    elif category == "Sheetrock" or "Insulation":
+        print(f"\n--- {category} Site Details ---")
+        specs['square_ft'] = float(input("Total Square Feet of Wall") or 0)
+
+    return specs
+
+def calculate_site_specific(category, hero_qty):
+    """This function takes in a product category and prompts the user for site-specific numbers to calculate
+    a much more accurate job quote with less over/under ordering. If hero_qty is None, it also calculates the
+    required amount of hero product"""
+
+    # start by getting the site specific information
+    specs = get_site_specs(category)
+    # a container dictionary with {accessory_name: new_multiplier}
+    calculated_results = {}
+    final_hero_qty = hero_qty
+
+    match category:
+        case "Siding":
+            # ----- Hero Product -----
+            # if the user provides a total wall area, override the hero_qty
+            if final_hero_qty is None:
+                final_hero_qty = math.ceil(specs['total_wall_sqft'] / SIDING_FACTORS['sqft_per_square'])
+
+            # ----- J-Channel -----
+            # use the site-specific counts of openings with the multipliers from the siding dictionary to determine the
+            # total feet of j-channel required
+            total_j_ft = (specs['windows'] * SIDING_FACTORS['window_j_ft']) + \
+                         (specs['doors'] * SIDING_FACTORS['door_j_ft']) + \
+                         (specs['gable_width'] * SIDING_FACTORS['gable_pitch_mult'])
+
+            # divide by stick length and then again by hero_qty to turn this number back into a multiplier
+            # this allows us to use display_quote()
+            j_sticks = math.ceil(total_j_ft / SIDING_FACTORS['stick_length'])
+            calculated_results['J-Channel'] = j_sticks / final_hero_qty
+
+            # ----- Finish Trim -----
+            # finish trim for underneath windows and along the top of non-gable walls
+            total_finish_ft = (specs['windows'] * SIDING_FACTORS['window_finish_ft']) + \
+                              specs['foundation_ft']  # assuming top of wall = foundation length
+            finish_sticks = math.ceil(total_finish_ft / SIDING_FACTORS['stick_length'])
+            calculated_results['Finish Trim'] = finish_sticks / final_hero_qty
+
+            # ----- Outside Corner Posts -----
+            # each corner needs posts based on wall height
+            posts_per_corner = math.ceil(SIDING_FACTORS['avg_wall_height'] / SIDING_FACTORS['corner_post_length'])
+            calculated_results['Outside Corner Post'] = (specs['outside_corners'] * posts_per_corner) / final_hero_qty
+
+            # ----- Inside Corner Posts -----
+            # calculated based on the number of inside corners
+            posts_per_corner = math.ceil(SIDING_FACTORS['avg_wall_height'] / SIDING_FACTORS['corner_post_length'])
+            calculated_results['Inside Corner Post'] = (specs['inside_corners'] * posts_per_corner) / final_hero_qty
+
+            # ----- Starter Strip -----
+            # calculated based on the linear feet of foundation, or the bottom edge of the wall
+            starter_sticks = math.ceil(specs['foundation_ft'] / SIDING_FACTORS['stick_length'])
+            calculated_results['Starter Strip'] = starter_sticks / final_hero_qty
+
+        case "Roofing":
+            # ----- Hero Product -----
+            if final_hero_qty is None:
+                # calculate the required quantity of bundles
+                squares = specs['total_sqft'] / ROOFING_FACTORS['sqft_per_square']
+                final_hero_qty = math.ceil(squares * ROOFING_FACTORS['bundle_per_square'])
+
+            # ----- Ridge Cap -----
+            # divide total feet by feet per bundle to calculate the number of bundles
+            bundles_ridge_cap = math.ceil(specs['ridges_ft'] / ROOFING_FACTORS['ridge_cap_coverage'])
+            calculated_results['Ridge Cap'] = bundles_ridge_cap / final_hero_qty
+
+            # ----- Shingle Starter -----
+            # shingle starter covers the edges of the eaves and rakes of the roof
+            # calculate by adding linear feet of eaves and rakes, then dividing by coverage per bundle
+            bundles_shingle_starter = math.ceil((specs['eaves_ft'] + specs['rakes_ft']) / ROOFING_FACTORS['starter_coverage'])
+            calculated_results['Shingle Starter'] = bundles_shingle_starter / final_hero_qty
+
+            # ----- Ice and Water Shield -----
+            # two rows along the eaves and one along valleys
+            # calculate the required square footage, then divide by the square footage per roll
+            eave_area = specs['eaves_ft'] * 6.0
+            valley_area = specs['valleys_ft'] * 3.0
+            total_ice_water_sqft = eave_area + valley_area
+            rolls_ice_water = math.ceil(total_ice_water_sqft / ROOFING_FACTORS['ice_water_roll_sqft'])
+            calculated_results['Ice and Water Shield'] = rolls_ice_water / final_hero_qty
+
+            # ----- Synthetic Underlayment -----
+            # total roof area minus the area already covered by ice and water
+            remaining_area = specs['total_sqft'] - total_ice_water_sqft
+            if remaining_area < 0: remaining_area = 0
+
+            rolls_underlayment = math.ceil(remaining_area / ROOFING_FACTORS['underlayment_roll_sqft'])
+            calculated_results['Synthetic Underlayment'] = rolls_underlayment / final_hero_qty
+
+        case "Sheetrock":
+            # ----- Hero Product -----
+            if final_hero_qty is None:
+                final_hero_qty = math.ceil(specs['total_sqft'] / SHEETROCK_FACTORS['sqft_per_panel'])
+
+            # ----- Screws -----
+            boxes_screws = math.ceil(specs['total_sqft'] / SHEETROCK_FACTORS['screws_sqft_per_pound'])
+            calculated_results['Screws'] = boxes_screws / final_hero_qty
+
+            # ----- Mud -----
+            pails_mud = math.ceil(specs['total_sqft'] / SHEETROCK_FACTORS['mud_sqft_per_pail'])
+            calculated_results['Mud'] = pails_mud / final_hero_qty
+
+            # ----- Tape -----
+            rolls_tape = math.ceil(specs['total_sqft'] / SHEETROCK_FACTORS['tape_coverage'])
+            calculated_results['Tape'] = rolls_tape / final_hero_qty
+
+        case "Insulation":
+            # ----- Hero Product -----
+            if final_hero_qty is None:
+                final_hero_qty = math.ceil(specs['total_sqft'] / INSULATION_FACTORS['sqft_per_bag'])
+
+            # ----- Vapor Barrier -----
+            rolls_barrier = math.ceil(specs['total_sqft'] / INSULATION_FACTORS['sqft_per_roll'])
+            calculated_results['6-mil Poly Vapor Barrier'] = rolls_barrier / final_hero_qty
+
+            # ----- Fabric Backing -----
+            rolls_backing = math.ceil(specs['total_sqft'] / INSULATION_FACTORS['sqft_per_roll'])
+            calculated_results['Insulation Fabric Backing'] = rolls_backing / final_hero_qty
+
+            # ----- Support Wires -----
+            support_wires = math.ceil(specs['total_sqft'] / INSULATION_FACTORS['sqft_per_wire_box'])
+            calculated_results['Insulation Support Wires'] = support_wires / final_hero_qty
+        case _:
+            print(f"Error, category {category} not found or invalid.")
+
+    return final_hero_qty, calculated_results
+
+def calculate_custom_quantities(hero_qty, accessories):
+    """This function allows the user to manually enter exact accessory counts"""
+
+    calculated_results = {}
+
+    print("\n--- Manual Accessory Entry ---")
+    for acc in accessories:
+        try:
+            # ask for the total count they want
+            count = float(input(f"Enter quantity for {acc['name']} ({acc['sub_type']}): ") or 0)
+            calculated_results[acc['name']] = count /hero_qty
+        except ValueError:
+            calculated_results[acc['name']] = 0
+
+    return calculated_results
 
 def generate_quote(product_id, quantity):
     """This function takes in a product id number and a quantity and generates a quote for that product and also
@@ -306,7 +525,7 @@ def generate_quote(product_id, quantity):
 
 
 def display_inventory_list(only_heroes=True):
-    """This function creates and displays a list of all of the items in the database, the default option only
+    """This function creates and displays a list of all the items in the database, the default option only
     displays "hero" products, with the option to display all products"""
 
     connection = None
@@ -316,7 +535,7 @@ def display_inventory_list(only_heroes=True):
         connection.row_factory = sqlite3.Row  # Use names, not indices!
         cursor = connection.cursor()
 
-        # select either all of the products, or only the hero products depending on the value of only_heroes
+        # select either all the products, or only the hero products depending on the value of only_heroes
         query = "SELECT id, category, brand, name, sub_type FROM products"
         if only_heroes:
             query += " WHERE sub_category = 'Hero'"
