@@ -88,6 +88,9 @@ In the future, I plan to construct a script which auto-generates several
 hundred products and populates the `products.csv` file, then randomizes inventory
 levels and restock dates.
 
+Note: The script which generates products has been added, but the randomized
+inventory levels has not been added yet.
+
 ### The 'Hyphen' Bug
 Early in developing the application, when I named the columns in the `products.csv`
 file, I habitually hyphenated sub-categories instead of using an underscore (as it is now).
@@ -113,13 +116,14 @@ and the references to the `color` category in the `main.py` script. I settled on
 this column, `sub_type`, which works better because the color, length, or thickness of a material can
 easily be thought of as the sub-type of that product.
 
-## Planned Future Features
-### Accurate Job Lot Quotes
-I plan to add additional options for the user to more accurately quote required accessories for
-roofing, insulation, siding, and sheetrock jobs. As of now, each category uses a flat multiplier
-to roughly estimate the amount of accessories to recommend to a customer to pair with each "hero"
-product quote.
+### The Accurate Job Lot Quotes Refactor
+This took a lot of planning, refactoring and bugfixing. At first, the program only used a simple list of
+ratios (using industry averages) to recommend add-ons based on which hero product was being quoted and how
+much was being ordered. I had to rewrite the `generate_quote()` function to use a branching flow which
+eventually filters down to passing data to a few final checks before passing everything on to
+the `display_quote()` function which handles the layout of the quote in the terminal.
 
+## Planned Future Features
 ### Inventory Script
 The main idea here is to randomize the inventory levels (within some logical bounds), 
 restock amount, and restock dates of every item in the products.csv file to simulate
@@ -137,6 +141,11 @@ will be built to construct some generated historical data.
 Once the order history component has been built, adding this feature would allow a user to
 run data analysis tools to draw conclusions about the simulated business. Sales trends,
 popular items, and more could be useful tools to have.
+
+### Unit Tests
+Testing each new update to the function is quickly becoming a large endeavor in itself. Building 
+tests to ensure each piece works as it should, will enable more focus on improving and updating
+and less focus on re-running the same commands.
 
 ## How to Run
 To run this project locally, follow these steps:
