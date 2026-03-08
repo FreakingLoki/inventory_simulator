@@ -25,7 +25,7 @@ ROOFING_FACTORS = {
     "starter_coverage": 100.0,      # each bundle of shingle starter covers 100 ft of edge
     "ice_water_sqft": 200.0,        # the ice and water rolls cover 200 sqft
     "ice_water_width_ft": 3.0,      # standard width of a roll
-    "underlayment_square": 1000.0,  # the underlayment rolls cover 1000 sqft
+    "underlayment_sqft": 1000.0,  # the underlayment rolls cover 1000 sqft
     "sqft_per_square": 100.0        # conversion between 'squares' and square feet
 }
 
@@ -244,12 +244,12 @@ def get_calculation_mode():
     """Prompts the user to determine how they'd like to handle calculation accessory add-ons"""
 
     print("\n--- Accessory Calculation Options ---")
-    print("1: Standard Estimate (Uses industry-average ratios)")
-    print("2: Site-Specific Estimate (Enter window/door/corner counts)")
-    print("3: Custom Quantities (Enter exact accessory counts)")
-    print("4: Skip Add-ons (Quote hero product only)")
+    print("01: Standard Estimate (Uses industry-average ratios)")
+    print("02: Site-Specific Estimate (Enter window/door/corner counts)")
+    print("03: Custom Quantities (Enter exact accessory counts)")
+    print("04: Skip Add-ons (Quote hero product only)")
 
-    choice = input("\nSelect Calculation Method (1-4): ")
+    choice = int(input("\nSelect Calculation Method: "))
     return choice
 
 def get_site_specs(category):
@@ -357,7 +357,7 @@ def calculate_site_specific(category, hero_qty):
             eave_area = specs['eaves_ft'] * 6.0
             valley_area = specs['valleys_ft'] * 3.0
             total_ice_water_sqft = eave_area + valley_area
-            rolls_ice_water = math.ceil(total_ice_water_sqft / ROOFING_FACTORS['ice_water_roll_sqft'])
+            rolls_ice_water = math.ceil(total_ice_water_sqft / ROOFING_FACTORS['ice_water_sqft'])
             calculated_results['Ice and Water Shield'] = rolls_ice_water / final_hero_qty
 
             # ----- Synthetic Underlayment -----
@@ -365,7 +365,7 @@ def calculate_site_specific(category, hero_qty):
             remaining_area = specs['total_sqft'] - total_ice_water_sqft
             if remaining_area < 0: remaining_area = 0
 
-            rolls_underlayment = math.ceil(remaining_area / ROOFING_FACTORS['underlayment_roll_sqft'])
+            rolls_underlayment = math.ceil(remaining_area / ROOFING_FACTORS['underlayment_sqft'])
             calculated_results['Synthetic Underlayment'] = rolls_underlayment / final_hero_qty
 
         case "Sheetrock":
@@ -414,7 +414,7 @@ def calculate_custom_quantities(hero_qty, accessories):
     print("\n--- Manual Accessory Entry ---")
     for acc in accessories:
         try:
-            # ask for the total count they want
+            # ask for the total count of each item they want
             count = float(input(f"Enter quantity for {acc['name']} ({acc['sub_type']}): ") or 0)
             calculated_results[acc['name']] = count /hero_qty
         except ValueError:
@@ -422,107 +422,121 @@ def calculate_custom_quantities(hero_qty, accessories):
 
     return calculated_results
 
-def generate_quote(product_id, quantity):
-    """This function takes in a product id number and a quantity and generates a quote for that product and also
-    recommends appropriate accessory add-ons based on the product being quoted"""
-
+def generate_quote(product_id):
+    """
+    The master controller for quote generation.
+    1. Fetches the main (Hero) product.
+    2. Determines the calculation mode (Standard, Site-Specific, Custom, or Skip).
+    3. Calculates quantities for Hero and Accessories based on the chosen mode.
+    4. Performs stock-level validation across all items.
+    5. Displays the final formatted quote.
+    """
     connection = None
     try:
-        # connect to the database
         connection = sqlite3.connect('local_inventory.db')
         connection.row_factory = sqlite3.Row
         cursor = connection.cursor()
 
-        # grab the product info from the database
+        # ----- fetch the hero product
         cursor.execute("SELECT * FROM products WHERE id = ?", (product_id,))
         item = cursor.fetchone()
 
-        # if the product id number isn't found in the database, warn the user and exit the function
         if not item:
-            print(f"Error: {product_id} not found.")
+            print(f"Error: Product ID {product_id} not found.")
             return
 
-        # create a list of warnings for low- or no-stock items
+        # ----- determine the calculation mode and define the variables
+        mode = get_calculation_mode()
+        final_hero_qty = 0
+        final_accessories = []  # This will store dictionaries of {brand, name, price, multiplier, etc.}
         stock_warnings = []
-        current_stock = item['inventory']
-        if quantity > current_stock:
-            restock_qty, restock_date = get_restock_info(product_id)
-            if restock_qty > 0:
-                stock_warnings.append(
-                    f"MAIN ITEM: {item['name']} ({item['sub_type']})\n"
-                    f"           Only {current_stock} on hand. (Need {quantity:.2f})\n"
-                    f"           {restock_qty} more arriving {restock_date}."
-                )
-            else:
-                stock_warnings.append(
-                    f"MAIN ITEM: {item['name']} ({item['sub_type']})\n"
-                    f"           Only {current_stock} on hand. (Need {quantity:.2f})\n"
-                    f"           There are no currently incoming shipments."
-                )
 
-        # determine the sub_category of the item
-        # if the sub_category is "None" then it is a "hero" item
-        is_hero = item['sub_category'] == "Hero"
+        # ----- calculation logic branches
+        if mode == 4:  # SKIP ADD-ONS
+            final_hero_qty = float(input(f"Enter quantity of {item['unit']}s: "))
+            final_accessories = "None"
 
-        # if the item is not a hero item
-        if not is_hero:
-            # generate a simple quote without recommended add-ons
-            accessories = "None"
-            display_quote(item, quantity, accessories, stock_warnings)
-            return
+        elif mode == 1:  # STANDARD (ratio-based)
+            final_hero_qty = float(input(f"Enter quantity of {item['unit']}s: "))
+            # the standard mode SQL fetch uses requirements.csv
+            sql_query = """
+                SELECT p.brand, p.name, p.price, p.inventory, p.incoming, p.restock_date, r.quantity_multiplier, p.unit
+                FROM products p
+                JOIN requirements r ON p.sub_category = r.required_accessory
+                WHERE r.category = ? AND p.brand = ? AND (p.sub_type = ? OR p.sub_type = 'Universal')
+            """
+            cursor.execute(sql_query, (item['category'], item['brand'], item['sub_type']))
+            final_accessories = [dict(row) for row in cursor.fetchall()]
 
-        # if the item is a hero item the following block will execute
-        # start by checking the rule for this item's category
-        cursor.execute("SELECT color_matching_type FROM rules WHERE category = ?", (item['category'],))
-        rule_row = cursor.fetchone()
-        rule = rule_row['color_matching_type'] if rule_row else "None"
+        elif mode == 2:  # SITE-SPECIFIC (precision math)
+            # Pass None for qty so calculate_site_specific defines it from area
+            final_hero_qty, site_multipliers = calculate_site_specific(item['category'], None)
 
-        # determine if the accessories match the hero product's color
-        # only if color matching rule is optional
-        accessory_color = item['sub_type']
-        if item['category'] == "Siding" and rule == "Optional":
-            choice = input(f"Accessories match {item['sub_type']}? (y/n): ").lower()
-            if choice == 'n':
-                accessory_color = input("Enter accessory sub-type or color: ").capitalize()
+            # fetch all possible accessories for this brand
+            sql_query = """
+                SELECT p.brand, p.name, p.price, p.inventory, p.incoming, p.restock_date, p.sub_category, p.unit
+                FROM products p
+                WHERE p.category = ? AND p.brand = ? AND (p.sub_type = ? OR p.sub_type = 'Universal')
+                AND p.sub_category != 'Hero'
+            """
+            cursor.execute(sql_query, (item['category'], item['brand'], item['sub_type']))
+            raw_accs = cursor.fetchall()
 
-        # grab the accessories' information
-        sql_query = """
-                    SELECT p.brand, p.name, p.price, p.inventory, p.incoming, p.restock_date, r.quantity_multiplier, p.unit
-                    FROM products p
-                    JOIN requirements r ON p.sub_category = r.required_accessory
-                    WHERE r.category = ? 
-                      AND p.brand = ? 
-                      AND (p.sub_type = ? OR p.sub_type = 'Universal')
-                """
-        cursor.execute(sql_query, (item['category'], item['brand'], accessory_color))
-        accessories = cursor.fetchall()
+            # map the site-calculated multipliers to the database items
+            for row in raw_accs:
+                acc_dict = dict(row)
+                # get the multiplier calculated in the math module
+                # use .get() to default to 0 if an accessory isn't needed for this site
+                acc_dict['quantity_multiplier'] = site_multipliers.get(row['sub_category'], 0)
+                if acc_dict['quantity_multiplier'] > 0:
+                    final_accessories.append(acc_dict)
 
-        for acc in accessories:
-            # calculate how many are needed based on the hero quantity
-            needed_qty = math.ceil(quantity * acc['quantity_multiplier'])
-            if needed_qty > acc['inventory']:
-                if acc['incoming'] > 0:
-                    stock_warnings.append(
-                        f"ACCESSORY: {acc['name']} ({accessory_color})\n"
-                        f"           Only {acc['inventory']} on hand (Need {needed_qty}).\n"
-                        f"           {acc['incoming']} more arriving {acc['restock_date']}."
-                    )
-                else:
-                    stock_warnings.append(
-                        f"ACCESSORY: {acc['name']} ({accessory_color})\n"
-                        f"           Only {acc['inventory']} on hand (Need {needed_qty}).\n"
-                        f"           There are no currently incoming shipments."
-                    )
+        elif mode == 3:  # CUSTOM (manual entry)
+            final_hero_qty = float(input(f"Enter quantity of {item['unit']}s: "))
+            # fetch all matching accessories first
+            cursor.execute("""
+                SELECT p.brand, p.name, p.price, p.inventory, p.incoming, p.restock_date, p.unit
+                FROM products p
+                WHERE p.category = ? AND p.brand = ? AND (p.sub_type = ? OR p.sub_type = 'Universal')
+                AND p.sub_category != 'Hero'
+            """, (item['category'], item['brand'], item['sub_type']))
+            raw_accs = cursor.fetchall()
 
-        # call the function to display the quote with the add-on recommendations
-        display_quote(item, quantity, accessories, stock_warnings)
+            print("\n--- Manual Accessory Entry ---")
+            for row in raw_accs:
+                acc_dict = dict(row)
+                user_count = float(input(f"How many {acc_dict['name']}? ") or 0)
+                acc_dict['quantity_multiplier'] = user_count / final_hero_qty
+                if user_count > 0:
+                    final_accessories.append(acc_dict)
 
+        # ----- stock validation
+        # check hero
+        if final_hero_qty > item['inventory']:
+            in_qty, in_date = get_restock_info(product_id)
+            msg = f"MAIN ITEM: {item['name']} - Need {final_hero_qty}, only {item['inventory']} on hand."
+            if in_qty > 0: msg += f" ({in_qty} arriving {in_date})"
+            stock_warnings.append(msg)
+
+        # check accessories
+        if final_accessories != "None":
+            for acc in final_accessories:
+                needed = math.ceil(final_hero_qty * acc['quantity_multiplier'])
+                if needed > acc['inventory']:
+                    msg = f"ACCESSORY: {acc['name']} - Need {needed}, only {acc['inventory']} on hand."
+                    if acc['incoming'] > 0: msg += f" ({acc['incoming']} arriving {acc['restock_date']})"
+                    stock_warnings.append(msg)
+
+        # ----- final output
+        display_quote(item, final_hero_qty, final_accessories, stock_warnings)
+
+    except ValueError:
+        print("Error: Invalid input. Please enter numeric values for quantities.")
     except sqlite3.Error as e:
-        print(f"Error: Database error occurred:\n{e}")
+        print(f"Database Error: {e}")
     finally:
         if connection:
             connection.close()
-
 
 def display_inventory_list(only_heroes=True):
     """This function creates and displays a list of all the items in the database, the default option only
@@ -571,15 +585,8 @@ def main_menu():
         match choice:
             case '01':
                 p_id = input("Enter Product ID: ")
-                try:
-                    # get a positive quantity
-                    qty = float(input("Enter Quantity: "))
-                    if qty <= 0:
-                        raise ValueError("Invalid quantity. Please enter a positive number greater than 0")
-                    # if the product id and the quantity are appropriate, generate the quote as requested
-                    generate_quote(p_id, qty)
-                except ValueError as e:
-                    print(f"Error:\n{e}")
+                generate_quote(p_id)
+
 
             case '02' | '03':
                 # this line displays only the hero items if the user selects option 02
