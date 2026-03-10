@@ -251,7 +251,7 @@ def write_requirements():
         writer.writeheader()
         writer.writerows(reqs)
 
-# ----- EXECUTION BLOCK ----
+# ----- EXECUTION BLOCK -----
 
 if __name__ == "__main__":
     all_data = []
