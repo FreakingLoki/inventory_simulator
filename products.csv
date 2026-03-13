@@ -1,410 +1,410 @@
 id,brand,category,sub_category,name,sub_type,unit,price,inventory,incoming,restock_date
-100001,Vertex Premium,Siding,Hero,Double-4 Siding,Snow White,Square,252.0,50,0,0/00/0000
-100002,Vertex Premium,Siding,Hero,Double-4 Siding,Pebble,Square,252.0,50,0,0/00/0000
-100003,Vertex Premium,Siding,Hero,Double-4 Siding,Sandstone,Square,252.0,50,0,0/00/0000
-100004,Vertex Premium,Siding,Hero,Double-4 Siding,Midnight Blue,Square,252.0,50,0,0/00/0000
-100005,Vertex Premium,Siding,Hero,Double-4 Siding,Sage Green,Square,252.0,50,0,0/00/0000
-100006,Vertex Premium,Siding,Hero,Double-4 Siding,Honeycrisp,Square,252.0,50,0,0/00/0000
-100007,Vertex Premium,Siding,Hero,Double-4 Siding,Iron Grey,Square,252.0,50,0,0/00/0000
-100008,Vertex Premium,Siding,Hero,Double-4 Siding,Sky Blue,Square,252.0,50,0,0/00/0000
-100009,Vertex Premium,Siding,Hero,Double-4 Siding,Coffe,Square,252.0,50,0,0/00/0000
-100010,Vertex Premium,Siding,Hero,Double-4 Siding,Olive,Square,252.0,50,0,0/00/0000
-100011,Vertex Premium,Siding,Hero,Double-4 Siding,Burgundy,Square,252.0,50,0,0/00/0000
-100012,Vertex Premium,Siding,Hero,Double-4 Siding,Sunset,Square,252.0,50,0,0/00/0000
-100013,Vertex Premium,Siding,Hero,Board and Batten Siding,Snow White,Square,294.0,50,0,0/00/0000
-100014,Vertex Premium,Siding,Hero,Board and Batten Siding,Pebble,Square,294.0,50,0,0/00/0000
-100015,Vertex Premium,Siding,Hero,Board and Batten Siding,Sandstone,Square,294.0,50,0,0/00/0000
-100016,Vertex Premium,Siding,Hero,Board and Batten Siding,Midnight Blue,Square,294.0,50,0,0/00/0000
-100017,Vertex Premium,Siding,Hero,Board and Batten Siding,Sage Green,Square,294.0,50,0,0/00/0000
-100018,Vertex Premium,Siding,Hero,Board and Batten Siding,Honeycrisp,Square,294.0,50,0,0/00/0000
-100019,Vertex Premium,Siding,Hero,Board and Batten Siding,Iron Grey,Square,294.0,50,0,0/00/0000
-100020,Vertex Premium,Siding,Hero,Board and Batten Siding,Sky Blue,Square,294.0,50,0,0/00/0000
-100021,Vertex Premium,Siding,Hero,Board and Batten Siding,Coffe,Square,294.0,50,0,0/00/0000
-100022,Vertex Premium,Siding,Hero,Board and Batten Siding,Olive,Square,294.0,50,0,0/00/0000
-100023,Vertex Premium,Siding,Hero,Board and Batten Siding,Burgundy,Square,294.0,50,0,0/00/0000
-100024,Vertex Premium,Siding,Hero,Board and Batten Siding,Sunset,Square,294.0,50,0,0/00/0000
-100025,Vertex Premium,Siding,Hero,Dutchlap Siding,Snow White,Square,273.0,50,0,0/00/0000
-100026,Vertex Premium,Siding,Hero,Dutchlap Siding,Pebble,Square,273.0,50,0,0/00/0000
-100027,Vertex Premium,Siding,Hero,Dutchlap Siding,Sandstone,Square,273.0,50,0,0/00/0000
-100028,Vertex Premium,Siding,Hero,Dutchlap Siding,Midnight Blue,Square,273.0,50,0,0/00/0000
-100029,Vertex Premium,Siding,Hero,Dutchlap Siding,Sage Green,Square,273.0,50,0,0/00/0000
-100030,Vertex Premium,Siding,Hero,Dutchlap Siding,Honeycrisp,Square,273.0,50,0,0/00/0000
-100031,Vertex Premium,Siding,Hero,Dutchlap Siding,Iron Grey,Square,273.0,50,0,0/00/0000
-100032,Vertex Premium,Siding,Hero,Dutchlap Siding,Sky Blue,Square,273.0,50,0,0/00/0000
-100033,Vertex Premium,Siding,Hero,Dutchlap Siding,Coffe,Square,273.0,50,0,0/00/0000
-100034,Vertex Premium,Siding,Hero,Dutchlap Siding,Olive,Square,273.0,50,0,0/00/0000
-100035,Vertex Premium,Siding,Hero,Dutchlap Siding,Burgundy,Square,273.0,50,0,0/00/0000
-100036,Vertex Premium,Siding,Hero,Dutchlap Siding,Sunset,Square,273.0,50,0,0/00/0000
-100037,Vertex Premium,Siding,Hero,Shake-Style Siding,Snow White,Square,392.0,50,0,0/00/0000
-100038,Vertex Premium,Siding,Hero,Shake-Style Siding,Pebble,Square,392.0,50,0,0/00/0000
-100039,Vertex Premium,Siding,Hero,Shake-Style Siding,Sandstone,Square,392.0,50,0,0/00/0000
-100040,Vertex Premium,Siding,Hero,Shake-Style Siding,Midnight Blue,Square,392.0,50,0,0/00/0000
-100041,Vertex Premium,Siding,Hero,Shake-Style Siding,Sage Green,Square,392.0,50,0,0/00/0000
-100042,Vertex Premium,Siding,Hero,Shake-Style Siding,Honeycrisp,Square,392.0,50,0,0/00/0000
-100043,Vertex Premium,Siding,Hero,Shake-Style Siding,Iron Grey,Square,392.0,50,0,0/00/0000
-100044,Vertex Premium,Siding,Hero,Shake-Style Siding,Sky Blue,Square,392.0,50,0,0/00/0000
-100045,Vertex Premium,Siding,Hero,Shake-Style Siding,Coffe,Square,392.0,50,0,0/00/0000
-100046,Vertex Premium,Siding,Hero,Shake-Style Siding,Olive,Square,392.0,50,0,0/00/0000
-100047,Vertex Premium,Siding,Hero,Shake-Style Siding,Burgundy,Square,392.0,50,0,0/00/0000
-100048,Vertex Premium,Siding,Hero,Shake-Style Siding,Sunset,Square,392.0,50,0,0/00/0000
-100049,Vertex Premium,Siding,J-Channel,J-Channel,Snow White,PC,17.5,100,0,0/00/0000
-100050,Vertex Premium,Siding,J-Channel,J-Channel,Pebble,PC,17.5,100,0,0/00/0000
-100051,Vertex Premium,Siding,J-Channel,J-Channel,Sandstone,PC,17.5,100,0,0/00/0000
-100052,Vertex Premium,Siding,J-Channel,J-Channel,Midnight Blue,PC,17.5,100,0,0/00/0000
-100053,Vertex Premium,Siding,J-Channel,J-Channel,Sage Green,PC,17.5,100,0,0/00/0000
-100054,Vertex Premium,Siding,J-Channel,J-Channel,Honeycrisp,PC,17.5,100,0,0/00/0000
-100055,Vertex Premium,Siding,J-Channel,J-Channel,Iron Grey,PC,17.5,100,0,0/00/0000
-100056,Vertex Premium,Siding,J-Channel,J-Channel,Sky Blue,PC,17.5,100,0,0/00/0000
-100057,Vertex Premium,Siding,J-Channel,J-Channel,Coffe,PC,17.5,100,0,0/00/0000
-100058,Vertex Premium,Siding,J-Channel,J-Channel,Olive,PC,17.5,100,0,0/00/0000
-100059,Vertex Premium,Siding,J-Channel,J-Channel,Burgundy,PC,17.5,100,0,0/00/0000
-100060,Vertex Premium,Siding,J-Channel,J-Channel,Sunset,PC,17.5,100,0,0/00/0000
-100061,Vertex Premium,Siding,Finish Trim,Finish Trim,Snow White,PC,21.0,100,0,0/00/0000
-100062,Vertex Premium,Siding,Finish Trim,Finish Trim,Pebble,PC,21.0,100,0,0/00/0000
-100063,Vertex Premium,Siding,Finish Trim,Finish Trim,Sandstone,PC,21.0,100,0,0/00/0000
-100064,Vertex Premium,Siding,Finish Trim,Finish Trim,Midnight Blue,PC,21.0,100,0,0/00/0000
-100065,Vertex Premium,Siding,Finish Trim,Finish Trim,Sage Green,PC,21.0,100,0,0/00/0000
-100066,Vertex Premium,Siding,Finish Trim,Finish Trim,Honeycrisp,PC,21.0,100,0,0/00/0000
-100067,Vertex Premium,Siding,Finish Trim,Finish Trim,Iron Grey,PC,21.0,100,0,0/00/0000
-100068,Vertex Premium,Siding,Finish Trim,Finish Trim,Sky Blue,PC,21.0,100,0,0/00/0000
-100069,Vertex Premium,Siding,Finish Trim,Finish Trim,Coffe,PC,21.0,100,0,0/00/0000
-100070,Vertex Premium,Siding,Finish Trim,Finish Trim,Olive,PC,21.0,100,0,0/00/0000
-100071,Vertex Premium,Siding,Finish Trim,Finish Trim,Burgundy,PC,21.0,100,0,0/00/0000
-100072,Vertex Premium,Siding,Finish Trim,Finish Trim,Sunset,PC,21.0,100,0,0/00/0000
-100073,Vertex Premium,Siding,Starter Strip,Starter Strip,Snow White,PC,14.0,100,0,0/00/0000
-100074,Vertex Premium,Siding,Starter Strip,Starter Strip,Pebble,PC,14.0,100,0,0/00/0000
-100075,Vertex Premium,Siding,Starter Strip,Starter Strip,Sandstone,PC,14.0,100,0,0/00/0000
-100076,Vertex Premium,Siding,Starter Strip,Starter Strip,Midnight Blue,PC,14.0,100,0,0/00/0000
-100077,Vertex Premium,Siding,Starter Strip,Starter Strip,Sage Green,PC,14.0,100,0,0/00/0000
-100078,Vertex Premium,Siding,Starter Strip,Starter Strip,Honeycrisp,PC,14.0,100,0,0/00/0000
-100079,Vertex Premium,Siding,Starter Strip,Starter Strip,Iron Grey,PC,14.0,100,0,0/00/0000
-100080,Vertex Premium,Siding,Starter Strip,Starter Strip,Sky Blue,PC,14.0,100,0,0/00/0000
-100081,Vertex Premium,Siding,Starter Strip,Starter Strip,Coffe,PC,14.0,100,0,0/00/0000
-100082,Vertex Premium,Siding,Starter Strip,Starter Strip,Olive,PC,14.0,100,0,0/00/0000
-100083,Vertex Premium,Siding,Starter Strip,Starter Strip,Burgundy,PC,14.0,100,0,0/00/0000
-100084,Vertex Premium,Siding,Starter Strip,Starter Strip,Sunset,PC,14.0,100,0,0/00/0000
-100085,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Snow White,PC,11.9,100,0,0/00/0000
-100086,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Pebble,PC,11.9,100,0,0/00/0000
-100087,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Sandstone,PC,11.9,100,0,0/00/0000
-100088,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Midnight Blue,PC,11.9,100,0,0/00/0000
-100089,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Sage Green,PC,11.9,100,0,0/00/0000
-100090,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Honeycrisp,PC,11.9,100,0,0/00/0000
-100091,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Iron Grey,PC,11.9,100,0,0/00/0000
-100092,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Sky Blue,PC,11.9,100,0,0/00/0000
-100093,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Coffe,PC,11.9,100,0,0/00/0000
-100094,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Olive,PC,11.9,100,0,0/00/0000
-100095,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Burgundy,PC,11.9,100,0,0/00/0000
-100096,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Sunset,PC,11.9,100,0,0/00/0000
-100097,Vertex Premium,Siding,Hero,Luxury Stone-Style Siding,Dark Grey,Square,630.0,50,0,0/00/0000
+100001,Vertex Premium,Siding,Hero,Double-4 Siding,Snow White,Square,252.0,99,62,04/28/2026
+100002,Vertex Premium,Siding,Hero,Double-4 Siding,Pebble,Square,252.0,47,0,0/00/0000
+100003,Vertex Premium,Siding,Hero,Double-4 Siding,Sandstone,Square,252.0,53,168,03/22/2026
+100004,Vertex Premium,Siding,Hero,Double-4 Siding,Midnight Blue,Square,252.0,502,0,0/00/0000
+100005,Vertex Premium,Siding,Hero,Double-4 Siding,Sage Green,Square,252.0,458,0,0/00/0000
+100006,Vertex Premium,Siding,Hero,Double-4 Siding,Honeycrisp,Square,252.0,184,54,05/29/2026
+100007,Vertex Premium,Siding,Hero,Double-4 Siding,Iron Grey,Square,252.0,211,0,0/00/0000
+100008,Vertex Premium,Siding,Hero,Double-4 Siding,Sky Blue,Square,252.0,183,0,0/00/0000
+100009,Vertex Premium,Siding,Hero,Double-4 Siding,Coffe,Square,252.0,267,0,0/00/0000
+100010,Vertex Premium,Siding,Hero,Double-4 Siding,Olive,Square,252.0,376,0,0/00/0000
+100011,Vertex Premium,Siding,Hero,Double-4 Siding,Burgundy,Square,252.0,95,0,0/00/0000
+100012,Vertex Premium,Siding,Hero,Double-4 Siding,Sunset,Square,252.0,254,0,0/00/0000
+100013,Vertex Premium,Siding,Hero,Board and Batten Siding,Snow White,Square,294.0,351,170,05/03/2026
+100014,Vertex Premium,Siding,Hero,Board and Batten Siding,Pebble,Square,294.0,472,123,05/01/2026
+100015,Vertex Premium,Siding,Hero,Board and Batten Siding,Sandstone,Square,294.0,153,79,03/21/2026
+100016,Vertex Premium,Siding,Hero,Board and Batten Siding,Midnight Blue,Square,294.0,374,0,0/00/0000
+100017,Vertex Premium,Siding,Hero,Board and Batten Siding,Sage Green,Square,294.0,390,0,0/00/0000
+100018,Vertex Premium,Siding,Hero,Board and Batten Siding,Honeycrisp,Square,294.0,406,99,04/19/2026
+100019,Vertex Premium,Siding,Hero,Board and Batten Siding,Iron Grey,Square,294.0,110,136,06/05/2026
+100020,Vertex Premium,Siding,Hero,Board and Batten Siding,Sky Blue,Square,294.0,132,0,0/00/0000
+100021,Vertex Premium,Siding,Hero,Board and Batten Siding,Coffe,Square,294.0,216,0,0/00/0000
+100022,Vertex Premium,Siding,Hero,Board and Batten Siding,Olive,Square,294.0,421,0,0/00/0000
+100023,Vertex Premium,Siding,Hero,Board and Batten Siding,Burgundy,Square,294.0,451,52,04/09/2026
+100024,Vertex Premium,Siding,Hero,Board and Batten Siding,Sunset,Square,294.0,37,0,0/00/0000
+100025,Vertex Premium,Siding,Hero,Dutchlap Siding,Snow White,Square,273.0,434,73,04/07/2026
+100026,Vertex Premium,Siding,Hero,Dutchlap Siding,Pebble,Square,273.0,150,0,0/00/0000
+100027,Vertex Premium,Siding,Hero,Dutchlap Siding,Sandstone,Square,273.0,414,0,0/00/0000
+100028,Vertex Premium,Siding,Hero,Dutchlap Siding,Midnight Blue,Square,273.0,458,0,0/00/0000
+100029,Vertex Premium,Siding,Hero,Dutchlap Siding,Sage Green,Square,273.0,334,0,0/00/0000
+100030,Vertex Premium,Siding,Hero,Dutchlap Siding,Honeycrisp,Square,273.0,226,139,06/07/2026
+100031,Vertex Premium,Siding,Hero,Dutchlap Siding,Iron Grey,Square,273.0,189,62,05/21/2026
+100032,Vertex Premium,Siding,Hero,Dutchlap Siding,Sky Blue,Square,273.0,266,0,0/00/0000
+100033,Vertex Premium,Siding,Hero,Dutchlap Siding,Coffe,Square,273.0,502,205,06/11/2026
+100034,Vertex Premium,Siding,Hero,Dutchlap Siding,Olive,Square,273.0,43,218,05/08/2026
+100035,Vertex Premium,Siding,Hero,Dutchlap Siding,Burgundy,Square,273.0,476,0,0/00/0000
+100036,Vertex Premium,Siding,Hero,Dutchlap Siding,Sunset,Square,273.0,49,0,0/00/0000
+100037,Vertex Premium,Siding,Hero,Shake-Style Siding,Snow White,Square,392.0,252,199,05/04/2026
+100038,Vertex Premium,Siding,Hero,Shake-Style Siding,Pebble,Square,392.0,473,237,04/25/2026
+100039,Vertex Premium,Siding,Hero,Shake-Style Siding,Sandstone,Square,392.0,154,0,0/00/0000
+100040,Vertex Premium,Siding,Hero,Shake-Style Siding,Midnight Blue,Square,392.0,369,203,04/03/2026
+100041,Vertex Premium,Siding,Hero,Shake-Style Siding,Sage Green,Square,392.0,70,0,0/00/0000
+100042,Vertex Premium,Siding,Hero,Shake-Style Siding,Honeycrisp,Square,392.0,304,139,03/23/2026
+100043,Vertex Premium,Siding,Hero,Shake-Style Siding,Iron Grey,Square,392.0,210,0,0/00/0000
+100044,Vertex Premium,Siding,Hero,Shake-Style Siding,Sky Blue,Square,392.0,371,0,0/00/0000
+100045,Vertex Premium,Siding,Hero,Shake-Style Siding,Coffe,Square,392.0,112,0,0/00/0000
+100046,Vertex Premium,Siding,Hero,Shake-Style Siding,Olive,Square,392.0,437,0,0/00/0000
+100047,Vertex Premium,Siding,Hero,Shake-Style Siding,Burgundy,Square,392.0,144,0,0/00/0000
+100048,Vertex Premium,Siding,Hero,Shake-Style Siding,Sunset,Square,392.0,259,62,06/05/2026
+100049,Vertex Premium,Siding,J-Channel,J-Channel,Snow White,PC,17.5,201,126,04/28/2026
+100050,Vertex Premium,Siding,J-Channel,J-Channel,Pebble,PC,17.5,200,127,04/28/2026
+100051,Vertex Premium,Siding,J-Channel,J-Channel,Sandstone,PC,17.5,182,132,04/28/2026
+100052,Vertex Premium,Siding,J-Channel,J-Channel,Midnight Blue,PC,17.5,191,120,04/28/2026
+100053,Vertex Premium,Siding,J-Channel,J-Channel,Sage Green,PC,17.5,209,124,04/28/2026
+100054,Vertex Premium,Siding,J-Channel,J-Channel,Honeycrisp,PC,17.5,180,117,04/28/2026
+100055,Vertex Premium,Siding,J-Channel,J-Channel,Iron Grey,PC,17.5,182,121,04/28/2026
+100056,Vertex Premium,Siding,J-Channel,J-Channel,Sky Blue,PC,17.5,194,131,04/28/2026
+100057,Vertex Premium,Siding,J-Channel,J-Channel,Coffe,PC,17.5,202,123,04/28/2026
+100058,Vertex Premium,Siding,J-Channel,J-Channel,Olive,PC,17.5,176,134,04/28/2026
+100059,Vertex Premium,Siding,J-Channel,J-Channel,Burgundy,PC,17.5,208,115,04/28/2026
+100060,Vertex Premium,Siding,J-Channel,J-Channel,Sunset,PC,17.5,195,129,04/28/2026
+100061,Vertex Premium,Siding,Finish Trim,Finish Trim,Snow White,PC,21.0,96,60,04/28/2026
+100062,Vertex Premium,Siding,Finish Trim,Finish Trim,Pebble,PC,21.0,101,65,04/28/2026
+100063,Vertex Premium,Siding,Finish Trim,Finish Trim,Sandstone,PC,21.0,90,59,04/28/2026
+100064,Vertex Premium,Siding,Finish Trim,Finish Trim,Midnight Blue,PC,21.0,88,61,04/28/2026
+100065,Vertex Premium,Siding,Finish Trim,Finish Trim,Sage Green,PC,21.0,111,63,04/28/2026
+100066,Vertex Premium,Siding,Finish Trim,Finish Trim,Honeycrisp,PC,21.0,88,68,04/28/2026
+100067,Vertex Premium,Siding,Finish Trim,Finish Trim,Iron Grey,PC,21.0,90,60,04/28/2026
+100068,Vertex Premium,Siding,Finish Trim,Finish Trim,Sky Blue,PC,21.0,87,68,04/28/2026
+100069,Vertex Premium,Siding,Finish Trim,Finish Trim,Coffe,PC,21.0,89,60,04/28/2026
+100070,Vertex Premium,Siding,Finish Trim,Finish Trim,Olive,PC,21.0,92,57,04/28/2026
+100071,Vertex Premium,Siding,Finish Trim,Finish Trim,Burgundy,PC,21.0,84,61,04/28/2026
+100072,Vertex Premium,Siding,Finish Trim,Finish Trim,Sunset,PC,21.0,90,64,04/28/2026
+100073,Vertex Premium,Siding,Starter Strip,Starter Strip,Snow White,PC,14.0,197,119,04/28/2026
+100074,Vertex Premium,Siding,Starter Strip,Starter Strip,Pebble,PC,14.0,194,137,04/28/2026
+100075,Vertex Premium,Siding,Starter Strip,Starter Strip,Sandstone,PC,14.0,214,118,04/28/2026
+100076,Vertex Premium,Siding,Starter Strip,Starter Strip,Midnight Blue,PC,14.0,221,131,04/28/2026
+100077,Vertex Premium,Siding,Starter Strip,Starter Strip,Sage Green,PC,14.0,207,135,04/28/2026
+100078,Vertex Premium,Siding,Starter Strip,Starter Strip,Honeycrisp,PC,14.0,187,120,04/28/2026
+100079,Vertex Premium,Siding,Starter Strip,Starter Strip,Iron Grey,PC,14.0,193,126,04/28/2026
+100080,Vertex Premium,Siding,Starter Strip,Starter Strip,Sky Blue,PC,14.0,190,123,04/28/2026
+100081,Vertex Premium,Siding,Starter Strip,Starter Strip,Coffe,PC,14.0,187,118,04/28/2026
+100082,Vertex Premium,Siding,Starter Strip,Starter Strip,Olive,PC,14.0,203,113,04/28/2026
+100083,Vertex Premium,Siding,Starter Strip,Starter Strip,Burgundy,PC,14.0,177,127,04/28/2026
+100084,Vertex Premium,Siding,Starter Strip,Starter Strip,Sunset,PC,14.0,227,135,04/28/2026
+100085,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Snow White,PC,11.9,55,39,04/28/2026
+100086,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Pebble,PC,11.9,70,44,04/28/2026
+100087,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Sandstone,PC,11.9,64,43,04/28/2026
+100088,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Midnight Blue,PC,11.9,62,43,04/28/2026
+100089,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Sage Green,PC,11.9,57,43,04/28/2026
+100090,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Honeycrisp,PC,11.9,73,40,04/28/2026
+100091,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Iron Grey,PC,11.9,65,43,04/28/2026
+100092,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Sky Blue,PC,11.9,72,44,04/28/2026
+100093,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Coffe,PC,11.9,64,44,04/28/2026
+100094,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Olive,PC,11.9,64,43,04/28/2026
+100095,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Burgundy,PC,11.9,65,40,04/28/2026
+100096,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Sunset,PC,11.9,59,39,04/28/2026
+100097,Vertex Premium,Siding,Hero,Luxury Stone-Style Siding,Dark Grey,Square,630.0,455,115,04/19/2026
 100098,Vertex Premium,Siding,Stone Ledge,Stone Ledge,Dark Grey,PC,63.0,50,0,0/00/0000
 100099,Vertex Premium,Siding,Stone Corner,Stone Corner,Dark Grey,PC,91.0,50,0,0/00/0000
-100100,Vertex Premium,Siding,Hero,Luxury Stone-Style Siding,Light Grey,Square,630.0,50,0,0/00/0000
+100100,Vertex Premium,Siding,Hero,Luxury Stone-Style Siding,Light Grey,Square,630.0,320,0,0/00/0000
 100101,Vertex Premium,Siding,Stone Ledge,Stone Ledge,Light Grey,PC,63.0,50,0,0/00/0000
 100102,Vertex Premium,Siding,Stone Corner,Stone Corner,Light Grey,PC,91.0,50,0,0/00/0000
-100103,Vertex Premium,Siding,Hero,Luxury Stone-Style Siding,Sandy Tan,Square,630.0,50,0,0/00/0000
+100103,Vertex Premium,Siding,Hero,Luxury Stone-Style Siding,Sandy Tan,Square,630.0,198,0,0/00/0000
 100104,Vertex Premium,Siding,Stone Ledge,Stone Ledge,Sandy Tan,PC,63.0,50,0,0/00/0000
 100105,Vertex Premium,Siding,Stone Corner,Stone Corner,Sandy Tan,PC,91.0,50,0,0/00/0000
-200001,Vertex Premium,Roofing,Hero,3-Tab Shingles,Onyx Black,Bundle,126.0,50,0,0/00/0000
-200002,Vertex Premium,Roofing,Hero,3-Tab Shingles,Estate Grey,Bundle,126.0,50,0,0/00/0000
-200003,Vertex Premium,Roofing,Hero,3-Tab Shingles,Weathered Wood,Bundle,126.0,50,0,0/00/0000
-200004,Vertex Premium,Roofing,Hero,3-Tab Shingles,Brick Red,Bundle,126.0,50,0,0/00/0000
-200005,Vertex Premium,Roofing,Hero,3-Tab Shingles,Forest Green,Bundle,126.0,50,0,0/00/0000
-200006,Vertex Premium,Roofing,Hero,3-Tab Shingles,Desert Tan,Bundle,126.0,50,0,0/00/0000
-200007,Vertex Premium,Roofing,Hero,Architectural Shingles,Onyx Black,Bundle,175.0,50,0,0/00/0000
-200008,Vertex Premium,Roofing,Hero,Architectural Shingles,Estate Grey,Bundle,175.0,50,0,0/00/0000
-200009,Vertex Premium,Roofing,Hero,Architectural Shingles,Weathered Wood,Bundle,175.0,50,0,0/00/0000
-200010,Vertex Premium,Roofing,Hero,Architectural Shingles,Brick Red,Bundle,175.0,50,0,0/00/0000
-200011,Vertex Premium,Roofing,Hero,Architectural Shingles,Forest Green,Bundle,175.0,50,0,0/00/0000
-200012,Vertex Premium,Roofing,Hero,Architectural Shingles,Desert Tan,Bundle,175.0,50,0,0/00/0000
-200013,Vertex Premium,Roofing,Hero,Executive Slate-Style Shingles,Onyx Black,Bundle,294.0,50,0,0/00/0000
-200014,Vertex Premium,Roofing,Hero,Executive Slate-Style Shingles,Estate Grey,Bundle,294.0,50,0,0/00/0000
-200015,Vertex Premium,Roofing,Hero,Executive Slate-Style Shingles,Weathered Wood,Bundle,294.0,50,0,0/00/0000
-200016,Vertex Premium,Roofing,Hero,Executive Slate-Style Shingles,Brick Red,Bundle,294.0,50,0,0/00/0000
-200017,Vertex Premium,Roofing,Hero,Executive Slate-Style Shingles,Forest Green,Bundle,294.0,50,0,0/00/0000
-200018,Vertex Premium,Roofing,Hero,Executive Slate-Style Shingles,Desert Tan,Bundle,294.0,50,0,0/00/0000
-200019,Vertex Premium,Roofing,Ridge Cap,Ridge Cap,Onyx Black,Bundle,63.0,50,0,0/00/0000
-200020,Vertex Premium,Roofing,Ridge Cap,Ridge Cap,Estate Grey,Bundle,63.0,50,0,0/00/0000
-200021,Vertex Premium,Roofing,Ridge Cap,Ridge Cap,Weathered Wood,Bundle,63.0,50,0,0/00/0000
-200022,Vertex Premium,Roofing,Ridge Cap,Ridge Cap,Brick Red,Bundle,63.0,50,0,0/00/0000
-200023,Vertex Premium,Roofing,Ridge Cap,Ridge Cap,Forest Green,Bundle,63.0,50,0,0/00/0000
-200024,Vertex Premium,Roofing,Ridge Cap,Ridge Cap,Desert Tan,Bundle,63.0,50,0,0/00/0000
-200025,Vertex Premium,Roofing,Shingle Starter,Shingle Starter,Universal,Roll,49.0,50,0,0/00/0000
-200026,Vertex Premium,Roofing,Ice and Water Shield,Ice and Water Shield,Universal,Roll,119.0,50,0,0/00/0000
-200027,Vertex Premium,Roofing,Synthetic Underlayment,Synthetic Underlayment,Universal,Roll,154.0,50,0,0/00/0000
-130001,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Snow White,Square,207.0,50,0,0/00/0000
-130002,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Pebble,Square,207.0,50,0,0/00/0000
-130003,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Sandstone,Square,207.0,50,0,0/00/0000
-130004,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Midnight Blue,Square,207.0,50,0,0/00/0000
-130005,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Sage Green,Square,207.0,50,0,0/00/0000
-130006,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Honeycrisp,Square,207.0,50,0,0/00/0000
-130007,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Iron Grey,Square,207.0,50,0,0/00/0000
-130008,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Sky Blue,Square,207.0,50,0,0/00/0000
-130009,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Coffe,Square,207.0,50,0,0/00/0000
-130010,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Olive,Square,207.0,50,0,0/00/0000
-130011,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Burgundy,Square,207.0,50,0,0/00/0000
-130012,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Sunset,Square,207.0,50,0,0/00/0000
-130013,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Snow White,Square,241.5,50,0,0/00/0000
-130014,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Pebble,Square,241.5,50,0,0/00/0000
-130015,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Sandstone,Square,241.5,50,0,0/00/0000
-130016,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Midnight Blue,Square,241.5,50,0,0/00/0000
-130017,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Sage Green,Square,241.5,50,0,0/00/0000
-130018,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Honeycrisp,Square,241.5,50,0,0/00/0000
-130019,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Iron Grey,Square,241.5,50,0,0/00/0000
-130020,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Sky Blue,Square,241.5,50,0,0/00/0000
-130021,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Coffe,Square,241.5,50,0,0/00/0000
-130022,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Olive,Square,241.5,50,0,0/00/0000
-130023,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Burgundy,Square,241.5,50,0,0/00/0000
-130024,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Sunset,Square,241.5,50,0,0/00/0000
-130025,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Snow White,Square,224.25,50,0,0/00/0000
-130026,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Pebble,Square,224.25,50,0,0/00/0000
-130027,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Sandstone,Square,224.25,50,0,0/00/0000
-130028,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Midnight Blue,Square,224.25,50,0,0/00/0000
-130029,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Sage Green,Square,224.25,50,0,0/00/0000
-130030,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Honeycrisp,Square,224.25,50,0,0/00/0000
-130031,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Iron Grey,Square,224.25,50,0,0/00/0000
-130032,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Sky Blue,Square,224.25,50,0,0/00/0000
-130033,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Coffe,Square,224.25,50,0,0/00/0000
-130034,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Olive,Square,224.25,50,0,0/00/0000
-130035,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Burgundy,Square,224.25,50,0,0/00/0000
-130036,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Sunset,Square,224.25,50,0,0/00/0000
-130037,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Snow White,Square,322.0,50,0,0/00/0000
-130038,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Pebble,Square,322.0,50,0,0/00/0000
-130039,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Sandstone,Square,322.0,50,0,0/00/0000
-130040,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Midnight Blue,Square,322.0,50,0,0/00/0000
-130041,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Sage Green,Square,322.0,50,0,0/00/0000
-130042,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Honeycrisp,Square,322.0,50,0,0/00/0000
-130043,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Iron Grey,Square,322.0,50,0,0/00/0000
-130044,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Sky Blue,Square,322.0,50,0,0/00/0000
-130045,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Coffe,Square,322.0,50,0,0/00/0000
-130046,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Olive,Square,322.0,50,0,0/00/0000
-130047,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Burgundy,Square,322.0,50,0,0/00/0000
-130048,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Sunset,Square,322.0,50,0,0/00/0000
-130049,Summit Mid-Tier,Siding,J-Channel,J-Channel,Snow White,PC,14.37,100,0,0/00/0000
-130050,Summit Mid-Tier,Siding,J-Channel,J-Channel,Pebble,PC,14.37,100,0,0/00/0000
-130051,Summit Mid-Tier,Siding,J-Channel,J-Channel,Sandstone,PC,14.37,100,0,0/00/0000
-130052,Summit Mid-Tier,Siding,J-Channel,J-Channel,Midnight Blue,PC,14.37,100,0,0/00/0000
-130053,Summit Mid-Tier,Siding,J-Channel,J-Channel,Sage Green,PC,14.37,100,0,0/00/0000
-130054,Summit Mid-Tier,Siding,J-Channel,J-Channel,Honeycrisp,PC,14.37,100,0,0/00/0000
-130055,Summit Mid-Tier,Siding,J-Channel,J-Channel,Iron Grey,PC,14.37,100,0,0/00/0000
-130056,Summit Mid-Tier,Siding,J-Channel,J-Channel,Sky Blue,PC,14.37,100,0,0/00/0000
-130057,Summit Mid-Tier,Siding,J-Channel,J-Channel,Coffe,PC,14.37,100,0,0/00/0000
-130058,Summit Mid-Tier,Siding,J-Channel,J-Channel,Olive,PC,14.37,100,0,0/00/0000
-130059,Summit Mid-Tier,Siding,J-Channel,J-Channel,Burgundy,PC,14.37,100,0,0/00/0000
-130060,Summit Mid-Tier,Siding,J-Channel,J-Channel,Sunset,PC,14.37,100,0,0/00/0000
-130061,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Snow White,PC,17.25,100,0,0/00/0000
-130062,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Pebble,PC,17.25,100,0,0/00/0000
-130063,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Sandstone,PC,17.25,100,0,0/00/0000
-130064,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Midnight Blue,PC,17.25,100,0,0/00/0000
-130065,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Sage Green,PC,17.25,100,0,0/00/0000
-130066,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Honeycrisp,PC,17.25,100,0,0/00/0000
-130067,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Iron Grey,PC,17.25,100,0,0/00/0000
-130068,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Sky Blue,PC,17.25,100,0,0/00/0000
-130069,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Coffe,PC,17.25,100,0,0/00/0000
-130070,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Olive,PC,17.25,100,0,0/00/0000
-130071,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Burgundy,PC,17.25,100,0,0/00/0000
-130072,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Sunset,PC,17.25,100,0,0/00/0000
-130073,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Snow White,PC,11.5,100,0,0/00/0000
-130074,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Pebble,PC,11.5,100,0,0/00/0000
-130075,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Sandstone,PC,11.5,100,0,0/00/0000
-130076,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Midnight Blue,PC,11.5,100,0,0/00/0000
-130077,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Sage Green,PC,11.5,100,0,0/00/0000
-130078,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Honeycrisp,PC,11.5,100,0,0/00/0000
-130079,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Iron Grey,PC,11.5,100,0,0/00/0000
-130080,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Sky Blue,PC,11.5,100,0,0/00/0000
-130081,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Coffe,PC,11.5,100,0,0/00/0000
-130082,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Olive,PC,11.5,100,0,0/00/0000
-130083,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Burgundy,PC,11.5,100,0,0/00/0000
-130084,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Sunset,PC,11.5,100,0,0/00/0000
-130085,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Snow White,PC,9.77,100,0,0/00/0000
-130086,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Pebble,PC,9.77,100,0,0/00/0000
-130087,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Sandstone,PC,9.77,100,0,0/00/0000
-130088,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Midnight Blue,PC,9.77,100,0,0/00/0000
-130089,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Sage Green,PC,9.77,100,0,0/00/0000
-130090,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Honeycrisp,PC,9.77,100,0,0/00/0000
-130091,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Iron Grey,PC,9.77,100,0,0/00/0000
-130092,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Sky Blue,PC,9.77,100,0,0/00/0000
-130093,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Coffe,PC,9.77,100,0,0/00/0000
-130094,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Olive,PC,9.77,100,0,0/00/0000
-130095,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Burgundy,PC,9.77,100,0,0/00/0000
-130096,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Sunset,PC,9.77,100,0,0/00/0000
-130097,Summit Mid-Tier,Siding,Hero,Luxury Stone-Style Siding,Dark Grey,Square,517.5,50,0,0/00/0000
+200001,Vertex Premium,Roofing,Hero,3-Tab Shingles,Onyx Black,Bundle,126.0,334,264,04/30/2026
+200002,Vertex Premium,Roofing,Hero,3-Tab Shingles,Estate Grey,Bundle,126.0,448,246,05/25/2026
+200003,Vertex Premium,Roofing,Hero,3-Tab Shingles,Weathered Wood,Bundle,126.0,49,78,06/01/2026
+200004,Vertex Premium,Roofing,Hero,3-Tab Shingles,Brick Red,Bundle,126.0,209,0,0/00/0000
+200005,Vertex Premium,Roofing,Hero,3-Tab Shingles,Forest Green,Bundle,126.0,299,164,03/25/2026
+200006,Vertex Premium,Roofing,Hero,3-Tab Shingles,Desert Tan,Bundle,126.0,229,208,06/08/2026
+200007,Vertex Premium,Roofing,Hero,Architectural Shingles,Onyx Black,Bundle,175.0,310,0,0/00/0000
+200008,Vertex Premium,Roofing,Hero,Architectural Shingles,Estate Grey,Bundle,175.0,551,155,06/06/2026
+200009,Vertex Premium,Roofing,Hero,Architectural Shingles,Weathered Wood,Bundle,175.0,322,214,04/17/2026
+200010,Vertex Premium,Roofing,Hero,Architectural Shingles,Brick Red,Bundle,175.0,471,156,04/10/2026
+200011,Vertex Premium,Roofing,Hero,Architectural Shingles,Forest Green,Bundle,175.0,241,0,0/00/0000
+200012,Vertex Premium,Roofing,Hero,Architectural Shingles,Desert Tan,Bundle,175.0,227,153,04/14/2026
+200013,Vertex Premium,Roofing,Hero,Executive Slate-Style Shingles,Onyx Black,Bundle,294.0,490,100,05/15/2026
+200014,Vertex Premium,Roofing,Hero,Executive Slate-Style Shingles,Estate Grey,Bundle,294.0,402,245,03/25/2026
+200015,Vertex Premium,Roofing,Hero,Executive Slate-Style Shingles,Weathered Wood,Bundle,294.0,216,268,04/06/2026
+200016,Vertex Premium,Roofing,Hero,Executive Slate-Style Shingles,Brick Red,Bundle,294.0,518,84,05/30/2026
+200017,Vertex Premium,Roofing,Hero,Executive Slate-Style Shingles,Forest Green,Bundle,294.0,483,261,04/22/2026
+200018,Vertex Premium,Roofing,Hero,Executive Slate-Style Shingles,Desert Tan,Bundle,294.0,385,0,0/00/0000
+200019,Vertex Premium,Roofing,Ridge Cap,Ridge Cap,Onyx Black,Bundle,63.0,24,17,04/28/2026
+200020,Vertex Premium,Roofing,Ridge Cap,Ridge Cap,Estate Grey,Bundle,63.0,21,16,04/28/2026
+200021,Vertex Premium,Roofing,Ridge Cap,Ridge Cap,Weathered Wood,Bundle,63.0,25,16,04/28/2026
+200022,Vertex Premium,Roofing,Ridge Cap,Ridge Cap,Brick Red,Bundle,63.0,27,17,04/28/2026
+200023,Vertex Premium,Roofing,Ridge Cap,Ridge Cap,Forest Green,Bundle,63.0,24,15,04/28/2026
+200024,Vertex Premium,Roofing,Ridge Cap,Ridge Cap,Desert Tan,Bundle,63.0,27,15,04/28/2026
+200025,Vertex Premium,Roofing,Shingle Starter,Shingle Starter,Universal,Roll,49.0,16,12,04/28/2026
+200026,Vertex Premium,Roofing,Ice and Water Shield,Ice and Water Shield,Universal,Roll,119.0,13,10,04/28/2026
+200027,Vertex Premium,Roofing,Synthetic Underlayment,Synthetic Underlayment,Universal,Roll,154.0,10,7,04/28/2026
+130001,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Snow White,Square,207.0,202,162,05/10/2026
+130002,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Pebble,Square,207.0,226,140,04/12/2026
+130003,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Sandstone,Square,207.0,208,0,0/00/0000
+130004,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Midnight Blue,Square,207.0,160,74,03/26/2026
+130005,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Sage Green,Square,207.0,377,0,0/00/0000
+130006,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Honeycrisp,Square,207.0,78,0,0/00/0000
+130007,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Iron Grey,Square,207.0,101,0,0/00/0000
+130008,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Sky Blue,Square,207.0,152,167,04/15/2026
+130009,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Coffe,Square,207.0,284,67,05/12/2026
+130010,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Olive,Square,207.0,242,168,03/31/2026
+130011,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Burgundy,Square,207.0,50,141,04/09/2026
+130012,Summit Mid-Tier,Siding,Hero,Double-4 Siding,Sunset,Square,207.0,393,0,0/00/0000
+130013,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Snow White,Square,241.5,511,0,0/00/0000
+130014,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Pebble,Square,241.5,315,243,05/08/2026
+130015,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Sandstone,Square,241.5,200,0,0/00/0000
+130016,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Midnight Blue,Square,241.5,73,232,04/22/2026
+130017,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Sage Green,Square,241.5,186,0,0/00/0000
+130018,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Honeycrisp,Square,241.5,414,0,0/00/0000
+130019,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Iron Grey,Square,241.5,262,76,06/06/2026
+130020,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Sky Blue,Square,241.5,479,160,05/25/2026
+130021,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Coffe,Square,241.5,392,0,0/00/0000
+130022,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Olive,Square,241.5,169,0,0/00/0000
+130023,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Burgundy,Square,241.5,405,90,04/28/2026
+130024,Summit Mid-Tier,Siding,Hero,Board and Batten Siding,Sunset,Square,241.5,79,125,05/04/2026
+130025,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Snow White,Square,224.25,98,142,04/05/2026
+130026,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Pebble,Square,224.25,391,0,0/00/0000
+130027,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Sandstone,Square,224.25,81,91,03/14/2026
+130028,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Midnight Blue,Square,224.25,349,124,04/28/2026
+130029,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Sage Green,Square,224.25,93,69,03/30/2026
+130030,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Honeycrisp,Square,224.25,329,0,0/00/0000
+130031,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Iron Grey,Square,224.25,225,0,0/00/0000
+130032,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Sky Blue,Square,224.25,223,62,04/06/2026
+130033,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Coffe,Square,224.25,141,0,0/00/0000
+130034,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Olive,Square,224.25,358,235,05/18/2026
+130035,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Burgundy,Square,224.25,207,166,05/09/2026
+130036,Summit Mid-Tier,Siding,Hero,Dutchlap Siding,Sunset,Square,224.25,100,57,06/04/2026
+130037,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Snow White,Square,322.0,465,0,0/00/0000
+130038,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Pebble,Square,322.0,354,244,04/15/2026
+130039,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Sandstone,Square,322.0,445,132,05/17/2026
+130040,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Midnight Blue,Square,322.0,365,0,0/00/0000
+130041,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Sage Green,Square,322.0,134,0,0/00/0000
+130042,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Honeycrisp,Square,322.0,141,0,0/00/0000
+130043,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Iron Grey,Square,322.0,186,89,03/30/2026
+130044,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Sky Blue,Square,322.0,63,0,0/00/0000
+130045,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Coffe,Square,322.0,452,56,05/24/2026
+130046,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Olive,Square,322.0,315,0,0/00/0000
+130047,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Burgundy,Square,322.0,407,0,0/00/0000
+130048,Summit Mid-Tier,Siding,Hero,Shake-Style Siding,Sunset,Square,322.0,104,36,06/01/2026
+130049,Summit Mid-Tier,Siding,J-Channel,J-Channel,Snow White,PC,14.37,379,331,05/10/2026
+130050,Summit Mid-Tier,Siding,J-Channel,J-Channel,Pebble,PC,14.37,359,326,05/10/2026
+130051,Summit Mid-Tier,Siding,J-Channel,J-Channel,Sandstone,PC,14.37,366,300,05/10/2026
+130052,Summit Mid-Tier,Siding,J-Channel,J-Channel,Midnight Blue,PC,14.37,423,293,05/10/2026
+130053,Summit Mid-Tier,Siding,J-Channel,J-Channel,Sage Green,PC,14.37,344,306,05/10/2026
+130054,Summit Mid-Tier,Siding,J-Channel,J-Channel,Honeycrisp,PC,14.37,409,305,05/10/2026
+130055,Summit Mid-Tier,Siding,J-Channel,J-Channel,Iron Grey,PC,14.37,452,323,05/10/2026
+130056,Summit Mid-Tier,Siding,J-Channel,J-Channel,Sky Blue,PC,14.37,394,315,05/10/2026
+130057,Summit Mid-Tier,Siding,J-Channel,J-Channel,Coffe,PC,14.37,413,304,05/10/2026
+130058,Summit Mid-Tier,Siding,J-Channel,J-Channel,Olive,PC,14.37,432,356,05/10/2026
+130059,Summit Mid-Tier,Siding,J-Channel,J-Channel,Burgundy,PC,14.37,367,306,05/10/2026
+130060,Summit Mid-Tier,Siding,J-Channel,J-Channel,Sunset,PC,14.37,372,310,05/10/2026
+130061,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Snow White,PC,17.25,222,164,05/10/2026
+130062,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Pebble,PC,17.25,187,171,05/10/2026
+130063,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Sandstone,PC,17.25,194,174,05/10/2026
+130064,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Midnight Blue,PC,17.25,186,153,05/10/2026
+130065,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Sage Green,PC,17.25,214,155,05/10/2026
+130066,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Honeycrisp,PC,17.25,194,163,05/10/2026
+130067,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Iron Grey,PC,17.25,226,176,05/10/2026
+130068,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Sky Blue,PC,17.25,195,164,05/10/2026
+130069,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Coffe,PC,17.25,190,164,05/10/2026
+130070,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Olive,PC,17.25,174,164,05/10/2026
+130071,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Burgundy,PC,17.25,184,160,05/10/2026
+130072,Summit Mid-Tier,Siding,Finish Trim,Finish Trim,Sunset,PC,17.25,215,165,05/10/2026
+130073,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Snow White,PC,11.5,348,323,05/10/2026
+130074,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Pebble,PC,11.5,440,323,05/10/2026
+130075,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Sandstone,PC,11.5,439,304,05/10/2026
+130076,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Midnight Blue,PC,11.5,405,335,05/10/2026
+130077,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Sage Green,PC,11.5,451,323,05/10/2026
+130078,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Honeycrisp,PC,11.5,407,349,05/10/2026
+130079,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Iron Grey,PC,11.5,389,318,05/10/2026
+130080,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Sky Blue,PC,11.5,419,313,05/10/2026
+130081,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Coffe,PC,11.5,404,310,05/10/2026
+130082,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Olive,PC,11.5,375,333,05/10/2026
+130083,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Burgundy,PC,11.5,384,350,05/10/2026
+130084,Summit Mid-Tier,Siding,Starter Strip,Starter Strip,Sunset,PC,11.5,348,338,05/10/2026
+130085,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Snow White,PC,9.77,147,115,05/10/2026
+130086,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Pebble,PC,9.77,119,107,05/10/2026
+130087,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Sandstone,PC,9.77,117,98,05/10/2026
+130088,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Midnight Blue,PC,9.77,126,99,05/10/2026
+130089,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Sage Green,PC,9.77,115,101,05/10/2026
+130090,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Honeycrisp,PC,9.77,126,98,05/10/2026
+130091,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Iron Grey,PC,9.77,132,110,05/10/2026
+130092,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Sky Blue,PC,9.77,125,114,05/10/2026
+130093,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Coffe,PC,9.77,132,117,05/10/2026
+130094,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Olive,PC,9.77,144,111,05/10/2026
+130095,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Burgundy,PC,9.77,147,106,05/10/2026
+130096,Summit Mid-Tier,Siding,Trim Nails (1lb),Trim Nails (1lb),Sunset,PC,9.77,115,97,05/10/2026
+130097,Summit Mid-Tier,Siding,Hero,Luxury Stone-Style Siding,Dark Grey,Square,517.5,96,77,06/09/2026
 130098,Summit Mid-Tier,Siding,Stone Ledge,Stone Ledge,Dark Grey,PC,51.75,50,0,0/00/0000
 130099,Summit Mid-Tier,Siding,Stone Corner,Stone Corner,Dark Grey,PC,74.75,50,0,0/00/0000
-130100,Summit Mid-Tier,Siding,Hero,Luxury Stone-Style Siding,Light Grey,Square,517.5,50,0,0/00/0000
+130100,Summit Mid-Tier,Siding,Hero,Luxury Stone-Style Siding,Light Grey,Square,517.5,489,119,04/09/2026
 130101,Summit Mid-Tier,Siding,Stone Ledge,Stone Ledge,Light Grey,PC,51.75,50,0,0/00/0000
 130102,Summit Mid-Tier,Siding,Stone Corner,Stone Corner,Light Grey,PC,74.75,50,0,0/00/0000
-130103,Summit Mid-Tier,Siding,Hero,Luxury Stone-Style Siding,Sandy Tan,Square,517.5,50,0,0/00/0000
+130103,Summit Mid-Tier,Siding,Hero,Luxury Stone-Style Siding,Sandy Tan,Square,517.5,106,0,0/00/0000
 130104,Summit Mid-Tier,Siding,Stone Ledge,Stone Ledge,Sandy Tan,PC,51.75,50,0,0/00/0000
 130105,Summit Mid-Tier,Siding,Stone Corner,Stone Corner,Sandy Tan,PC,74.75,50,0,0/00/0000
-230001,Summit Mid-Tier,Roofing,Hero,3-Tab Shingles,Onyx Black,Bundle,103.5,50,0,0/00/0000
-230002,Summit Mid-Tier,Roofing,Hero,3-Tab Shingles,Estate Grey,Bundle,103.5,50,0,0/00/0000
-230003,Summit Mid-Tier,Roofing,Hero,3-Tab Shingles,Weathered Wood,Bundle,103.5,50,0,0/00/0000
-230004,Summit Mid-Tier,Roofing,Hero,3-Tab Shingles,Brick Red,Bundle,103.5,50,0,0/00/0000
-230005,Summit Mid-Tier,Roofing,Hero,3-Tab Shingles,Forest Green,Bundle,103.5,50,0,0/00/0000
-230006,Summit Mid-Tier,Roofing,Hero,3-Tab Shingles,Desert Tan,Bundle,103.5,50,0,0/00/0000
-230007,Summit Mid-Tier,Roofing,Hero,Architectural Shingles,Onyx Black,Bundle,143.75,50,0,0/00/0000
-230008,Summit Mid-Tier,Roofing,Hero,Architectural Shingles,Estate Grey,Bundle,143.75,50,0,0/00/0000
-230009,Summit Mid-Tier,Roofing,Hero,Architectural Shingles,Weathered Wood,Bundle,143.75,50,0,0/00/0000
-230010,Summit Mid-Tier,Roofing,Hero,Architectural Shingles,Brick Red,Bundle,143.75,50,0,0/00/0000
-230011,Summit Mid-Tier,Roofing,Hero,Architectural Shingles,Forest Green,Bundle,143.75,50,0,0/00/0000
-230012,Summit Mid-Tier,Roofing,Hero,Architectural Shingles,Desert Tan,Bundle,143.75,50,0,0/00/0000
-230013,Summit Mid-Tier,Roofing,Hero,Executive Slate-Style Shingles,Onyx Black,Bundle,241.5,50,0,0/00/0000
-230014,Summit Mid-Tier,Roofing,Hero,Executive Slate-Style Shingles,Estate Grey,Bundle,241.5,50,0,0/00/0000
-230015,Summit Mid-Tier,Roofing,Hero,Executive Slate-Style Shingles,Weathered Wood,Bundle,241.5,50,0,0/00/0000
-230016,Summit Mid-Tier,Roofing,Hero,Executive Slate-Style Shingles,Brick Red,Bundle,241.5,50,0,0/00/0000
-230017,Summit Mid-Tier,Roofing,Hero,Executive Slate-Style Shingles,Forest Green,Bundle,241.5,50,0,0/00/0000
-230018,Summit Mid-Tier,Roofing,Hero,Executive Slate-Style Shingles,Desert Tan,Bundle,241.5,50,0,0/00/0000
-230019,Summit Mid-Tier,Roofing,Ridge Cap,Ridge Cap,Onyx Black,Bundle,51.75,50,0,0/00/0000
-230020,Summit Mid-Tier,Roofing,Ridge Cap,Ridge Cap,Estate Grey,Bundle,51.75,50,0,0/00/0000
-230021,Summit Mid-Tier,Roofing,Ridge Cap,Ridge Cap,Weathered Wood,Bundle,51.75,50,0,0/00/0000
-230022,Summit Mid-Tier,Roofing,Ridge Cap,Ridge Cap,Brick Red,Bundle,51.75,50,0,0/00/0000
-230023,Summit Mid-Tier,Roofing,Ridge Cap,Ridge Cap,Forest Green,Bundle,51.75,50,0,0/00/0000
-230024,Summit Mid-Tier,Roofing,Ridge Cap,Ridge Cap,Desert Tan,Bundle,51.75,50,0,0/00/0000
-230025,Summit Mid-Tier,Roofing,Shingle Starter,Shingle Starter,Universal,Roll,40.25,50,0,0/00/0000
-230026,Summit Mid-Tier,Roofing,Ice and Water Shield,Ice and Water Shield,Universal,Roll,97.75,50,0,0/00/0000
-230027,Summit Mid-Tier,Roofing,Synthetic Underlayment,Synthetic Underlayment,Universal,Roll,126.5,50,0,0/00/0000
-160001,EcoShield Budget,Siding,Hero,Double-4 Siding,Snow White,Square,180.0,50,0,0/00/0000
-160002,EcoShield Budget,Siding,Hero,Double-4 Siding,Pebble,Square,180.0,50,0,0/00/0000
-160003,EcoShield Budget,Siding,Hero,Double-4 Siding,Sandstone,Square,180.0,50,0,0/00/0000
-160004,EcoShield Budget,Siding,Hero,Double-4 Siding,Midnight Blue,Square,180.0,50,0,0/00/0000
-160005,EcoShield Budget,Siding,Hero,Double-4 Siding,Sage Green,Square,180.0,50,0,0/00/0000
-160006,EcoShield Budget,Siding,Hero,Double-4 Siding,Honeycrisp,Square,180.0,50,0,0/00/0000
-160007,EcoShield Budget,Siding,Hero,Double-4 Siding,Iron Grey,Square,180.0,50,0,0/00/0000
+230001,Summit Mid-Tier,Roofing,Hero,3-Tab Shingles,Onyx Black,Bundle,103.5,111,282,03/25/2026
+230002,Summit Mid-Tier,Roofing,Hero,3-Tab Shingles,Estate Grey,Bundle,103.5,576,0,0/00/0000
+230003,Summit Mid-Tier,Roofing,Hero,3-Tab Shingles,Weathered Wood,Bundle,103.5,188,139,04/09/2026
+230004,Summit Mid-Tier,Roofing,Hero,3-Tab Shingles,Brick Red,Bundle,103.5,339,0,0/00/0000
+230005,Summit Mid-Tier,Roofing,Hero,3-Tab Shingles,Forest Green,Bundle,103.5,381,58,06/07/2026
+230006,Summit Mid-Tier,Roofing,Hero,3-Tab Shingles,Desert Tan,Bundle,103.5,432,198,04/26/2026
+230007,Summit Mid-Tier,Roofing,Hero,Architectural Shingles,Onyx Black,Bundle,143.75,236,0,0/00/0000
+230008,Summit Mid-Tier,Roofing,Hero,Architectural Shingles,Estate Grey,Bundle,143.75,520,0,0/00/0000
+230009,Summit Mid-Tier,Roofing,Hero,Architectural Shingles,Weathered Wood,Bundle,143.75,340,93,03/26/2026
+230010,Summit Mid-Tier,Roofing,Hero,Architectural Shingles,Brick Red,Bundle,143.75,409,0,0/00/0000
+230011,Summit Mid-Tier,Roofing,Hero,Architectural Shingles,Forest Green,Bundle,143.75,271,232,05/30/2026
+230012,Summit Mid-Tier,Roofing,Hero,Architectural Shingles,Desert Tan,Bundle,143.75,67,198,03/27/2026
+230013,Summit Mid-Tier,Roofing,Hero,Executive Slate-Style Shingles,Onyx Black,Bundle,241.5,153,146,03/28/2026
+230014,Summit Mid-Tier,Roofing,Hero,Executive Slate-Style Shingles,Estate Grey,Bundle,241.5,384,158,05/30/2026
+230015,Summit Mid-Tier,Roofing,Hero,Executive Slate-Style Shingles,Weathered Wood,Bundle,241.5,333,0,0/00/0000
+230016,Summit Mid-Tier,Roofing,Hero,Executive Slate-Style Shingles,Brick Red,Bundle,241.5,276,0,0/00/0000
+230017,Summit Mid-Tier,Roofing,Hero,Executive Slate-Style Shingles,Forest Green,Bundle,241.5,568,138,05/09/2026
+230018,Summit Mid-Tier,Roofing,Hero,Executive Slate-Style Shingles,Desert Tan,Bundle,241.5,127,0,0/00/0000
+230019,Summit Mid-Tier,Roofing,Ridge Cap,Ridge Cap,Onyx Black,Bundle,51.75,57,38,05/10/2026
+230020,Summit Mid-Tier,Roofing,Ridge Cap,Ridge Cap,Estate Grey,Bundle,51.75,50,38,05/10/2026
+230021,Summit Mid-Tier,Roofing,Ridge Cap,Ridge Cap,Weathered Wood,Bundle,51.75,44,38,05/10/2026
+230022,Summit Mid-Tier,Roofing,Ridge Cap,Ridge Cap,Brick Red,Bundle,51.75,46,39,05/10/2026
+230023,Summit Mid-Tier,Roofing,Ridge Cap,Ridge Cap,Forest Green,Bundle,51.75,50,45,05/10/2026
+230024,Summit Mid-Tier,Roofing,Ridge Cap,Ridge Cap,Desert Tan,Bundle,51.75,53,38,05/10/2026
+230025,Summit Mid-Tier,Roofing,Shingle Starter,Shingle Starter,Universal,Roll,40.25,44,33,05/10/2026
+230026,Summit Mid-Tier,Roofing,Ice and Water Shield,Ice and Water Shield,Universal,Roll,97.75,30,27,05/10/2026
+230027,Summit Mid-Tier,Roofing,Synthetic Underlayment,Synthetic Underlayment,Universal,Roll,126.5,21,18,05/10/2026
+160001,EcoShield Budget,Siding,Hero,Double-4 Siding,Snow White,Square,180.0,240,93,04/07/2026
+160002,EcoShield Budget,Siding,Hero,Double-4 Siding,Pebble,Square,180.0,137,0,0/00/0000
+160003,EcoShield Budget,Siding,Hero,Double-4 Siding,Sandstone,Square,180.0,91,55,05/16/2026
+160004,EcoShield Budget,Siding,Hero,Double-4 Siding,Midnight Blue,Square,180.0,103,165,04/23/2026
+160005,EcoShield Budget,Siding,Hero,Double-4 Siding,Sage Green,Square,180.0,32,218,03/25/2026
+160006,EcoShield Budget,Siding,Hero,Double-4 Siding,Honeycrisp,Square,180.0,60,0,0/00/0000
+160007,EcoShield Budget,Siding,Hero,Double-4 Siding,Iron Grey,Square,180.0,356,0,0/00/0000
 160008,EcoShield Budget,Siding,Hero,Double-4 Siding,Sky Blue,Square,180.0,50,0,0/00/0000
-160009,EcoShield Budget,Siding,Hero,Double-4 Siding,Coffe,Square,180.0,50,0,0/00/0000
-160010,EcoShield Budget,Siding,Hero,Double-4 Siding,Olive,Square,180.0,50,0,0/00/0000
-160011,EcoShield Budget,Siding,Hero,Double-4 Siding,Burgundy,Square,180.0,50,0,0/00/0000
-160012,EcoShield Budget,Siding,Hero,Double-4 Siding,Sunset,Square,180.0,50,0,0/00/0000
-160013,EcoShield Budget,Siding,Hero,Board and Batten Siding,Snow White,Square,210.0,50,0,0/00/0000
-160014,EcoShield Budget,Siding,Hero,Board and Batten Siding,Pebble,Square,210.0,50,0,0/00/0000
-160015,EcoShield Budget,Siding,Hero,Board and Batten Siding,Sandstone,Square,210.0,50,0,0/00/0000
-160016,EcoShield Budget,Siding,Hero,Board and Batten Siding,Midnight Blue,Square,210.0,50,0,0/00/0000
-160017,EcoShield Budget,Siding,Hero,Board and Batten Siding,Sage Green,Square,210.0,50,0,0/00/0000
-160018,EcoShield Budget,Siding,Hero,Board and Batten Siding,Honeycrisp,Square,210.0,50,0,0/00/0000
-160019,EcoShield Budget,Siding,Hero,Board and Batten Siding,Iron Grey,Square,210.0,50,0,0/00/0000
-160020,EcoShield Budget,Siding,Hero,Board and Batten Siding,Sky Blue,Square,210.0,50,0,0/00/0000
-160021,EcoShield Budget,Siding,Hero,Board and Batten Siding,Coffe,Square,210.0,50,0,0/00/0000
-160022,EcoShield Budget,Siding,Hero,Board and Batten Siding,Olive,Square,210.0,50,0,0/00/0000
-160023,EcoShield Budget,Siding,Hero,Board and Batten Siding,Burgundy,Square,210.0,50,0,0/00/0000
-160024,EcoShield Budget,Siding,Hero,Board and Batten Siding,Sunset,Square,210.0,50,0,0/00/0000
-160025,EcoShield Budget,Siding,Hero,Dutchlap Siding,Snow White,Square,195.0,50,0,0/00/0000
-160026,EcoShield Budget,Siding,Hero,Dutchlap Siding,Pebble,Square,195.0,50,0,0/00/0000
-160027,EcoShield Budget,Siding,Hero,Dutchlap Siding,Sandstone,Square,195.0,50,0,0/00/0000
-160028,EcoShield Budget,Siding,Hero,Dutchlap Siding,Midnight Blue,Square,195.0,50,0,0/00/0000
-160029,EcoShield Budget,Siding,Hero,Dutchlap Siding,Sage Green,Square,195.0,50,0,0/00/0000
-160030,EcoShield Budget,Siding,Hero,Dutchlap Siding,Honeycrisp,Square,195.0,50,0,0/00/0000
-160031,EcoShield Budget,Siding,Hero,Dutchlap Siding,Iron Grey,Square,195.0,50,0,0/00/0000
-160032,EcoShield Budget,Siding,Hero,Dutchlap Siding,Sky Blue,Square,195.0,50,0,0/00/0000
-160033,EcoShield Budget,Siding,Hero,Dutchlap Siding,Coffe,Square,195.0,50,0,0/00/0000
-160034,EcoShield Budget,Siding,Hero,Dutchlap Siding,Olive,Square,195.0,50,0,0/00/0000
-160035,EcoShield Budget,Siding,Hero,Dutchlap Siding,Burgundy,Square,195.0,50,0,0/00/0000
-160036,EcoShield Budget,Siding,Hero,Dutchlap Siding,Sunset,Square,195.0,50,0,0/00/0000
-160037,EcoShield Budget,Siding,Hero,Shake-Style Siding,Snow White,Square,280.0,50,0,0/00/0000
-160038,EcoShield Budget,Siding,Hero,Shake-Style Siding,Pebble,Square,280.0,50,0,0/00/0000
-160039,EcoShield Budget,Siding,Hero,Shake-Style Siding,Sandstone,Square,280.0,50,0,0/00/0000
-160040,EcoShield Budget,Siding,Hero,Shake-Style Siding,Midnight Blue,Square,280.0,50,0,0/00/0000
-160041,EcoShield Budget,Siding,Hero,Shake-Style Siding,Sage Green,Square,280.0,50,0,0/00/0000
-160042,EcoShield Budget,Siding,Hero,Shake-Style Siding,Honeycrisp,Square,280.0,50,0,0/00/0000
-160043,EcoShield Budget,Siding,Hero,Shake-Style Siding,Iron Grey,Square,280.0,50,0,0/00/0000
-160044,EcoShield Budget,Siding,Hero,Shake-Style Siding,Sky Blue,Square,280.0,50,0,0/00/0000
-160045,EcoShield Budget,Siding,Hero,Shake-Style Siding,Coffe,Square,280.0,50,0,0/00/0000
-160046,EcoShield Budget,Siding,Hero,Shake-Style Siding,Olive,Square,280.0,50,0,0/00/0000
-160047,EcoShield Budget,Siding,Hero,Shake-Style Siding,Burgundy,Square,280.0,50,0,0/00/0000
-160048,EcoShield Budget,Siding,Hero,Shake-Style Siding,Sunset,Square,280.0,50,0,0/00/0000
-160049,EcoShield Budget,Siding,J-Channel,J-Channel,Snow White,PC,12.5,100,0,0/00/0000
-160050,EcoShield Budget,Siding,J-Channel,J-Channel,Pebble,PC,12.5,100,0,0/00/0000
-160051,EcoShield Budget,Siding,J-Channel,J-Channel,Sandstone,PC,12.5,100,0,0/00/0000
-160052,EcoShield Budget,Siding,J-Channel,J-Channel,Midnight Blue,PC,12.5,100,0,0/00/0000
-160053,EcoShield Budget,Siding,J-Channel,J-Channel,Sage Green,PC,12.5,100,0,0/00/0000
-160054,EcoShield Budget,Siding,J-Channel,J-Channel,Honeycrisp,PC,12.5,100,0,0/00/0000
-160055,EcoShield Budget,Siding,J-Channel,J-Channel,Iron Grey,PC,12.5,100,0,0/00/0000
-160056,EcoShield Budget,Siding,J-Channel,J-Channel,Sky Blue,PC,12.5,100,0,0/00/0000
-160057,EcoShield Budget,Siding,J-Channel,J-Channel,Coffe,PC,12.5,100,0,0/00/0000
-160058,EcoShield Budget,Siding,J-Channel,J-Channel,Olive,PC,12.5,100,0,0/00/0000
-160059,EcoShield Budget,Siding,J-Channel,J-Channel,Burgundy,PC,12.5,100,0,0/00/0000
-160060,EcoShield Budget,Siding,J-Channel,J-Channel,Sunset,PC,12.5,100,0,0/00/0000
-160061,EcoShield Budget,Siding,Finish Trim,Finish Trim,Snow White,PC,15.0,100,0,0/00/0000
-160062,EcoShield Budget,Siding,Finish Trim,Finish Trim,Pebble,PC,15.0,100,0,0/00/0000
-160063,EcoShield Budget,Siding,Finish Trim,Finish Trim,Sandstone,PC,15.0,100,0,0/00/0000
-160064,EcoShield Budget,Siding,Finish Trim,Finish Trim,Midnight Blue,PC,15.0,100,0,0/00/0000
-160065,EcoShield Budget,Siding,Finish Trim,Finish Trim,Sage Green,PC,15.0,100,0,0/00/0000
-160066,EcoShield Budget,Siding,Finish Trim,Finish Trim,Honeycrisp,PC,15.0,100,0,0/00/0000
-160067,EcoShield Budget,Siding,Finish Trim,Finish Trim,Iron Grey,PC,15.0,100,0,0/00/0000
-160068,EcoShield Budget,Siding,Finish Trim,Finish Trim,Sky Blue,PC,15.0,100,0,0/00/0000
-160069,EcoShield Budget,Siding,Finish Trim,Finish Trim,Coffe,PC,15.0,100,0,0/00/0000
-160070,EcoShield Budget,Siding,Finish Trim,Finish Trim,Olive,PC,15.0,100,0,0/00/0000
-160071,EcoShield Budget,Siding,Finish Trim,Finish Trim,Burgundy,PC,15.0,100,0,0/00/0000
-160072,EcoShield Budget,Siding,Finish Trim,Finish Trim,Sunset,PC,15.0,100,0,0/00/0000
-160073,EcoShield Budget,Siding,Starter Strip,Starter Strip,Snow White,PC,10.0,100,0,0/00/0000
-160074,EcoShield Budget,Siding,Starter Strip,Starter Strip,Pebble,PC,10.0,100,0,0/00/0000
-160075,EcoShield Budget,Siding,Starter Strip,Starter Strip,Sandstone,PC,10.0,100,0,0/00/0000
-160076,EcoShield Budget,Siding,Starter Strip,Starter Strip,Midnight Blue,PC,10.0,100,0,0/00/0000
-160077,EcoShield Budget,Siding,Starter Strip,Starter Strip,Sage Green,PC,10.0,100,0,0/00/0000
-160078,EcoShield Budget,Siding,Starter Strip,Starter Strip,Honeycrisp,PC,10.0,100,0,0/00/0000
-160079,EcoShield Budget,Siding,Starter Strip,Starter Strip,Iron Grey,PC,10.0,100,0,0/00/0000
-160080,EcoShield Budget,Siding,Starter Strip,Starter Strip,Sky Blue,PC,10.0,100,0,0/00/0000
-160081,EcoShield Budget,Siding,Starter Strip,Starter Strip,Coffe,PC,10.0,100,0,0/00/0000
-160082,EcoShield Budget,Siding,Starter Strip,Starter Strip,Olive,PC,10.0,100,0,0/00/0000
-160083,EcoShield Budget,Siding,Starter Strip,Starter Strip,Burgundy,PC,10.0,100,0,0/00/0000
-160084,EcoShield Budget,Siding,Starter Strip,Starter Strip,Sunset,PC,10.0,100,0,0/00/0000
-160085,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Snow White,PC,8.5,100,0,0/00/0000
-160086,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Pebble,PC,8.5,100,0,0/00/0000
-160087,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Sandstone,PC,8.5,100,0,0/00/0000
-160088,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Midnight Blue,PC,8.5,100,0,0/00/0000
-160089,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Sage Green,PC,8.5,100,0,0/00/0000
-160090,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Honeycrisp,PC,8.5,100,0,0/00/0000
-160091,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Iron Grey,PC,8.5,100,0,0/00/0000
-160092,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Sky Blue,PC,8.5,100,0,0/00/0000
-160093,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Coffe,PC,8.5,100,0,0/00/0000
-160094,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Olive,PC,8.5,100,0,0/00/0000
-160095,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Burgundy,PC,8.5,100,0,0/00/0000
-160096,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Sunset,PC,8.5,100,0,0/00/0000
-160097,EcoShield Budget,Siding,Hero,Luxury Stone-Style Siding,Dark Grey,Square,450.0,50,0,0/00/0000
+160009,EcoShield Budget,Siding,Hero,Double-4 Siding,Coffe,Square,180.0,171,0,0/00/0000
+160010,EcoShield Budget,Siding,Hero,Double-4 Siding,Olive,Square,180.0,346,82,04/29/2026
+160011,EcoShield Budget,Siding,Hero,Double-4 Siding,Burgundy,Square,180.0,410,0,0/00/0000
+160012,EcoShield Budget,Siding,Hero,Double-4 Siding,Sunset,Square,180.0,146,0,0/00/0000
+160013,EcoShield Budget,Siding,Hero,Board and Batten Siding,Snow White,Square,210.0,277,140,05/20/2026
+160014,EcoShield Budget,Siding,Hero,Board and Batten Siding,Pebble,Square,210.0,420,243,05/15/2026
+160015,EcoShield Budget,Siding,Hero,Board and Batten Siding,Sandstone,Square,210.0,488,131,03/28/2026
+160016,EcoShield Budget,Siding,Hero,Board and Batten Siding,Midnight Blue,Square,210.0,310,42,05/25/2026
+160017,EcoShield Budget,Siding,Hero,Board and Batten Siding,Sage Green,Square,210.0,301,243,04/12/2026
+160018,EcoShield Budget,Siding,Hero,Board and Batten Siding,Honeycrisp,Square,210.0,399,0,0/00/0000
+160019,EcoShield Budget,Siding,Hero,Board and Batten Siding,Iron Grey,Square,210.0,300,210,04/23/2026
+160020,EcoShield Budget,Siding,Hero,Board and Batten Siding,Sky Blue,Square,210.0,145,0,0/00/0000
+160021,EcoShield Budget,Siding,Hero,Board and Batten Siding,Coffe,Square,210.0,355,0,0/00/0000
+160022,EcoShield Budget,Siding,Hero,Board and Batten Siding,Olive,Square,210.0,213,91,04/12/2026
+160023,EcoShield Budget,Siding,Hero,Board and Batten Siding,Burgundy,Square,210.0,493,125,03/23/2026
+160024,EcoShield Budget,Siding,Hero,Board and Batten Siding,Sunset,Square,210.0,56,0,0/00/0000
+160025,EcoShield Budget,Siding,Hero,Dutchlap Siding,Snow White,Square,195.0,407,0,0/00/0000
+160026,EcoShield Budget,Siding,Hero,Dutchlap Siding,Pebble,Square,195.0,190,156,04/20/2026
+160027,EcoShield Budget,Siding,Hero,Dutchlap Siding,Sandstone,Square,195.0,113,0,0/00/0000
+160028,EcoShield Budget,Siding,Hero,Dutchlap Siding,Midnight Blue,Square,195.0,490,128,03/20/2026
+160029,EcoShield Budget,Siding,Hero,Dutchlap Siding,Sage Green,Square,195.0,83,250,05/24/2026
+160030,EcoShield Budget,Siding,Hero,Dutchlap Siding,Honeycrisp,Square,195.0,402,0,0/00/0000
+160031,EcoShield Budget,Siding,Hero,Dutchlap Siding,Iron Grey,Square,195.0,195,247,04/28/2026
+160032,EcoShield Budget,Siding,Hero,Dutchlap Siding,Sky Blue,Square,195.0,430,58,05/10/2026
+160033,EcoShield Budget,Siding,Hero,Dutchlap Siding,Coffe,Square,195.0,353,0,0/00/0000
+160034,EcoShield Budget,Siding,Hero,Dutchlap Siding,Olive,Square,195.0,283,0,0/00/0000
+160035,EcoShield Budget,Siding,Hero,Dutchlap Siding,Burgundy,Square,195.0,127,0,0/00/0000
+160036,EcoShield Budget,Siding,Hero,Dutchlap Siding,Sunset,Square,195.0,341,0,0/00/0000
+160037,EcoShield Budget,Siding,Hero,Shake-Style Siding,Snow White,Square,280.0,357,228,04/08/2026
+160038,EcoShield Budget,Siding,Hero,Shake-Style Siding,Pebble,Square,280.0,163,42,04/15/2026
+160039,EcoShield Budget,Siding,Hero,Shake-Style Siding,Sandstone,Square,280.0,398,159,04/15/2026
+160040,EcoShield Budget,Siding,Hero,Shake-Style Siding,Midnight Blue,Square,280.0,43,0,0/00/0000
+160041,EcoShield Budget,Siding,Hero,Shake-Style Siding,Sage Green,Square,280.0,403,0,0/00/0000
+160042,EcoShield Budget,Siding,Hero,Shake-Style Siding,Honeycrisp,Square,280.0,489,166,05/10/2026
+160043,EcoShield Budget,Siding,Hero,Shake-Style Siding,Iron Grey,Square,280.0,325,0,0/00/0000
+160044,EcoShield Budget,Siding,Hero,Shake-Style Siding,Sky Blue,Square,280.0,492,111,03/21/2026
+160045,EcoShield Budget,Siding,Hero,Shake-Style Siding,Coffe,Square,280.0,201,253,05/26/2026
+160046,EcoShield Budget,Siding,Hero,Shake-Style Siding,Olive,Square,280.0,422,0,0/00/0000
+160047,EcoShield Budget,Siding,Hero,Shake-Style Siding,Burgundy,Square,280.0,373,200,03/20/2026
+160048,EcoShield Budget,Siding,Hero,Shake-Style Siding,Sunset,Square,280.0,365,174,03/27/2026
+160049,EcoShield Budget,Siding,J-Channel,J-Channel,Snow White,PC,12.5,539,178,04/07/2026
+160050,EcoShield Budget,Siding,J-Channel,J-Channel,Pebble,PC,12.5,487,178,04/07/2026
+160051,EcoShield Budget,Siding,J-Channel,J-Channel,Sandstone,PC,12.5,473,176,04/07/2026
+160052,EcoShield Budget,Siding,J-Channel,J-Channel,Midnight Blue,PC,12.5,432,195,04/07/2026
+160053,EcoShield Budget,Siding,J-Channel,J-Channel,Sage Green,PC,12.5,409,185,04/07/2026
+160054,EcoShield Budget,Siding,J-Channel,J-Channel,Honeycrisp,PC,12.5,408,189,04/07/2026
+160055,EcoShield Budget,Siding,J-Channel,J-Channel,Iron Grey,PC,12.5,457,185,04/07/2026
+160056,EcoShield Budget,Siding,J-Channel,J-Channel,Sky Blue,PC,12.5,494,182,04/07/2026
+160057,EcoShield Budget,Siding,J-Channel,J-Channel,Coffe,PC,12.5,495,182,04/07/2026
+160058,EcoShield Budget,Siding,J-Channel,J-Channel,Olive,PC,12.5,415,181,04/07/2026
+160059,EcoShield Budget,Siding,J-Channel,J-Channel,Burgundy,PC,12.5,495,171,04/07/2026
+160060,EcoShield Budget,Siding,J-Channel,J-Channel,Sunset,PC,12.5,504,179,04/07/2026
+160061,EcoShield Budget,Siding,Finish Trim,Finish Trim,Snow White,PC,15.0,260,95,04/07/2026
+160062,EcoShield Budget,Siding,Finish Trim,Finish Trim,Pebble,PC,15.0,247,93,04/07/2026
+160063,EcoShield Budget,Siding,Finish Trim,Finish Trim,Sandstone,PC,15.0,253,98,04/07/2026
+160064,EcoShield Budget,Siding,Finish Trim,Finish Trim,Midnight Blue,PC,15.0,209,86,04/07/2026
+160065,EcoShield Budget,Siding,Finish Trim,Finish Trim,Sage Green,PC,15.0,229,88,04/07/2026
+160066,EcoShield Budget,Siding,Finish Trim,Finish Trim,Honeycrisp,PC,15.0,209,93,04/07/2026
+160067,EcoShield Budget,Siding,Finish Trim,Finish Trim,Iron Grey,PC,15.0,226,99,04/07/2026
+160068,EcoShield Budget,Siding,Finish Trim,Finish Trim,Sky Blue,PC,15.0,259,92,04/07/2026
+160069,EcoShield Budget,Siding,Finish Trim,Finish Trim,Coffe,PC,15.0,271,98,04/07/2026
+160070,EcoShield Budget,Siding,Finish Trim,Finish Trim,Olive,PC,15.0,238,85,04/07/2026
+160071,EcoShield Budget,Siding,Finish Trim,Finish Trim,Burgundy,PC,15.0,239,86,04/07/2026
+160072,EcoShield Budget,Siding,Finish Trim,Finish Trim,Sunset,PC,15.0,240,86,04/07/2026
+160073,EcoShield Budget,Siding,Starter Strip,Starter Strip,Snow White,PC,10.0,446,193,04/07/2026
+160074,EcoShield Budget,Siding,Starter Strip,Starter Strip,Pebble,PC,10.0,432,190,04/07/2026
+160075,EcoShield Budget,Siding,Starter Strip,Starter Strip,Sandstone,PC,10.0,536,184,04/07/2026
+160076,EcoShield Budget,Siding,Starter Strip,Starter Strip,Midnight Blue,PC,10.0,420,184,04/07/2026
+160077,EcoShield Budget,Siding,Starter Strip,Starter Strip,Sage Green,PC,10.0,513,187,04/07/2026
+160078,EcoShield Budget,Siding,Starter Strip,Starter Strip,Honeycrisp,PC,10.0,450,172,04/07/2026
+160079,EcoShield Budget,Siding,Starter Strip,Starter Strip,Iron Grey,PC,10.0,424,195,04/07/2026
+160080,EcoShield Budget,Siding,Starter Strip,Starter Strip,Sky Blue,PC,10.0,484,184,04/07/2026
+160081,EcoShield Budget,Siding,Starter Strip,Starter Strip,Coffe,PC,10.0,545,190,04/07/2026
+160082,EcoShield Budget,Siding,Starter Strip,Starter Strip,Olive,PC,10.0,443,201,04/07/2026
+160083,EcoShield Budget,Siding,Starter Strip,Starter Strip,Burgundy,PC,10.0,432,175,04/07/2026
+160084,EcoShield Budget,Siding,Starter Strip,Starter Strip,Sunset,PC,10.0,551,204,04/07/2026
+160085,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Snow White,PC,8.5,156,64,04/07/2026
+160086,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Pebble,PC,8.5,173,63,04/07/2026
+160087,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Sandstone,PC,8.5,179,65,04/07/2026
+160088,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Midnight Blue,PC,8.5,180,60,04/07/2026
+160089,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Sage Green,PC,8.5,162,57,04/07/2026
+160090,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Honeycrisp,PC,8.5,153,57,04/07/2026
+160091,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Iron Grey,PC,8.5,172,62,04/07/2026
+160092,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Sky Blue,PC,8.5,177,57,04/07/2026
+160093,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Coffe,PC,8.5,176,61,04/07/2026
+160094,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Olive,PC,8.5,143,58,04/07/2026
+160095,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Burgundy,PC,8.5,181,58,04/07/2026
+160096,EcoShield Budget,Siding,Trim Nails (1lb),Trim Nails (1lb),Sunset,PC,8.5,139,60,04/07/2026
+160097,EcoShield Budget,Siding,Hero,Luxury Stone-Style Siding,Dark Grey,Square,450.0,104,203,04/07/2026
 160098,EcoShield Budget,Siding,Stone Ledge,Stone Ledge,Dark Grey,PC,45.0,50,0,0/00/0000
 160099,EcoShield Budget,Siding,Stone Corner,Stone Corner,Dark Grey,PC,65.0,50,0,0/00/0000
-160100,EcoShield Budget,Siding,Hero,Luxury Stone-Style Siding,Light Grey,Square,450.0,50,0,0/00/0000
+160100,EcoShield Budget,Siding,Hero,Luxury Stone-Style Siding,Light Grey,Square,450.0,477,46,05/26/2026
 160101,EcoShield Budget,Siding,Stone Ledge,Stone Ledge,Light Grey,PC,45.0,50,0,0/00/0000
 160102,EcoShield Budget,Siding,Stone Corner,Stone Corner,Light Grey,PC,65.0,50,0,0/00/0000
-160103,EcoShield Budget,Siding,Hero,Luxury Stone-Style Siding,Sandy Tan,Square,450.0,50,0,0/00/0000
+160103,EcoShield Budget,Siding,Hero,Luxury Stone-Style Siding,Sandy Tan,Square,450.0,390,0,0/00/0000
 160104,EcoShield Budget,Siding,Stone Ledge,Stone Ledge,Sandy Tan,PC,45.0,50,0,0/00/0000
 160105,EcoShield Budget,Siding,Stone Corner,Stone Corner,Sandy Tan,PC,65.0,50,0,0/00/0000
-260001,EcoShield Budget,Roofing,Hero,3-Tab Shingles,Onyx Black,Bundle,90.0,50,0,0/00/0000
-260002,EcoShield Budget,Roofing,Hero,3-Tab Shingles,Estate Grey,Bundle,90.0,50,0,0/00/0000
-260003,EcoShield Budget,Roofing,Hero,3-Tab Shingles,Weathered Wood,Bundle,90.0,50,0,0/00/0000
-260004,EcoShield Budget,Roofing,Hero,3-Tab Shingles,Brick Red,Bundle,90.0,50,0,0/00/0000
-260005,EcoShield Budget,Roofing,Hero,3-Tab Shingles,Forest Green,Bundle,90.0,50,0,0/00/0000
-260006,EcoShield Budget,Roofing,Hero,3-Tab Shingles,Desert Tan,Bundle,90.0,50,0,0/00/0000
-260007,EcoShield Budget,Roofing,Ridge Cap,Ridge Cap,Onyx Black,Bundle,45.0,50,0,0/00/0000
-260008,EcoShield Budget,Roofing,Ridge Cap,Ridge Cap,Estate Grey,Bundle,45.0,50,0,0/00/0000
-260009,EcoShield Budget,Roofing,Ridge Cap,Ridge Cap,Weathered Wood,Bundle,45.0,50,0,0/00/0000
-260010,EcoShield Budget,Roofing,Ridge Cap,Ridge Cap,Brick Red,Bundle,45.0,50,0,0/00/0000
-260011,EcoShield Budget,Roofing,Ridge Cap,Ridge Cap,Forest Green,Bundle,45.0,50,0,0/00/0000
-260012,EcoShield Budget,Roofing,Ridge Cap,Ridge Cap,Desert Tan,Bundle,45.0,50,0,0/00/0000
-260013,EcoShield Budget,Roofing,Shingle Starter,Shingle Starter,Universal,Roll,35.0,50,0,0/00/0000
-260014,EcoShield Budget,Roofing,Ice and Water Shield,Ice and Water Shield,Universal,Roll,85.0,50,0,0/00/0000
-260015,EcoShield Budget,Roofing,Synthetic Underlayment,Synthetic Underlayment,Universal,Roll,110.0,50,0,0/00/0000
-300001,EcoShield Budget,Sheetrock,Hero,1/4-inch x 4x8 Thin Profile,Standard,Sheet,14.5,50,0,0/00/0000
-300002,EcoShield Budget,Sheetrock,Hero,1/2-inch x 4x8 Standard Profile,Standard,Sheet,16.0,50,0,0/00/0000
-300003,EcoShield Budget,Sheetrock,Hero,1/2-inch x 4x8 Moisture Resistant,Green,Sheet,21.0,50,0,0/00/0000
-300004,EcoShield Budget,Sheetrock,Hero,5/8-inch x 4x8 Fire Resistant,Type X,Sheet,24.0,50,0,0/00/0000
-300005,EcoShield Budget,Sheetrock,Screws,1-1/4 inch Drywall Screws,Standard,Box,12.0,50,0,0/00/0000
-300006,EcoShield Budget,Sheetrock,Screws,1-5/8 inch Drywall Screws,Type X,Box,12.0,50,0,0/00/0000
-300007,EcoShield Budget,Sheetrock,Mud,All-Purpose Joint Compound,Standard,Bucket,18.0,50,0,0/00/0000
-300008,EcoShield Budget,Sheetrock,Mud,Heavy Duty Taping Compound,Standard,Bucket,22.0,50,0,0/00/0000
-300009,EcoShield Budget,Sheetrock,Mud,Moisture Resistant Mud,Green,Bucket,28.0,50,0,0/00/0000
-300010,EcoShield Budget,Sheetrock,Tape,Fiberglass Mesh Tape,Universal,Roll,7.5,50,0,0/00/0000
-400001,EcoShield Budget,Insulation,Hero,Fiberglass Batt Insulation,R-13,Bag,45.0,50,0,0/00/0000
-400002,EcoShield Budget,Insulation,Hero,Fiberglass Batt Insulation,R-19,Bag,45.0,50,0,0/00/0000
-400003,EcoShield Budget,Insulation,Hero,Fiberglass Batt Insulation,R-30,Bag,45.0,50,0,0/00/0000
-400004,EcoShield Budget,Insulation,Hero,Woodfiber Batt Insulation,R-13,Bag,65.0,50,0,0/00/0000
-400005,EcoShield Budget,Insulation,Hero,Woodfiber Batt Insulation,R-21,Bag,65.0,50,0,0/00/0000
-400006,EcoShield Budget,Insulation,Hero,Woodfiber Batt Insulation,R-30,Bag,65.0,50,0,0/00/0000
-400007,EcoShield Budget,Insulation,Hero,Blowing Wool Insulation,R-38,Bag,35.0,50,0,0/00/0000
-400008,EcoShield Budget,Insulation,Hero,Blowing Wool Insulation,R-49,Bag,35.0,50,0,0/00/0000
-400009,EcoShield Budget,Insulation,Hero,Blowing Wool Insulation,R-60,Bag,35.0,50,0,0/00/0000
-400010,EcoShield Budget,Insulation,Hero,Rigid Foamboard Insulation,R-5,Sheet,32.0,50,0,0/00/0000
-400011,EcoShield Budget,Insulation,Hero,Rigid Foamboard Insulation,R-7.5,Sheet,32.0,50,0,0/00/0000
-400012,EcoShield Budget,Insulation,Hero,Rigid Foamboard Insulation,R-10,Sheet,32.0,50,0,0/00/0000
-400013,EcoShield Budget,Insulation,6-mil Poly Vapor Barrier,6-mil Poly Vapor Barrier,Universal,Roll,95.0,50,0,0/00/0000
-400014,EcoShield Budget,Insulation,Insulation Fabric Backing,Insulation Fabric Backing,Universal,Roll,120.0,50,0,0/00/0000
+260001,EcoShield Budget,Roofing,Hero,3-Tab Shingles,Onyx Black,Bundle,90.0,113,128,04/04/2026
+260002,EcoShield Budget,Roofing,Hero,3-Tab Shingles,Estate Grey,Bundle,90.0,530,48,04/25/2026
+260003,EcoShield Budget,Roofing,Hero,3-Tab Shingles,Weathered Wood,Bundle,90.0,540,0,0/00/0000
+260004,EcoShield Budget,Roofing,Hero,3-Tab Shingles,Brick Red,Bundle,90.0,247,202,04/25/2026
+260005,EcoShield Budget,Roofing,Hero,3-Tab Shingles,Forest Green,Bundle,90.0,307,0,0/00/0000
+260006,EcoShield Budget,Roofing,Hero,3-Tab Shingles,Desert Tan,Bundle,90.0,406,0,0/00/0000
+260007,EcoShield Budget,Roofing,Ridge Cap,Ridge Cap,Onyx Black,Bundle,45.0,63,25,04/07/2026
+260008,EcoShield Budget,Roofing,Ridge Cap,Ridge Cap,Estate Grey,Bundle,45.0,56,24,04/07/2026
+260009,EcoShield Budget,Roofing,Ridge Cap,Ridge Cap,Weathered Wood,Bundle,45.0,53,25,04/07/2026
+260010,EcoShield Budget,Roofing,Ridge Cap,Ridge Cap,Brick Red,Bundle,45.0,54,26,04/07/2026
+260011,EcoShield Budget,Roofing,Ridge Cap,Ridge Cap,Forest Green,Bundle,45.0,65,22,04/07/2026
+260012,EcoShield Budget,Roofing,Ridge Cap,Ridge Cap,Desert Tan,Bundle,45.0,56,25,04/07/2026
+260013,EcoShield Budget,Roofing,Shingle Starter,Shingle Starter,Universal,Roll,35.0,42,18,04/07/2026
+260014,EcoShield Budget,Roofing,Ice and Water Shield,Ice and Water Shield,Universal,Roll,85.0,33,15,04/07/2026
+260015,EcoShield Budget,Roofing,Synthetic Underlayment,Synthetic Underlayment,Universal,Roll,110.0,21,10,04/07/2026
+300001,EcoShield Budget,Sheetrock,Hero,1/4-inch x 4x8 Thin Profile,Standard,Sheet,14.5,72,150,04/06/2026
+300002,EcoShield Budget,Sheetrock,Hero,1/2-inch x 4x8 Standard Profile,Standard,Sheet,16.0,339,107,03/21/2026
+300003,EcoShield Budget,Sheetrock,Hero,1/2-inch x 4x8 Moisture Resistant,Green,Sheet,21.0,687,0,0/00/0000
+300004,EcoShield Budget,Sheetrock,Hero,5/8-inch x 4x8 Fire Resistant,Type X,Sheet,24.0,47,294,04/15/2026
+300005,EcoShield Budget,Sheetrock,Screws,1-1/4 inch Drywall Screws,Standard,Box,12.0,7,3,04/07/2026
+300006,EcoShield Budget,Sheetrock,Screws,1-5/8 inch Drywall Screws,Type X,Box,12.0,6,3,04/07/2026
+300007,EcoShield Budget,Sheetrock,Mud,All-Purpose Joint Compound,Standard,Bucket,18.0,74,34,04/07/2026
+300008,EcoShield Budget,Sheetrock,Mud,Heavy Duty Taping Compound,Standard,Bucket,22.0,77,32,04/07/2026
+300009,EcoShield Budget,Sheetrock,Mud,Moisture Resistant Mud,Green,Bucket,28.0,71,33,04/07/2026
+300010,EcoShield Budget,Sheetrock,Tape,Fiberglass Mesh Tape,Universal,Roll,7.5,25,9,04/07/2026
+400001,EcoShield Budget,Insulation,Hero,Fiberglass Batt Insulation,R-13,Bag,45.0,366,0,0/00/0000
+400002,EcoShield Budget,Insulation,Hero,Fiberglass Batt Insulation,R-19,Bag,45.0,535,99,04/13/2026
+400003,EcoShield Budget,Insulation,Hero,Fiberglass Batt Insulation,R-30,Bag,45.0,413,0,0/00/0000
+400004,EcoShield Budget,Insulation,Hero,Woodfiber Batt Insulation,R-13,Bag,65.0,727,0,0/00/0000
+400005,EcoShield Budget,Insulation,Hero,Woodfiber Batt Insulation,R-21,Bag,65.0,545,0,0/00/0000
+400006,EcoShield Budget,Insulation,Hero,Woodfiber Batt Insulation,R-30,Bag,65.0,537,63,05/04/2026
+400007,EcoShield Budget,Insulation,Hero,Blowing Wool Insulation,R-38,Bag,35.0,538,0,0/00/0000
+400008,EcoShield Budget,Insulation,Hero,Blowing Wool Insulation,R-49,Bag,35.0,94,269,04/21/2026
+400009,EcoShield Budget,Insulation,Hero,Blowing Wool Insulation,R-60,Bag,35.0,374,0,0/00/0000
+400010,EcoShield Budget,Insulation,Hero,Rigid Foamboard Insulation,R-5,Sheet,32.0,643,261,05/26/2026
+400011,EcoShield Budget,Insulation,Hero,Rigid Foamboard Insulation,R-7.5,Sheet,32.0,731,0,0/00/0000
+400012,EcoShield Budget,Insulation,Hero,Rigid Foamboard Insulation,R-10,Sheet,32.0,779,0,0/00/0000
+400013,EcoShield Budget,Insulation,6-mil Poly Vapor Barrier,6-mil Poly Vapor Barrier,Universal,Roll,95.0,11,5,04/07/2026
+400014,EcoShield Budget,Insulation,Insulation Fabric Backing,Insulation Fabric Backing,Universal,Roll,120.0,11,5,04/07/2026
 400015,EcoShield Budget,Insulation,Insulation Support Wires,Insulation Support Wires,Universal,Box,15.0,50,0,0/00/0000
