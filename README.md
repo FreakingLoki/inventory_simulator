@@ -1,7 +1,7 @@
 # Building Products Quote Generator
-A tool for generating quotes for construction jobs 
-(siding only for now with more to come) with
-fictitious pricing and recommended add-ons.
+A tool for generating quotes for construction jobs with
+fictitious pricing and recommended add-ons based on a fictitious warehouse
+environment with incoming and outgoing orders.
 
 ## Project Motivation
 ### The Inspiration 
@@ -52,6 +52,20 @@ file which lays out the color-matching rules for each product category.
 I use the Pandas module to convert these CSVs to a local database (acting as a local copy
 of a remote corporate database) into SQL for ease of use and better computational speed.
 The local copy of the database is updated every time the user launches the application.
+
+### Precision Quoting
+Users can choose between four methods for calculating quotes:
+- Standard: Uses industry-average ratios for quick estimates
+- Site-Specific: Prompts the user for actual job-site measurements for highly accurate material lists
+- Custom: Allows for manual entry of specific product counts
+- Skip: Quickly generates a quote for only the main product without recommending add-ons.
+
+### Inventory Seeding and Randomization
+The application includes a tool for seeding the `products.csv` file with generated building products
+to enable easier addition or removal of new categories or product lines. Instead of modifying many lines
+of code to add a new product, I can now add a couple lines in the `seed_inventory.py` script. Additionally,
+I've added the script `randomize_inventory.py` which randomizes inventory levels, incoming stock amounts,
+and incoming stock dates. This tool uses random numbers with some constraints to keep the simulation realistic.
 
 ## Technical Architecture
 ### The Stack
@@ -124,12 +138,6 @@ eventually filters down to passing data to a few final checks before passing eve
 the `display_quote()` function which handles the layout of the quote in the terminal.
 
 ## Planned Future Features
-### Inventory Script
-The main idea here is to randomize the inventory levels (within some logical bounds), 
-restock amount, and restock dates of every item in the products.csv file to simulate
-a working business. This script could also be used to add new lines of products, new
-accessories and act as a general inventory maintenance tool.
-
 ### Order History
 After a quote is generated, the user should be asked if the customer would like to order
 the quoted items. Then, the details should be added (such as a customer account number, 
@@ -146,6 +154,13 @@ popular items, and more could be useful tools to have.
 Testing each new update to the function is quickly becoming a large endeavor in itself. Building 
 tests to ensure each piece works as it should, will enable more focus on improving and updating
 and less focus on re-running the same commands.
+
+### Inventory Control Tools
+The program is missing tools for users to manage the inventory of the warehouse. I need to add the
+ability to modify inventory levels and generate "cycle count" lists for users of the application. 
+Depending on how ambitious I'm feeling I may also add Purchase Order tracking (and generation), which 
+would require each incoming load of each product to have a unique lot number or manufacture date. This
+would require adding new columns to several CSV files and the SQL database to accommodate the new information.
 
 ## How to Run
 To run this project locally, follow these steps:
