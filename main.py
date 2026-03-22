@@ -558,7 +558,14 @@ def generate_quote(product_id):
                     stock_warnings.append(msg)
 
         # ----- final output
-        display_quote(item, final_hero_qty, final_accessories, stock_warnings)
+        # construct a dictionary of the quote data and return that
+        quote_data = {
+            "hero": item,
+            "quantity": final_hero_qty,
+            "accessories": final_accessories,
+            "warnings": stock_warnings
+        }
+        return quote_data
 
     except ValueError:
         print("Error: Invalid input. Please enter numeric values for quantities.")
@@ -597,6 +604,83 @@ def display_inventory_list(only_heroes=True):
     finally:
         if connection:
             connection.close()
+
+def handle_quote_actions(quote_data, customer=None):
+    """Displays the generated quote and gives the user choices to:
+    1. Finalize Order
+    2. Modify Quantities
+    3. Discard"""
+
+    while True:
+        # calculate the grand total here for the display function
+        hero_total = quote_data['hero']['price'] * quote_data['quantity']
+        accessory_total = sum((acc['price'] * math.ceil(quote_data['quantity'] * acc['quantity_multiplier']))
+                        for acc in quote_data['accessories'])
+        grand_total = hero_total + accessory_total
+
+        # call the display_quote function, passing the totals to it
+        display_quote(quote_data['hero'], quote_data['quantity'], quote_data['accessories'], quote_data['warnings'])
+
+        # if a customer account was selected
+        if customer:
+            print(f" --- Customer: {customer['customer_name']} --- ")
+        else:
+            print(f" --- Guest Quote ---")
+        print("01: Submit and Finalize Order")
+        print("02: Modify Quantities (Add/Remove items)")
+        print("03: Discard Quote")
+
+        choice = input("\nEnter Selection: ")
+
+        match choice:
+            case "01":
+                # submit and finalize order
+                if customer:
+                    # run a credit check
+                    allowed, message = check_credit_status(customer, grand_total)
+                    if not allowed:
+                        print(f"\n{message}")
+                        continue # return to the menu to modify the order or discard it
+
+                    # if the credit check passes, move on to the final step
+                    submit_order(quote_data, customer, grand_total)
+                    break
+
+            case "02":
+                # modify quantities and add or remove items
+                # this logic will be built later
+                print("Quote modification coming soon...")
+            case "03":
+                # discard the quote and do not save to order history
+                confirmation = input("Are you sure you'd like to discard this quote? (y/n): ")
+                if confirmation == "y":
+                    print("Quote discarded")
+                    break
+                else:
+                    print(f"You entered {confirmation}, returning to quote options menu...")
+                    continue
+
+def start_quote_flow():
+    """This function is called when the user wants to generate a quote. It runs all related functions for quote
+    generation."""
+
+    # get the product id number
+    product_id = int(input("Enter Product ID: "))
+
+    # get the customer account number
+    print("\n ----- Customer Selection -----")
+    account_number = int(input("Enter Customer Account Number or 0 for Guest: "))
+    if account_number != 0:
+        current_customer = find_customer(account_number)
+        if not current_customer:
+            # for now, default to guest mode if the account number isn't found
+            print(f"Account {account_number} not found, proceeding as Guest...")
+
+    # begin the quote process
+    quote_data = generate_quote(product_id)
+
+
+
 
 def main_menu():
     """This is the main menu function which serves as the main interface of the application"""
