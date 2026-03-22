@@ -60,12 +60,16 @@ def initialize_local_database():
         products_df = pd.read_csv('products.csv')
         requirements_df = pd.read_csv('requirements.csv')
         rules_df = pd.read_csv('category_rules.csv')
+        customers_df = pd.read_csv('customers.csv')
+        orders_df = pd.read_csv('orders.csv')
 
         # load the data into SQL tables from the DataFrames
         # the 'replace' tag ensures that if the CSV files are updated, the database is updated when the program is launched
         products_df.to_sql('products', connection, if_exists='replace', index=False)
         requirements_df.to_sql('requirements', connection, if_exists='replace', index=False)
         rules_df.to_sql('rules', connection, if_exists='replace', index=False)
+        customers_df.to_sql('customers', connection, if_exists='replace', index=False)
+        orders_df.to_sql('orders', connection, if_exists='replace', index=False)
 
     except Exception as e:
         # if there's a problem, notify the user
@@ -422,15 +426,26 @@ def calculate_custom_quantities(hero_qty, accessories):
 
     return calculated_results
 
-def find_customer():
+def find_customer(account_number):
+    """Fetches a customer's information from the local database"""
+
     customer_id = None
     connection = None
     try:
         connection = sqlite3.connect('local_inventory.db')
+        connection.row_factory = sqlite3.Row
         cursor = connection.cursor()
-        cust_nbr = int(input(f"Enter the Customer Account Number: "))
 
         sql_query = "SELECT * FROM customers WHERE account_number = ?"
+        cursor.execute(sql_query, (account_number,))
+        customer = cursor.fetchone()
+
+        if customer:
+            # if the customer was found, return the customer as a Python dictionary
+            return dict(customer)
+        else:
+            print(f"Error, Account #{account_number} not found.")
+            return None
     except Exception as e:
         print(f"Error:\n{e}")
     finally:
