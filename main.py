@@ -616,6 +616,81 @@ def display_inventory_list(only_heroes=True):
         if connection:
             connection.close()
 
+def get_next_invoice_number():
+    """Checks the CSV for the highest invoice number and increments it."""
+
+    try:
+        dataframe = pd.read_csv('orders.csv')
+        if dataframe.empty or 'invoice_number' not in dataframe.columns:
+            return 1001
+        return int(dataframe['invoice_number'].max()) + 1
+    except Exception:
+        return 1001
+
+
+def submit_order(quote_data, customer, grand_total):
+    """Updates the remote CSVs and refreshes the local SQL database."""
+
+    invoice_nbr = get_next_invoice_number()
+    order_date = pd.Timestamp.now().strftime('%m/%d/%Y')
+
+    # load the data from the CSV files
+    products_df = pd.read_csv('products.csv')
+    customers_df = pd.read_csv('customers.csv')
+    orders_df = pd.read_csv('orders.csv')
+
+    new_entries = []
+
+    # process the hero product
+    hero_id = int(quote_data['hero']['id'])
+    products_df.loc[products_df['id'] == hero_id, 'inventory'] -= quote_data['quantity']
+
+    new_entries.append({
+        "invoice_number": invoice_nbr,
+        "account_number": customer['account_number'] if customer else "GUEST",
+        "date": order_date,
+        "product_id": hero_id,
+        "quantity": quote_data['quantity'],
+        "line_total": round(quote_data['hero']['price'] * quote_data['quantity'], 2)
+    })
+
+    # process accessories
+    for acc in quote_data['accessories']:
+        acc_id = int(acc['id'])
+        qty_needed = math.ceil(quote_data['quantity'] * acc['quantity_multiplier'])
+
+        # Update Inventory
+        products_df.loc[products_df['id'] == acc_id, 'inventory'] -= qty_needed
+
+        # Create Order Line
+        new_entries.append({
+            "invoice_number": invoice_nbr,
+            "account_number": customer['account_number'] if customer else "GUEST",
+            "date": order_date,
+            "product_id": acc_id,
+            "quantity": qty_needed,
+            "line_total": round(acc['price'] * qty_needed, 2)
+        })
+
+    # update the customer's unpaid balance
+    if customer:
+        acct = customer['account_number']
+        customers_df.loc[customers_df['account_number'] == acct, 'unpaid_balance'] += grand_total
+
+    # save the changes to the CSV files
+    products_df.to_csv('products.csv', index=False)
+    customers_df.to_csv('customers.csv', index=False)
+
+    # add the order to the order history
+    updated_orders = pd.concat([orders_df, pd.DataFrame(new_entries)], ignore_index=True)
+    updated_orders.to_csv('orders.csv', index=False)
+
+    # refresh and synchronize the database
+    initialize_local_database()
+
+    print(f"\n[SUCCESS] Invoice #{invoice_nbr} finalized.")
+    print(f"Inventory reduced and ${grand_total:,.2f} charged to record.")
+
 def handle_quote_actions(quote_data, customer=None):
     """Displays the generated quote and gives the user choices to:
     1. Finalize Order
@@ -676,12 +751,16 @@ def start_quote_flow():
     generation."""
 
     # get the product id number
-    product_id = int(input("Enter Product ID: "))
+    product_id = input("Enter Product ID: ").strip()
+    if not product_id:
+        print("Invalid Product ID, returning to menu.")
+        return
 
     # get the customer account number
     print("\n ----- Customer Selection -----")
-    account_number = int(input("Enter Customer Account Number or 0 for Guest: "))
-    if account_number != 0:
+    account_number = input("Enter Customer Account Number or 0 for Guest: ").strip()
+    current_customer = None
+    if account_number and account_number != "0":
         current_customer = find_customer(account_number)
         if not current_customer:
             # for now, default to guest mode if the account number isn't found
@@ -690,8 +769,9 @@ def start_quote_flow():
     # begin the quote process
     quote_data = generate_quote(product_id)
 
-
-
+    # if quote data was successfully generated, hand off to the quote action menu
+    if quote_data:
+        handle_quote_actions(quote_data, current_customer)
 
 def main_menu():
     """This is the main menu function which serves as the main interface of the application"""
