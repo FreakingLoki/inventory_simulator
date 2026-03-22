@@ -422,6 +422,21 @@ def calculate_custom_quantities(hero_qty, accessories):
 
     return calculated_results
 
+def find_customer():
+    customer_id = None
+    connection = None
+    try:
+        connection = sqlite3.connect('local_inventory.db')
+        cursor = connection.cursor()
+        cust_nbr = int(input(f"Enter the Customer Account Number: "))
+
+        sql_query = "SELECT * FROM customers WHERE account_number = ?"
+    except Exception as e:
+        print(f"Error:\n{e}")
+    finally:
+        if connection:
+            connection.close()
+
 def generate_quote(product_id):
     """
     The master controller for quote generation.
