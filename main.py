@@ -109,7 +109,7 @@ def check_setup():
             tables = [row[0] for row in cursor.fetchall()]
 
             # list of tables that should be in the database
-            expected_tables = ['products', 'requirements', 'rules']
+            expected_tables = ['products', 'requirements', 'rules', 'customers', 'orders']
             # check if the expected tables are present
             # if they're present, return true, if not return false
             if all(table in tables for table in expected_tables):
@@ -279,7 +279,7 @@ def get_site_specs(category):
         specs['valleys_ft'] = float(input("Total Linear Feet of Valleys: ") or 0)
         specs['total_sqft'] = float(input("Total Roof Square Footage (Deck Area): ") or 0)
 
-    elif category == "Sheetrock" or "Insulation":
+    elif category == "Sheetrock" or category == "Insulation":
         print(f"\n--- {category} Site Details ---")
         specs['square_ft'] = float(input("Total Square Feet of Wall") or 0)
 
@@ -451,6 +451,17 @@ def find_customer(account_number):
     finally:
         if connection:
             connection.close()
+
+def check_credit_status(customer, order_total):
+    """Checks if a customer has enough credit to place an order"""
+
+    projected_balance = customer['unpaid_balance'] + order_total
+
+    if projected_balance > customer['credit_limit']:
+        overage = projected_balance - customer['credit_limit']
+        return False, f"Credit Denied: Order Total ${order_total:,.2f} is ${overage:,.2f} over the customer's credit limit."
+
+    return True, "Credit approved."
 
 def generate_quote(product_id):
     """
@@ -698,9 +709,7 @@ def main_menu():
         #check the user's input choice
         match choice:
             case '01':
-                p_id = input("Enter Product ID: ")
-                generate_quote(p_id)
-
+                start_quote_flow()
 
             case '02' | '03':
                 # this line displays only the hero items if the user selects option 02
