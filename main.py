@@ -429,7 +429,6 @@ def calculate_custom_quantities(hero_qty, accessories):
 def find_customer(account_number):
     """Fetches a customer's information from the local database"""
 
-    customer_id = None
     connection = None
     try:
         connection = sqlite3.connect('local_inventory.db')
@@ -484,7 +483,7 @@ def generate_quote(product_id):
 
         if not item:
             print(f"Error: Product ID {product_id} not found.")
-            return
+            return None
 
         # ----- determine the calculation mode and define the variables
         mode = get_calculation_mode()
@@ -520,12 +519,14 @@ def generate_quote(product_id):
                 WHERE p.category = ? AND p.brand = ? AND (p.sub_type = ? OR p.sub_type = 'Universal')
                 AND p.sub_category != 'Hero'
             """
-            cursor.execute(sql_query, (item['category'], item['brand'], item['sub_type']))
-            raw_accs = cursor.fetchall()
+
+            # explicitly cast these as strings so that pycharm stops complaining
+            cursor.execute(sql_query, (str(item['category']), str(item['brand']), str(item['sub_type'])))
+            raw_accessories = cursor.fetchall()
 
             # map the site-calculated multipliers to the database items
-            for row in raw_accs:
-                acc_dict = dict(row)
+            for row in raw_accessories:
+                acc_dict = {key: row[key] for key in row.keys()}
                 # get the multiplier calculated in the math module
                 # use .get() to default to 0 if an accessory isn't needed for this site
                 acc_dict['quantity_multiplier'] = site_multipliers.get(row['sub_category'], 0)
@@ -541,11 +542,11 @@ def generate_quote(product_id):
                 WHERE p.category = ? AND p.brand = ? AND (p.sub_type = ? OR p.sub_type = 'Universal')
                 AND p.sub_category != 'Hero'
             """, (item['category'], item['brand'], item['sub_type']))
-            raw_accs = cursor.fetchall()
+            raw_accessories = cursor.fetchall()
 
             print("\n--- Manual Accessory Entry ---")
-            for row in raw_accs:
-                acc_dict = dict(row)
+            for row in raw_accessories:
+                acc_dict = {key: row[key] for key in row.keys()}
                 user_count = float(input(f"How many {acc_dict['name']}? ") or 0)
                 acc_dict['quantity_multiplier'] = user_count / final_hero_qty
                 if user_count > 0:
@@ -554,9 +555,12 @@ def generate_quote(product_id):
         # ----- stock validation
         # check hero
         if final_hero_qty > item['inventory']:
-            in_qty, in_date = get_restock_info(product_id)
+            # force product_id to string to keep pycharm from throwing a "soft error"
+            in_qty, in_date = get_restock_info(str(product_id))
             msg = f"MAIN ITEM: {item['name']} - Need {final_hero_qty}, only {item['inventory']} on hand."
-            if in_qty > 0: msg += f" ({in_qty} arriving {in_date})"
+            # explicitly cast in_qty to be an integer for the comparison operation
+            if int(in_qty) > 0:
+                msg += f" ({in_qty} arriving {in_date})"
             stock_warnings.append(msg)
 
         # check accessories
@@ -565,7 +569,9 @@ def generate_quote(product_id):
                 needed = math.ceil(final_hero_qty * acc['quantity_multiplier'])
                 if needed > acc['inventory']:
                     msg = f"ACCESSORY: {acc['name']} - Need {needed}, only {acc['inventory']} on hand."
-                    if acc['incoming'] > 0: msg += f" ({acc['incoming']} arriving {acc['restock_date']})"
+                    # explicitly cast acc['incoming'] to an integer for the comparison operation
+                    if int(acc['incoming']) > 0:
+                        msg += f" ({acc['incoming']} arriving {acc['restock_date']})"
                     stock_warnings.append(msg)
 
         # ----- final output
@@ -624,7 +630,8 @@ def get_next_invoice_number():
         if dataframe.empty or 'invoice_number' not in dataframe.columns:
             return 1001
         return int(dataframe['invoice_number'].max()) + 1
-    except Exception:
+    except (FileNotFoundError, pd.errors.EmptyDataError) as e:
+        print(f"An error occurred while fetching the next invoice number:\n{e}")
         return 1001
 
 
