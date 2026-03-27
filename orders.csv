@@ -1,1 +1,1 @@
-invoice_id,account_nbr,date,product_id,qty,line_total
+invoice_number,account_number,date,product_id,quantity,line_total
