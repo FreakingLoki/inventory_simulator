@@ -67,6 +67,11 @@ of code to add a new product, I can now add a couple lines in the `seed_inventor
 I've added the script `randomize_inventory.py` which randomizes inventory levels, incoming stock amounts,
 and incoming stock dates. This tool uses random numbers with some constraints to keep the simulation realistic.
 
+### Order History
+When a user generates a quote for a customer, they have the option to modify, discard, or submit the quote
+as an order. All submitted quotes are added to the "remote" `orders.csv` with an invoice number. Additionally
+submitting a quote properly adjusts local inventory levels so that inventory counts stay accurate.
+
 ## Technical Architecture
 ### The Stack
 Python 3.14, SQLite, and Pandas for database initialization
@@ -87,7 +92,7 @@ category handles color matching. The `category_rules.csv` table has these column
 `category`, `color_matching_type`.
 
 ### Environment Safety
-The application features a functino called `check_setup()` which verifies the local
+The application features a function called `check_setup()` which verifies the local
 instance of the virtual environment and the local database. It runs immediately after the 
 database is initialized. If any problems are detected it returns False which causes
 the application to close after warning the user.
@@ -98,12 +103,9 @@ Adding a new product line has been planned for. It only requires updating the CS
 files with the product information, the accessory relationships, and the category
 color-matching rules.
 
-In the future, I plan to construct a script which auto-generates several 
-hundred products and populates the `products.csv` file, then randomizes inventory
-levels and restock dates.
-
-Note: The script which generates products has been added, but the randomized
-inventory levels has not been added yet.
+There is also a script which auto-generates several hundred products and populates
+the `products.csv` file, then randomizes inventory levels and restock dates. This script
+makes it much easier to add product lines to the warehouse.
 
 ### The 'Hyphen' Bug
 Early in developing the application, when I named the columns in the `products.csv`
@@ -138,12 +140,12 @@ eventually filters down to passing data to a few final checks before passing eve
 the `display_quote()` function which handles the layout of the quote in the terminal.
 
 ## Planned Future Features
-### Order History
-After a quote is generated, the user should be asked if the customer would like to order
-the quoted items. Then, the details should be added (such as a customer account number, 
-order date, and shipment address), and the entire set of data (products ordered, amount 
-paid, plus the customer information) should be saved to a database. Additionally, a script
-will be built to construct some generated historical data.
+### Push Order Dates
+If an order is submitted which will drive inventory negative, that order should be pushed out so that
+its date is *after* enough incoming inventory has been received to fill the entirety of the order. In
+other words, I need to add a way to protect the system from allowing sales of more product than what is
+on hand. Stock warnings should be updated to warn the user that their order is being delayed until the
+warehouse has enough inventory to fill the order.
 
 ### Business Analysis Tools
 Once the order history component has been built, adding this feature would allow a user to
