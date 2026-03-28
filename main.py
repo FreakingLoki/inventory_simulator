@@ -447,6 +447,8 @@ def find_customer(account_number):
             return None
     except Exception as e:
         print(f"Error:\n{e}")
+        # also return None if an error occurs
+        return None
     finally:
         if connection:
             connection.close()
@@ -500,7 +502,7 @@ def generate_quote(product_id):
             final_hero_qty = float(input(f"Enter quantity of {item['unit']}s: "))
             # the standard mode SQL fetch uses requirements.csv
             sql_query = """
-                SELECT p.brand, p.name, p.price, p.inventory, p.incoming, p.restock_date, r.quantity_multiplier, p.unit
+                SELECT p.id, p.brand, p.name, p.price, p.inventory, p.incoming, p.restock_date, r.quantity_multiplier, p.unit
                 FROM products p
                 JOIN requirements r ON p.sub_category = r.required_accessory
                 WHERE r.category = ? AND p.brand = ? AND (p.sub_type = ? OR p.sub_type = 'Universal')
@@ -514,7 +516,7 @@ def generate_quote(product_id):
 
             # fetch all possible accessories for this brand
             sql_query = """
-                SELECT p.brand, p.name, p.price, p.inventory, p.incoming, p.restock_date, p.sub_category, p.unit
+                SELECT p.id, p.brand, p.name, p.price, p.inventory, p.incoming, p.restock_date, p.sub_category, p.unit
                 FROM products p
                 WHERE p.category = ? AND p.brand = ? AND (p.sub_type = ? OR p.sub_type = 'Universal')
                 AND p.sub_category != 'Hero'
@@ -537,7 +539,7 @@ def generate_quote(product_id):
             final_hero_qty = float(input(f"Enter quantity of {item['unit']}s: "))
             # fetch all matching accessories first
             cursor.execute("""
-                SELECT p.brand, p.name, p.price, p.inventory, p.incoming, p.restock_date, p.unit
+                SELECT p.id, p.brand, p.name, p.price, p.inventory, p.incoming, p.restock_date, p.unit
                 FROM products p
                 WHERE p.category = ? AND p.brand = ? AND (p.sub_type = ? OR p.sub_type = 'Universal')
                 AND p.sub_category != 'Hero'

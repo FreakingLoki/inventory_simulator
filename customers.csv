@@ -1,11 +1,11 @@
 account_number,customer_name,credit_limit,unpaid_balance,last_payment_date
-1001,Arc Lumber Supply,15000,2000,3/20/2026
-1002,Bravo Construction,2500,0,2/16/2026
+1001,Arc Lumber Supply,15000,6127.2,3/20/2026
+1002,Bravo Construction,2500,0.0,2/16/2026
 1003,Circuit Contractor Supply,5000,125.36,2/28/2026
-1004,Delta Lumber,750,750,1/15/2026
+1004,Delta Lumber,750,750.0,1/15/2026
 1005,Epiphone Hardware,1000,238.56,3/9/2026
 1006,Fred's Lumer,6000,1565.48,3/12/2026
 1007,Georgia Siding Corporation,1250,57.89,3/18/2026
 1008,Home Product Supply,7500,824.67,3/6/2026
 1009,Indigo Roofing Supply,5000,156.36,3/6/2026
-1010,Juniper Lumber,25000,0,2/15/2026
+1010,Juniper Lumber,25000,0.0,2/15/2026
