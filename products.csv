@@ -1,6 +1,6 @@
 id,brand,category,sub_category,name,sub_type,unit,price,inventory,incoming,restock_date
 100001,Vertex Premium,Siding,Hero,Double-4 Siding,Snow White,Square,252.0,87,62,04/28/2026
-100002,Vertex Premium,Siding,Hero,Double-4 Siding,Pebble,Square,252.0,47,0,0/00/0000
+100002,Vertex Premium,Siding,Hero,Double-4 Siding,Pebble,Square,252.0,29,0,0/00/0000
 100003,Vertex Premium,Siding,Hero,Double-4 Siding,Sandstone,Square,252.0,53,168,03/22/2026
 100004,Vertex Premium,Siding,Hero,Double-4 Siding,Midnight Blue,Square,252.0,502,0,0/00/0000
 100005,Vertex Premium,Siding,Hero,Double-4 Siding,Sage Green,Square,252.0,458,0,0/00/0000
@@ -13,7 +13,7 @@ id,brand,category,sub_category,name,sub_type,unit,price,inventory,incoming,resto
 100012,Vertex Premium,Siding,Hero,Double-4 Siding,Sunset,Square,252.0,254,0,0/00/0000
 100013,Vertex Premium,Siding,Hero,Board and Batten Siding,Snow White,Square,294.0,351,170,05/03/2026
 100014,Vertex Premium,Siding,Hero,Board and Batten Siding,Pebble,Square,294.0,472,123,05/01/2026
-100015,Vertex Premium,Siding,Hero,Board and Batten Siding,Sandstone,Square,294.0,153,79,03/21/2026
+100015,Vertex Premium,Siding,Hero,Board and Batten Siding,Sandstone,Square,294.0,149,79,03/21/2026
 100016,Vertex Premium,Siding,Hero,Board and Batten Siding,Midnight Blue,Square,294.0,374,0,0/00/0000
 100017,Vertex Premium,Siding,Hero,Board and Batten Siding,Sage Green,Square,294.0,390,0,0/00/0000
 100018,Vertex Premium,Siding,Hero,Board and Batten Siding,Honeycrisp,Square,294.0,406,99,04/19/2026
@@ -48,8 +48,8 @@ id,brand,category,sub_category,name,sub_type,unit,price,inventory,incoming,resto
 100047,Vertex Premium,Siding,Hero,Shake-Style Siding,Burgundy,Square,392.0,144,0,0/00/0000
 100048,Vertex Premium,Siding,Hero,Shake-Style Siding,Sunset,Square,392.0,259,62,06/05/2026
 100049,Vertex Premium,Siding,J-Channel,J-Channel,Snow White,PC,17.5,177,126,04/28/2026
-100050,Vertex Premium,Siding,J-Channel,J-Channel,Pebble,PC,17.5,200,127,04/28/2026
-100051,Vertex Premium,Siding,J-Channel,J-Channel,Sandstone,PC,17.5,182,132,04/28/2026
+100050,Vertex Premium,Siding,J-Channel,J-Channel,Pebble,PC,17.5,164,127,04/28/2026
+100051,Vertex Premium,Siding,J-Channel,J-Channel,Sandstone,PC,17.5,174,132,04/28/2026
 100052,Vertex Premium,Siding,J-Channel,J-Channel,Midnight Blue,PC,17.5,191,120,04/28/2026
 100053,Vertex Premium,Siding,J-Channel,J-Channel,Sage Green,PC,17.5,209,124,04/28/2026
 100054,Vertex Premium,Siding,J-Channel,J-Channel,Honeycrisp,PC,17.5,180,117,04/28/2026
@@ -60,8 +60,8 @@ id,brand,category,sub_category,name,sub_type,unit,price,inventory,incoming,resto
 100059,Vertex Premium,Siding,J-Channel,J-Channel,Burgundy,PC,17.5,208,115,04/28/2026
 100060,Vertex Premium,Siding,J-Channel,J-Channel,Sunset,PC,17.5,195,129,04/28/2026
 100061,Vertex Premium,Siding,Finish Trim,Finish Trim,Snow White,PC,21.0,84,60,04/28/2026
-100062,Vertex Premium,Siding,Finish Trim,Finish Trim,Pebble,PC,21.0,101,65,04/28/2026
-100063,Vertex Premium,Siding,Finish Trim,Finish Trim,Sandstone,PC,21.0,90,59,04/28/2026
+100062,Vertex Premium,Siding,Finish Trim,Finish Trim,Pebble,PC,21.0,83,65,04/28/2026
+100063,Vertex Premium,Siding,Finish Trim,Finish Trim,Sandstone,PC,21.0,86,59,04/28/2026
 100064,Vertex Premium,Siding,Finish Trim,Finish Trim,Midnight Blue,PC,21.0,88,61,04/28/2026
 100065,Vertex Premium,Siding,Finish Trim,Finish Trim,Sage Green,PC,21.0,111,63,04/28/2026
 100066,Vertex Premium,Siding,Finish Trim,Finish Trim,Honeycrisp,PC,21.0,88,68,04/28/2026
@@ -72,8 +72,8 @@ id,brand,category,sub_category,name,sub_type,unit,price,inventory,incoming,resto
 100071,Vertex Premium,Siding,Finish Trim,Finish Trim,Burgundy,PC,21.0,84,61,04/28/2026
 100072,Vertex Premium,Siding,Finish Trim,Finish Trim,Sunset,PC,21.0,90,64,04/28/2026
 100073,Vertex Premium,Siding,Starter Strip,Starter Strip,Snow White,PC,14.0,173,119,04/28/2026
-100074,Vertex Premium,Siding,Starter Strip,Starter Strip,Pebble,PC,14.0,194,137,04/28/2026
-100075,Vertex Premium,Siding,Starter Strip,Starter Strip,Sandstone,PC,14.0,214,118,04/28/2026
+100074,Vertex Premium,Siding,Starter Strip,Starter Strip,Pebble,PC,14.0,158,137,04/28/2026
+100075,Vertex Premium,Siding,Starter Strip,Starter Strip,Sandstone,PC,14.0,206,118,04/28/2026
 100076,Vertex Premium,Siding,Starter Strip,Starter Strip,Midnight Blue,PC,14.0,221,131,04/28/2026
 100077,Vertex Premium,Siding,Starter Strip,Starter Strip,Sage Green,PC,14.0,207,135,04/28/2026
 100078,Vertex Premium,Siding,Starter Strip,Starter Strip,Honeycrisp,PC,14.0,187,120,04/28/2026
@@ -84,8 +84,8 @@ id,brand,category,sub_category,name,sub_type,unit,price,inventory,incoming,resto
 100083,Vertex Premium,Siding,Starter Strip,Starter Strip,Burgundy,PC,14.0,177,127,04/28/2026
 100084,Vertex Premium,Siding,Starter Strip,Starter Strip,Sunset,PC,14.0,227,135,04/28/2026
 100085,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Snow White,PC,11.9,47,39,04/28/2026
-100086,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Pebble,PC,11.9,70,44,04/28/2026
-100087,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Sandstone,PC,11.9,64,43,04/28/2026
+100086,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Pebble,PC,11.9,58,44,04/28/2026
+100087,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Sandstone,PC,11.9,61,43,04/28/2026
 100088,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Midnight Blue,PC,11.9,62,43,04/28/2026
 100089,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Sage Green,PC,11.9,57,43,04/28/2026
 100090,Vertex Premium,Siding,Trim Nails (1lb),Trim Nails (1lb),Honeycrisp,PC,11.9,73,40,04/28/2026

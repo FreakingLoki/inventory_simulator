@@ -782,6 +782,62 @@ def start_quote_flow():
     if quote_data:
         handle_quote_actions(quote_data, current_customer)
 
+def get_invoice_data(invoice_number):
+    """This function pulls invoice data from the SQL database and returns a list of dictionaries or None."""
+
+    connection = None
+    try:
+        connection = sqlite3.connect('local_inventory.db')
+        connection.row_factory = sqlite3.Row
+        cursor = connection.cursor()
+
+        sql_query = """
+            SELECT o.invoice_number, o.date, o.account_number, p.brand, p.name, o.quantity, p.unit, o.line_total,
+            c.customer_name
+            FROM orders o
+            JOIN products p ON o.product_id = p.id
+            LEFT JOIN customers c ON o.account_number = c.account_number
+            WHERE o.invoice_number = ?
+        """
+        cursor.execute(sql_query, (invoice_number,))
+        rows = cursor.fetchall()
+        return [dict(row) for row in rows] if rows else None
+
+    except sqlite3.Error as e:
+        print(f"An error occurred while fetching invoice data:\n{e}")
+        return None
+    finally:
+        if connection:
+            connection.close()
+
+def display_invoice(invoice_data):
+    """Takes in a list of dictionaries of orders and prints a formatted invoice."""
+
+    if not invoice_data:
+        print("\n[!] No invoice data to display.")
+        return
+
+        # Grab header info from the first item in the list
+    header = invoice_data[0]
+    invoice_no = header['invoice_number']
+    customer = header['customer_name'] if header['customer_name'] else "GUEST"
+
+    print("\n" + "=" * 60)
+    print(f"{'INVOICE: #' + str(invoice_no):^60}")
+    print(f"{'Date: ' + header['date']:^60}")
+    print(f"{'Customer: ' + customer:^60}")
+    print("=" * 60)
+
+    grand_total = 0
+    for row in invoice_data:
+        display_name = f"{row['brand']} {row['name']}"
+        print(f"- {display_name:.<40} {row['quantity']:>5} {row['unit']:<6} | ${row['line_total']:>10,.2f}")
+        grand_total += row['line_total']
+
+    print("-" * 60)
+    print(f"{'TOTAL DUE:':>48} ${grand_total:>10,.2f}")
+    print("=" * 60 + "\n")
+
 def main_menu():
     """This is the main menu function which serves as the main interface of the application"""
 
@@ -790,6 +846,7 @@ def main_menu():
         print("01: Generate A Quote")
         print("02: List Hero Products")
         print("03: List All Products")
+        print("04: View Order History")
         print("99: Exit")
 
         # get the user's menu selection
@@ -798,12 +855,26 @@ def main_menu():
         #check the user's input choice
         match choice:
             case '01':
+                # the user wants to generate a quote
                 start_quote_flow()
 
             case '02' | '03':
+                # the user wants to view hero products (02), or all products (03)
                 # this line displays only the hero items if the user selects option 02
                 # otherwise it displays all items
                 display_inventory_list(only_heroes=(choice == '02'))
+
+            case '04':
+                # the user wants to view order history
+                invoice_number = input("\nEnter Invoice Number: ").strip()
+                # fetch the data first
+                invoice_data = get_invoice_data(invoice_number)
+                # display the data if it was grabbed
+                if invoice_data:
+                    display_invoice(invoice_data)
+                else:
+                    print(f"Invoice #{invoice_number} not found.")
+
 
             case '99':
                 print("Exiting...")
