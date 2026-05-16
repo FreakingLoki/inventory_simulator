@@ -817,7 +817,7 @@ def display_invoice(invoice_data):
         print("\n[!] No invoice data to display.")
         return
 
-        # Grab header info from the first item in the list
+    # Grab header info from the first item in the list
     header = invoice_data[0]
     invoice_no = header['invoice_number']
     customer = header['customer_name'] if header['customer_name'] else "GUEST"
@@ -837,6 +837,70 @@ def display_invoice(invoice_data):
     print("-" * 60)
     print(f"{'TOTAL DUE:':>48} ${grand_total:>10,.2f}")
     print("=" * 60 + "\n")
+
+def get_recent_orders_summary():
+    """Fetches a summary of all unique invoices from the SQL database"""
+
+    connection = None
+    try:
+        connection = sqlite3.connect('local_inventory.db')
+        connection.row_factory = sqlite3.Row
+        cursor = connection.cursor()
+
+        sql_query = """
+            SELECT o.invoice_number, o.date, 
+                   COALESCE(c.customer_name, 'GUEST') as customer,
+                   SUM(o.line_total) as order_total
+            FROM orders o
+            LEFT JOIN customers c ON o.account_number = c.account_number
+            GROUP BY o.invoice_number
+            ORDER BY o.invoice_number DESC
+        """
+        cursor.execute(sql_query)
+        return [dict(row) for row in cursor.fetchall()]
+    except sqlite3.Error as e:
+        print(f"Database Error: {e}")
+        return None
+    finally:
+        if connection:
+            connection.close()
+
+def order_history_manager():
+    """The main interface for browsing and viewing orders"""
+
+    while True:
+        summary = get_recent_orders_summary()
+        if not summary:
+            print("\n[!] No order history found.")
+            break
+
+        display_order_ledger(summary)
+
+        choice = input("\nEnter Invoice # to view details (or 'q' to return to Main Menu): ").strip()
+
+        if choice.lower() == 'q' or not choice:
+            break
+
+        invoice_data = get_invoice_data(choice)
+        if invoice_data:
+            display_invoice(invoice_data) # Fixed name
+            input("Press Enter to return to the Ledger...")
+        else:
+            print(f"Invoice #{choice} not found.")
+
+def display_order_ledger(summary_data):
+    """Prints a table of all recent transactions"""
+
+    print("\n" + "=" * 70)
+    print(f"{'SALES LEDGER / ORDER HISTORY':^70}")
+    print("=" * 70)
+    print(f"{'INV #':<10} | {'Date':<12} | {'Customer':<25} | {'Total'}")
+    print("-" * 70)
+
+    for row in summary_data:
+        print(f"{row['invoice_number']:<10} | {row['date']:<12} | "
+              f"{row['customer']:<25} | ${row['order_total']:>10,.2f}")
+    print("=" * 70)
 
 def main_menu():
     """This is the main menu function which serves as the main interface of the application"""
@@ -866,15 +930,7 @@ def main_menu():
 
             case '04':
                 # the user wants to view order history
-                invoice_number = input("\nEnter Invoice Number: ").strip()
-                # fetch the data first
-                invoice_data = get_invoice_data(invoice_number)
-                # display the data if it was grabbed
-                if invoice_data:
-                    display_invoice(invoice_data)
-                else:
-                    print(f"Invoice #{invoice_number} not found.")
-
+                order_history_manager()
 
             case '99':
                 print("Exiting...")
