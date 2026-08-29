@@ -794,14 +794,13 @@ def display_order_ledger(summary_data):
 
 
 def receive_po():
-    """Enables receiving of a delivery of product"""
+    """Simulates a delivery truck arriving and unloading expected stock."""
     product_id = input("\nEnter Product ID to receive: ").strip()
 
     connection = sqlite3.connect(DB_FILE)
     cursor = connection.cursor()
 
     try:
-        # Check if product exists and has incoming stock
         cursor.execute("SELECT quantity_incoming, expected_restock_date FROM inventory_status WHERE product_id = ?",
                        (product_id,))
         result = cursor.fetchone()
@@ -817,21 +816,37 @@ def receive_po():
             return
 
         print(f"Expected Delivery: {incoming} units (Scheduled for {restock_date}).")
-        confirm = input("Receive this shipment into on-hand inventory? (y/n): ").lower()
 
-        if confirm == 'y':
-            # Move incoming to on-hand, and zero out the expected delivery pipeline
-            cursor.execute("""
-                UPDATE inventory_status 
-                SET quantity_on_hand = quantity_on_hand + quantity_incoming,
-                    quantity_incoming = 0,
-                    expected_restock_date = NULL
-                WHERE product_id = ?
-            """, (product_id,))
-            connection.commit()
-            print(f"[SUCCESS] {incoming} units added to physical stock!")
-        else:
-            print("Receiving cancelled.")
+        # --- New Partial Delivery Logic ---
+        try:
+            received_qty = int(input(f"Enter quantity received (Expected: {incoming}): "))
+
+            if received_qty > 0:
+                if received_qty < incoming:
+                    # Partial delivery
+                    cursor.execute("""
+                        UPDATE inventory_status 
+                        SET quantity_on_hand = quantity_on_hand + ?,
+                            quantity_incoming = quantity_incoming - ?
+                        WHERE product_id = ?
+                    """, (received_qty, received_qty, product_id))
+                    print(
+                        f"[SUCCESS] Partial delivery of {received_qty} received. {incoming - received_qty} still on backorder.")
+                else:
+                    # Full delivery
+                    cursor.execute("""
+                        UPDATE inventory_status 
+                        SET quantity_on_hand = quantity_on_hand + ?,
+                            quantity_incoming = 0,
+                            expected_restock_date = NULL
+                        WHERE product_id = ?
+                    """, (received_qty, product_id))
+                    print(f"[SUCCESS] Shipment fully received! {received_qty} units added.")
+                connection.commit()
+            else:
+                print("Receiving cancelled or invalid amount.")
+        except ValueError:
+            print("Invalid input. Must be a whole number.")
 
     except sqlite3.Error as e:
         print(f"Database Error: {e}")
