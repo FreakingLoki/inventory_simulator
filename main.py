@@ -500,30 +500,80 @@ def get_next_invoice_number():
     return result + 1 if result else 1001
 
 
-def submit_order(quote_data, customer, grand_total):
-    """Pure SQL implementation to save orders and update ledgers seamlessly."""
+def check_order_feasibility(quote_data):
+    """
+    Evaluates if an order can be filled today, pushed to a future date, or must be rejected.
+    Returns: (is_possible, push_date, message)
+    """
+    latest_restock_date = datetime.now()
+    requires_delay = False
+
+    # Check Hero Item
+    hero = quote_data['hero']
+    hero_needed = quote_data['quantity']
+    if hero_needed > hero['inventory']:
+        if not hero['incoming'] or hero_needed > (hero['inventory'] + hero['incoming']):
+            return False, None, f"REJECTED: Hero item '{hero['name']}' requires {hero_needed}, but warehouse only has {hero['inventory']} on hand and {hero['incoming'] or 0} incoming."
+        requires_delay = True
+        hero_date = datetime.strptime(hero['restock_date'], '%Y-%m-%d') if hero['restock_date'] else datetime.now()
+        latest_restock_date = max(latest_restock_date, hero_date)
+
+    # Check Accessories
+    if quote_data['accessories'] != "None":
+        for acc in quote_data['accessories']:
+            acc_needed = math.ceil(quote_data['quantity'] * acc['quantity_multiplier'])
+            if acc_needed > acc['inventory']:
+                if not acc['incoming'] or acc_needed > (acc['inventory'] + acc['incoming']):
+                    return False, None, f"REJECTED: Accessory '{acc['name']}' requires {acc_needed}, but warehouse only has {acc['inventory']} on hand and {acc['incoming'] or 0} incoming."
+                requires_delay = True
+                acc_date = datetime.strptime(acc['restock_date'], '%Y-%m-%d') if acc['restock_date'] else datetime.now()
+                latest_restock_date = max(latest_restock_date, acc_date)
+
+    if requires_delay:
+        return True, latest_restock_date.strftime('%Y-%m-%d'), "DELAY REQUIRED"
+    return True, datetime.now().strftime('%Y-%m-%d'), "READY NOW"
+
+
+def submit_order(quote_data, customer, grand_total, order_date):
+    """Saves the order and deducts inventory dynamically across on-hand and incoming."""
     connection = sqlite3.connect(DB_FILE)
     cursor = connection.cursor()
     cursor.execute("PRAGMA foreign_keys = ON;")
 
     invoice_nbr = get_next_invoice_number()
-    order_date = datetime.now().strftime('%Y-%m-%d')
     acct_num = customer['account_number'] if customer else 0
 
     try:
-        # 1. Create Invoice Header
+        # 1. Create Invoice Header using the validated order_date
         cursor.execute("INSERT INTO orders (invoice_number, account_number, order_date) VALUES (?, ?, ?)",
                        (invoice_nbr, acct_num, order_date))
 
-        # 2. Process Hero Product Line Item & Inventory Deduction
+        # Helper logic to split deductions between on_hand and incoming if needed
+        def deduct_inventory(item_id, qty_needed):
+            cursor.execute("SELECT quantity_on_hand, quantity_incoming FROM inventory_status WHERE product_id = ?",
+                           (item_id,))
+            on_hand, incoming = cursor.fetchone()
+
+            if qty_needed <= on_hand:
+                cursor.execute(
+                    "UPDATE inventory_status SET quantity_on_hand = quantity_on_hand - ? WHERE product_id = ?",
+                    (qty_needed, item_id))
+            else:
+                remainder = qty_needed - on_hand
+                cursor.execute("""
+                    UPDATE inventory_status 
+                    SET quantity_on_hand = 0, quantity_incoming = quantity_incoming - ? 
+                    WHERE product_id = ?
+                """, (remainder, item_id))
+
+        # 2. Process Hero
         hero_id = int(quote_data['hero']['id'])
         cursor.execute(
             "INSERT INTO order_items (invoice_number, product_id, quantity, price_at_sale) VALUES (?, ?, ?, ?)",
             (invoice_nbr, hero_id, quote_data['quantity'], quote_data['hero']['price']))
-        cursor.execute("UPDATE inventory_status SET quantity_on_hand = quantity_on_hand - ? WHERE product_id = ?",
-                       (quote_data['quantity'], hero_id))
+        deduct_inventory(hero_id, quote_data['quantity'])
 
-        # 3. Process Accessories Line Items & Inventory Deduction
+        # 3. Process Accessories
         if quote_data['accessories'] != "None":
             for acc in quote_data['accessories']:
                 acc_id = int(acc['id'])
@@ -532,9 +582,7 @@ def submit_order(quote_data, customer, grand_total):
                 cursor.execute(
                     "INSERT INTO order_items (invoice_number, product_id, quantity, price_at_sale) VALUES (?, ?, ?, ?)",
                     (invoice_nbr, acc_id, qty_needed, acc['price']))
-                cursor.execute(
-                    "UPDATE inventory_status SET quantity_on_hand = quantity_on_hand - ? WHERE product_id = ?",
-                    (qty_needed, acc_id))
+                deduct_inventory(acc_id, qty_needed)
 
         # 4. Update Customer Balance
         if customer:
@@ -542,8 +590,8 @@ def submit_order(quote_data, customer, grand_total):
                            (grand_total, acct_num))
 
         connection.commit()
-        print(f"\n[SUCCESS] Invoice #{invoice_nbr} finalized.")
-        print(f"Inventory reduced and ${grand_total:,.2f} charged to record.")
+        print(f"\n[SUCCESS] Invoice #{invoice_nbr} successfully logged for {order_date}.")
+        print(f"Inventory updated and ${grand_total:,.2f} charged to record.")
 
     except sqlite3.Error as e:
         connection.rollback()
@@ -553,7 +601,7 @@ def submit_order(quote_data, customer, grand_total):
 
 
 def handle_quote_actions(quote_data, customer=None):
-    """Displays quote options."""
+    """Displays quote options and runs safety checks before submission."""
     while True:
         hero_total = quote_data['hero']['price'] * quote_data['quantity']
         accessory_total = 0
@@ -573,12 +621,31 @@ def handle_quote_actions(quote_data, customer=None):
 
         match choice:
             case "01":
+                # 1. Credit Check
                 if customer:
                     allowed, message = check_credit_status(customer, grand_total)
                     if not allowed:
                         print(f"\n{message}")
                         continue
-                submit_order(quote_data, customer, grand_total)
+
+                # 2. Inventory Feasibility Check
+                is_possible, order_date, status_msg = check_order_feasibility(quote_data)
+
+                if not is_possible:
+                    print(f"\n[!] ORDER BLOCKED: {status_msg}")
+                    print("Please modify quantities or discard the quote.")
+                    continue
+
+                if order_date != datetime.now().strftime('%Y-%m-%d'):
+                    print(f"\n[!] INVENTORY SHORTAGE: This order exceeds current on-hand stock.")
+                    print(f"The earliest we can fulfill this entire order is: {order_date}")
+                    confirm = input("Would you like to reserve this stock and push the order date? (y/n): ").lower()
+                    if confirm != 'y':
+                        print("Order cancelled by user.")
+                        continue
+
+                # 3. Submit
+                submit_order(quote_data, customer, grand_total, order_date)
                 break
             case "02":
                 print("Quote modification coming soon...")
@@ -726,6 +793,109 @@ def display_order_ledger(summary_data):
     print("=" * 70)
 
 
+def receive_po():
+    """Enables receiving of a delivery of product"""
+    product_id = input("\nEnter Product ID to receive: ").strip()
+
+    connection = sqlite3.connect(DB_FILE)
+    cursor = connection.cursor()
+
+    try:
+        # Check if product exists and has incoming stock
+        cursor.execute("SELECT quantity_incoming, expected_restock_date FROM inventory_status WHERE product_id = ?",
+                       (product_id,))
+        result = cursor.fetchone()
+
+        if not result:
+            print(f"[!] Product ID {product_id} not found in inventory.")
+            return
+
+        incoming, restock_date = result
+
+        if incoming <= 0:
+            print(f"[-] No incoming stock expected for Product {product_id}.")
+            return
+
+        print(f"Expected Delivery: {incoming} units (Scheduled for {restock_date}).")
+        confirm = input("Receive this shipment into on-hand inventory? (y/n): ").lower()
+
+        if confirm == 'y':
+            # Move incoming to on-hand, and zero out the expected delivery pipeline
+            cursor.execute("""
+                UPDATE inventory_status 
+                SET quantity_on_hand = quantity_on_hand + quantity_incoming,
+                    quantity_incoming = 0,
+                    expected_restock_date = NULL
+                WHERE product_id = ?
+            """, (product_id,))
+            connection.commit()
+            print(f"[SUCCESS] {incoming} units added to physical stock!")
+        else:
+            print("Receiving cancelled.")
+
+    except sqlite3.Error as e:
+        print(f"Database Error: {e}")
+    finally:
+        connection.close()
+
+
+def cycle_count():
+    """Allows manual override of physical stock for auditing."""
+    product_id = input("\nEnter Product ID to audit: ").strip()
+
+    connection = sqlite3.connect(DB_FILE)
+    cursor = connection.cursor()
+
+    try:
+        cursor.execute("SELECT quantity_on_hand FROM inventory_status WHERE product_id = ?", (product_id,))
+        result = cursor.fetchone()
+
+        if not result:
+            print(f"[!] Product ID {product_id} not found.")
+            return
+
+        current_stock = result[0]
+        print(f"System shows {current_stock} units on hand.")
+
+        try:
+            new_stock = int(input("Enter actual physical count: "))
+            if new_stock != current_stock:
+                cursor.execute("UPDATE inventory_status SET quantity_on_hand = ? WHERE product_id = ?",
+                               (new_stock, product_id))
+                connection.commit()
+                count_difference = new_stock - current_stock
+                print(f"[SUCCESS] Inventory adjusted by {count_difference} units. New total: {new_stock}")
+            else:
+                print("Count matches system. No adjustment needed.")
+        except ValueError:
+            print("Invalid input. Must be a whole number.")
+
+    except sqlite3.Error as e:
+        print(f"Database Error: {e}")
+    finally:
+        connection.close()
+
+
+def inventory_management_menu():
+    """Sub-menu for warehouse operations."""
+    while True:
+        print(f"\n --- Inventory Management ---")
+        print("01: Receive Incoming PO (Dock Delivery)")
+        print("02: Cycle Count (Manual Adjustment)")
+        print("03: Return to Main Menu")
+
+        choice = input("\nEnter Selection: ")
+        match choice:
+            case '01':
+                receive_po()
+            case '02':
+                cycle_count()
+            case '03':
+                break
+            case _:
+                print("Invalid selection.")
+
+
 def main_menu():
     """Main application loop."""
     while True:
@@ -734,6 +904,7 @@ def main_menu():
         print("02: List Hero Products")
         print("03: List All Products")
         print("04: View Order History")
+        print("05: Manage Inventory")
         print("99: Exit")
 
         choice = input("\nEnter Selection: ")
@@ -745,6 +916,8 @@ def main_menu():
                 display_inventory_list(only_heroes=(choice == '02'))
             case '04':
                 order_history_manager()
+            case '05':
+                inventory_management_menu()
             case '99':
                 print("Exiting...")
                 break
