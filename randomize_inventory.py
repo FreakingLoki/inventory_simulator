@@ -36,8 +36,10 @@ def randomize_inventory():
                 # 50% chance of an incoming shipment
                 if random.choice([True, False]):
                     products_df.at[index, 'incoming'] = random.randint(rule['min_stock'], rule['unit_per_truck'] // 2)
-                    # set the restock date to a random date between tomorrow and 3 months out
-                    days_out = random.randint(1, 90)
+                    # set the restock date to a random date between 5 and 10 years out
+                    # I used unrealistic restock dates really far out so that the data wouldn't have to be updated
+                    # overly often
+                    days_out = random.randint(1825, 3650)
                     products_df.at[index, 'restock_date'] = (datetime.now() + timedelta(days=days_out)).strftime(
                         '%m/%d/%Y')
                 else:
