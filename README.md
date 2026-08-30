@@ -20,6 +20,10 @@ The final quote generation step will recommend add-ons for each job that
 complement the main "hero" product with the aim to generate additional sales
 for the company.
 
+Additionally, this application will provide data analysis of fictionalized sales
+records, product trends, and other metrics so that users have access to the best
+information for decision-making for the business.
+
 ## Key Features
 ### Accessory Mapping
 The accessories that match up with a specific hero product category are
@@ -143,7 +147,7 @@ customer lookup and credit check functions, and in the future will include more 
 adding new customers and managing their accounts. `inventory.py` handles all inventory 
 control functions like receiving, item lookup, and more. `orders.py` is where the order 
 history functions live and is also where the invoice lookup and management tools are. 
-`quotes.py` holds all of the quote generation logic. This modular approach improves both 
+`quotes.py` holds all the quote generation logic. This modular approach improves both 
 readability of the code and maintainability of the entire codebase. It is now much easier 
 to locate and fix or update a function.
 
