@@ -176,6 +176,29 @@ purchase order" flow and a "cycle count book" generator that randomly selects a 
 of items and requests the inventory control worker to go out and physically count these
 items, then enter their counts and confirm larger discrepancies.
 
+I also need to add item maintenance tools in the inventory control menu. So an inventory
+specialist should be able to create, read, update, and delete information about each product
+that the company carries.
+
+The inventory control menu is also where users should be able to allocate storage space for
+products the warehouse holds in stock. For example, if the company has the space to store 
+40 pallets of a specific product, users should be able to find that information, and if they
+choose, reallocate space from one product to another (product A is selling well, maybe we 
+should make more room for it, etc.).
+
+### Warehouse Mapping Tools
+All organized warehouse operations employ some organization tool so that the people that 
+work in the facility can easily know where a product belongs and where to find it to 
+fulfill an order. This update will be a fairly hefty one because it will have to be adaptable
+for numerous different types of products, different types of storage requirements, and different
+methods of order selection. 
+
+So the goal for this piece is to have a tool to assign a "pick slot" or "bin" location to an item,
+and to assign storage locations to an item. When a user looks up the information about an item,
+the storage locations and the pick slot should be easy to find. Items should also have a "maximum capacity"
+which represents the absolute maximum quantity of that item the warehouse can safely and properly
+store. These features will be beneficial to order fulfillment, receiving personnel, and purchasing personnel.
+
 ## How to Run
 To run this project locally, follow these steps:
 
