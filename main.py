@@ -1,3 +1,4 @@
+import customers
 import database
 import inventory
 import orders
@@ -10,6 +11,7 @@ def main_menu():
         print("03: List All Products")
         print("04: View Order History")
         print("05: Manage Inventory")
+        print("06: Manage Customers")
         print("99: Exit")
 
         choice = input("\nEnter Selection: ")
@@ -23,6 +25,8 @@ def main_menu():
                 orders.order_history_manager()
             case '05':
                 inventory.inventory_management_menu()
+            case '06':
+                customers.customer_management_menu()
             case '99':
                 print("Exiting...")
                 break
