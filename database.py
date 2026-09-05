@@ -2,14 +2,35 @@ import os
 import sys
 import sqlite3
 import pandas as pd
+from migrations import migrate
 
 DB_FILE = 'wms_normalized.db'
 
 
 def initialize_local_database():
+    # auto-install on first launch
+    if not os.path.exists(DB_FILE):
+        print("First launch detected. Building and populating the warehouse database...")
+        migrate.migrate_data()
+        print("Warehouse database built successfully!")
+
     connection = None
     try:
         connection = sqlite3.connect(DB_FILE)
+        cursor = connection.cursor()
+
+        # Ensure the payments table exists
+        cursor.execute("""
+                    CREATE TABLE IF NOT EXISTS payments (
+                        payment_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        account_number INTEGER,
+                        payment_amount REAL,
+                        payment_date TEXT
+                    )
+                """)
+        connection.commit()
+
+        # pandas rulebook initialization
         if os.path.exists('requirements.csv'):
             requirements_df = pd.read_csv('requirements.csv')
             requirements_df.to_sql('requirements', connection, if_exists='replace', index=False)
