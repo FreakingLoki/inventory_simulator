@@ -152,14 +152,6 @@ readability of the code and maintainability of the entire codebase. It is now mu
 to locate and fix or update a function.
 
 ## Planned Future Features
-### Push Order Dates
-If an order is submitted which will drive inventory negative, that order should be pushed
-out so that its date is *after* enough incoming inventory has been received to fill the 
-entirety of the order. In other words, I need to add a way to protect the system from 
-allowing sales of more product than what is on hand. Stock warnings should be updated 
-to warn the user that their order is being delayed until the warehouse has enough 
-inventory to fill the order.
-
 ### Business Analysis Tools
 Once the order history component has been built, adding this feature would allow a user 
 to run data analysis tools to draw conclusions about the simulated business. Sales 
