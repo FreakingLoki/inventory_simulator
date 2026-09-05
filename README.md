@@ -170,7 +170,7 @@ items, then enter their counts and confirm larger discrepancies.
 
 I also need to add item maintenance tools in the inventory control menu. So an inventory
 specialist should be able to create, read, update, and delete information about each product
-that the company carries.
+that the company carries. This interface will fill the role of a Product Catalog CRUD Interface.
 
 The inventory control menu is also where users should be able to allocate storage space for
 products the warehouse holds in stock. For example, if the company has the space to store 
@@ -191,16 +191,30 @@ the storage locations and the pick slot should be easy to find. Items should als
 which represents the absolute maximum quantity of that item the warehouse can safely and properly
 store. These features will be beneficial to order fulfillment, receiving personnel, and purchasing personnel.
 
-### Shipping Products
-A big issue I've encountered where I currently work is the timing of items being ordered and delivered. We're not Amazon,
-we don't really have next-day shipping. This causes issues with inventory levels because the system used there
-immediately removes an item from the inventory "on-hand" count once an order is generated for that item. The item is 
-sold, but still sitting in the warehouse, taking up space. Spread this effect across many customers, orders, and products,
-and it appears that the warehouse has much more open space than it should. 
+Ultimately, once these tools are constructed, I'll be able to research methods for implementing a Pick-Path Optimization
+tool. It'll check which items are sold more often (using data analysis applied to the order history), account for the 
+weight and bulk of each product, and assign pick slot locations for each product.
+
+### Order Allocation vs. Fulfillment
+A big issue I've encountered where I currently work is the timing of items being ordered and delivered. 
+This causes issues with inventory levels because the system used there immediately removes an item from the inventory
+"on-hand" count once an order is generated for that item. The item is sold, but still sitting in the warehouse,
+taking up space. Spread this effect across many customers, orders, and products, and it appears that the warehouse has
+much more open space than it should. 
 
 In order to prevent that issue from arising within this application, I need to redesign the order stage so that items are
 still in inventory, and add a shipping stage. Once orders are loaded on trucks to be delivered, then they should be 
-removed from on-hand inventory.
+removed from on-hand inventory. In the industry, reserving stock for an order is referred to as "Soft Allocation", and 
+deducting stock only when it is loaded on a truck for shipment is referred to as "Hard Allocation". The plan is to 
+implement a careful combination of both.
+
+### Role-Based Access Control
+This application is growing into a full on Warehouse Management System (WMS), and as such it could theoretically be
+used by a variety of people, from sales personnel to order selectors. Order selectors shouldn't need access to 
+customers' financial information. 
+
+I need to implement a simple login system (or maybe just a user-role prompt at first) so that users have access only to
+the parts of the application that they need.
 
 ## How to Run
 To run this project locally, follow these steps:
