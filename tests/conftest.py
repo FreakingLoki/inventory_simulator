@@ -14,7 +14,7 @@ def mock_db():
     # 1. Create a shared in-memory database URI
     db_uri = 'file::memory:?cache=shared'
 
-    # --- NEW: Save the real connect function before we patch it ---
+    # Save the real connect function before we patch it
     real_connect = sqlite3.connect
 
     # 2. Hold a master connection open using the REAL connect function
@@ -23,22 +23,77 @@ def mock_db():
 
     # 3. Build the core 3NF schema structure
     cursor.executescript("""
-        CREATE TABLE brands (brand_id INTEGER PRIMARY KEY, brand_name TEXT);
-        CREATE TABLE categories (category_id INTEGER PRIMARY KEY, category_name TEXT);
-        CREATE TABLE sub_categories (sub_category_id INTEGER PRIMARY KEY, category_id INTEGER, sub_category_name TEXT);
-        CREATE TABLE products (product_id INTEGER PRIMARY KEY, brand_id INTEGER, sub_category_id INTEGER, product_name TEXT, sub_type TEXT, unit TEXT, unit_price REAL);
-        CREATE TABLE inventory_status (product_id INTEGER PRIMARY KEY, quantity_on_hand INTEGER, quantity_incoming INTEGER, expected_restock_date TEXT);
-        CREATE TABLE customers (account_number INTEGER PRIMARY KEY, customer_name TEXT, credit_limit REAL, unpaid_balance REAL, last_payment_date TEXT);
-        CREATE TABLE orders (invoice_number INTEGER PRIMARY KEY, account_number INTEGER, order_date TEXT);
-        CREATE TABLE order_items (order_item_id INTEGER PRIMARY KEY, invoice_number INTEGER, product_id INTEGER, quantity REAL, price_at_sale REAL);
-        CREATE TABLE payments (payment_id INTEGER PRIMARY KEY AUTOINCREMENT, account_number INTEGER, payment_amount REAL, payment_date TEXT);
+        CREATE TABLE brands (
+            brand_id INTEGER PRIMARY KEY,
+            brand_name TEXT
+        );
+        
+        CREATE TABLE categories (
+            category_id INTEGER PRIMARY KEY,
+            category_name TEXT
+        );
+        
+        CREATE TABLE sub_categories (
+            sub_category_id INTEGER PRIMARY KEY,
+            category_id INTEGER,
+            sub_category_name TEXT
+        );
+        
+        CREATE TABLE products (
+            product_id INTEGER PRIMARY KEY, 
+            brand_id INTEGER, 
+            sub_category_id INTEGER, 
+            product_name TEXT, 
+            sub_type TEXT, 
+            unit TEXT, 
+            unit_price REAL,
+            base_cost REAL DEFAULT 0.0,
+            avg_freight_cost REAL DEFAULT 0.0
+        );
+        
+        CREATE TABLE inventory_status (
+            product_id INTEGER PRIMARY KEY,
+            quantity_on_hand INTEGER,
+            quantity_incoming INTEGER,
+            expected_restock_date TEXT
+        );
+        
+        CREATE TABLE customers (
+            account_number INTEGER PRIMARY KEY,
+            customer_name TEXT,
+            credit_limit REAL,
+            unpaid_balance REAL,
+            last_payment_date TEXT
+        );
+        
+        CREATE TABLE orders (
+            invoice_number INTEGER PRIMARY KEY,
+            account_number INTEGER,
+            order_date TEXT
+        );
+        
+        CREATE TABLE order_items (
+            order_item_id INTEGER PRIMARY KEY, 
+            invoice_number INTEGER, 
+            product_id INTEGER, 
+            quantity REAL, 
+            price_at_sale REAL,
+            cost_at_sale REAL DEFAULT 0.0
+        );
+        
+        CREATE TABLE payments (
+        payment_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            account_number INTEGER,
+            payment_amount REAL,
+            payment_date TEXT
+        );
 
         INSERT INTO brands (brand_id, brand_name) VALUES (1, 'Vertex Premium');
         INSERT INTO categories (category_id, category_name) VALUES (1, 'Siding');
         INSERT INTO sub_categories (sub_category_id, category_id, sub_category_name) VALUES (1, 1, 'Hero');
 
-        INSERT INTO products (product_id, brand_id, sub_category_id, product_name, sub_type, unit, unit_price) 
-        VALUES (100001, 1, 1, 'Double-4 Siding', 'Snow White', 'Square', 252.0);
+        INSERT INTO products (product_id, brand_id, sub_category_id, product_name, sub_type, unit, unit_price, base_cost, avg_freight_cost) 
+        VALUES (100001, 1, 1, 'Double-4 Siding', 'Snow White', 'Square', 252.0, 150.0, 15.0);
 
         INSERT INTO inventory_status (product_id, quantity_on_hand, quantity_incoming, expected_restock_date)
         VALUES (100001, 87, 62, '2030-04-28');
