@@ -157,7 +157,9 @@ def generate_quote(product_id):
         sql_hero = """
             SELECT p.product_id as id, b.brand_name as brand, c.category_name as category, 
                    sc.sub_category_name as sub_category, p.product_name as name, 
-                   p.sub_type, p.unit, p.unit_price as price, i.quantity_on_hand as inventory, 
+                   p.sub_type, p.unit, p.unit_price as price, 
+                   p.base_cost, p.avg_freight_cost, -- NEW COST COLUMNS
+                   i.quantity_on_hand as inventory, 
                    i.quantity_incoming as incoming, i.expected_restock_date as restock_date
             FROM products p
             JOIN brands b ON p.brand_id = b.brand_id
@@ -181,7 +183,9 @@ def generate_quote(product_id):
 
         sql_acc_base = """
             SELECT p.product_id as id, b.brand_name as brand, p.product_name as name, 
-                   p.unit_price as price, i.quantity_on_hand as inventory, 
+                   p.unit_price as price, 
+                   p.base_cost, p.avg_freight_cost, -- NEW COST COLUMNS
+                   i.quantity_on_hand as inventory, 
                    i.quantity_incoming as incoming, i.expected_restock_date as restock_date, 
                    sc.sub_category_name as sub_category, p.unit, p.sub_type
             FROM products p
