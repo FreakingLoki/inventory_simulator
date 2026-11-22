@@ -23,13 +23,14 @@ CREATE TABLE sub_categories (
 -- 2. Clean Product Profile
 CREATE TABLE products (
     product_id INTEGER PRIMARY KEY,
-    brand_id INTEGER NOT NULL,
-    sub_category_id INTEGER NOT NULL,
-    product_name TEXT NOT NULL,
-    sub_type TEXT NOT NULL,
-    unit TEXT NOT NULL,
-    FOREIGN KEY (brand_id) REFERENCES brands(brand_id),
-    FOREIGN KEY (sub_category_id) REFERENCES sub_categories(sub_category_id)
+    brand_id INTEGER,
+    sub_category_id INTEGER,
+    product_name TEXT,
+    sub_type TEXT,
+    unit TEXT,
+    unit_price REAL,
+    base_cost REAL DEFAULT 0.0,
+    avg_freight_cost REAL DEFAULT 0.0
 );
 
 -- 3. Logistics & Live Data
@@ -58,11 +59,19 @@ CREATE TABLE orders (
 );
 
 CREATE TABLE order_items (
-    order_item_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    invoice_number INTEGER NOT NULL,
-    product_id INTEGER NOT NULL,
-    quantity REAL NOT NULL,
-    price_at_sale REAL NOT NULL,
-    FOREIGN KEY (invoice_number) REFERENCES orders(invoice_number),
-    FOREIGN KEY (product_id) REFERENCES products(product_id)
+    order_item_id INTEGER PRIMARY KEY,
+    invoice_number INTEGER,
+    product_id INTEGER,
+    quantity REAL,
+    price_at_sale REAL,
+    cost_at_sale REAL DEFAULT 0.0
+);
+
+CREATE TABLE storage_locations (
+    location_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    product_id INTEGER UNIQUE,
+    zone TEXT NOT NULL,
+    bin_number TEXT NOT NULL,
+    max_capacity INTEGER NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE
 );
