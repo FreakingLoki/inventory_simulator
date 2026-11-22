@@ -71,19 +71,28 @@ def submit_order(quote_data, customer, grand_total, order_date):
                     WHERE product_id = ?
                 """, (remainder, item_id))
 
+        # hero product insert
         hero_id = int(quote_data['hero']['id'])
+        # calculate landed cost
+        hero_landed_cost = quote_data['hero']['base_cost'] + quote_data['hero']['avg_freight_cost']
         cursor.execute(
-            "INSERT INTO order_items (invoice_number, product_id, quantity, price_at_sale) VALUES (?, ?, ?, ?)",
-            (invoice_nbr, hero_id, quote_data['quantity'], quote_data['hero']['price']))
+            "INSERT INTO order_items (invoice_number, product_id, quantity, price_at_sale, cost_at_sale) VALUES (?, ?, ?, ?, ?)",
+            (invoice_nbr, hero_id, quote_data['quantity'], quote_data['hero']['price'], hero_landed_cost)
+        )
         deduct_inventory(hero_id, quote_data['quantity'])
 
+        # Accessory products insert
         if quote_data['accessories'] != "None":
             for acc in quote_data['accessories']:
                 acc_id = int(acc['id'])
                 qty_needed = math.ceil(quote_data['quantity'] * acc['quantity_multiplier'])
+                # Calculate landed cost
+                acc_landed_cost = acc['base_cost'] + acc['avg_freight_cost']
+
                 cursor.execute(
-                    "INSERT INTO order_items (invoice_number, product_id, quantity, price_at_sale) VALUES (?, ?, ?, ?)",
-                    (invoice_nbr, acc_id, qty_needed, acc['price']))
+                    "INSERT INTO order_items (invoice_number, product_id, quantity, price_at_sale, cost_at_sale) VALUES (?, ?, ?, ?, ?)",
+                    (invoice_nbr, acc_id, qty_needed, acc['price'], acc_landed_cost)
+                )
                 deduct_inventory(acc_id, qty_needed)
 
         if customer:
