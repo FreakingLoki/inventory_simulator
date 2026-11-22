@@ -1,56 +1,27 @@
 # Building Products Quote Generator
-A tool for generating quotes for construction jobs with
-fictitious pricing and recommended add-ons based on a fictitious warehouse
-environment with incoming and outgoing orders.
+A tool for generating quotes for construction jobs with fictitious pricing and recommended add-ons based on a fictitious warehouse environment with incoming and outgoing orders.
 
 ## Project Motivation
-### The Inspiration 
-A simple calculator often isn't enough for generating a quote 
-for certain products supplied by the building products company 
-I currently work for. A siding job (the original inspiration) may
-require a multitude of accessories depending on the structure being
-sided. Door, window, and gable vent openings have an effect on the
-overall amount of required material and accessories (such as J-Channel,
-Finish Trim, etc.) that goes beyond a simple ratio.
+### The Inspiration
+A simple calculator often isn't enough for generating a quote for certain products supplied by the building products company I currently work for. A siding job (the original inspiration) may require a multitude of accessories depending on the structure being sided. Door, window, and gable vent openings have an effect on the overall amount of required material and accessories (such as J-Channel, Finish Trim, etc.) that goes beyond a simple ratio.
 
 ### The Goal
-The ultimate goal for this project is to provide a tool for calculating the
-required materials for any siding, roofing, insulation, or sheetrock project. 
-The final quote generation step will recommend add-ons for each job that
-complement the main "hero" product with the aim to generate additional sales
-for the company.
+The ultimate goal for this project is to provide a tool for calculating the required materials for any siding, roofing, insulation, or sheetrock project. The final quote generation step will recommend add-ons for each job that complement the main "hero" product with the aim to generate additional sales for the company.
 
-Additionally, this application will provide data analysis of fictionalized sales
-records, product trends, and other metrics so that users have access to the best
-information for decision-making for the business.
+Additionally, this application will provide data analysis of fictionalized sales records, product trends, and other metrics so that users have access to the best information for decision-making for the business.
 
 ## Key Features
 ### Accessory Mapping
-The accessories that match up with a specific hero product category are
-automatically added to a quote if that quote is for a hero product. For
-example, an order of 15 square (a square being 100 square feet) of a
-specific type of siding requires a specific amount of J-channel to finish
-the top edge of the wall, with more to go around openings in the wall such as
-doors and windows. Other accessories are added to the quote depending on other
-information gathered form the customer by the user.
+The accessories that match up with a specific hero product category are automatically added to a quote if that quote is for a hero product. For example, an order of 15 square (a square being 100 square feet) of a specific type of siding requires a specific amount of J-channel to finish the top edge of the wall, with more to go around openings in the wall such as doors and windows. Other accessories are added to the quote depending on other information gathered form the customer by the user.
 
 ### Color Matching
-Depending on the type of hero product category, the accessories can vary in color,
-either matching, or contrasting, or not being applicable (in insulation and
-sheetrock). The quote generator has appropriate options for the user depending
-on which product category they are generating a quote for.
+Depending on the type of hero product category, the accessories can vary in color, either matching, or contrasting, or not being applicable (in insulation and sheetrock). The quote generator has appropriate options for the user depending on which product category they are generating a quote for.
 
 ### Smart Inventory Alerts
-The final quote display has a feature to warn users of inventory shortages and
-when the on-hand inventory will be replenished should a quote be requested
-for more product than is currently on hand.
+The final quote display has a feature to warn users of inventory shortages and when the on-hand inventory will be replenished should a quote be requested for more product than is currently on hand.
 
 ### Fully Normalized Relational Database Backend
-The application runs on a robust, Third Normal Form (3NF) normalized SQLite database. 
-This architecture cleanly separates static product catalog descriptions from active 
-warehouse logistics (inventory on hand, incoming shipments) and historical transactions. 
-By utilizing standard SQL `JOIN` queries, the application retrieves dynamic layouts 
-rapidly without risking data redundancy or update anomalies.
+The application runs on a robust, Third Normal Form (3NF) normalized SQLite database. This architecture cleanly separates static product catalog descriptions from active warehouse logistics (inventory on hand, incoming shipments) and historical transactions. By utilizing standard SQL `JOIN` queries, the application retrieves dynamic layouts rapidly without risking data redundancy or update anomalies.
 
 ### Precision Quoting
 Users can choose between four methods for calculating quotes:
@@ -60,161 +31,80 @@ Users can choose between four methods for calculating quotes:
 - Skip: Quickly generates a quote for only the main product without recommending add-ons.
 
 ### Inventory Seeding and Randomization
-Early in development, the application utilized a tool for seeding flat `products.csv` 
-files with generated building products to enable easier addition of new lines. Along with 
-`randomize_inventory.py`, these scripts simulated realistic warehouse stock counts and 
-incoming delivery dates, which were eventually migrated into the permanent SQLite 
-relational database.
+Early in development, the application utilized a tool for seeding flat `products.csv` files with generated building products to enable easier addition of new lines. Along with `randomize_inventory.py`, these scripts simulated realistic warehouse stock counts and incoming delivery dates, which were eventually migrated into the permanent SQLite relational database.
 
 ### Order History
-When a user generates a quote for a customer, they have the option to modify, discard, 
-or submit the quote as a finalized order. Submitted orders securely map relational ties 
-between the customer ledger and the purchased items. Because historical invoices lock in 
-the "price at point-of-sale," changing catalog prices in the future will not 
-retroactively alter past financial records. Furthermore, submitting an order natively 
-deducts stock from the warehouse tracking tables.
+When a user generates a quote for a customer, they have the option to modify, discard, or submit the quote as a finalized order. Submitted orders securely map relational ties between the customer ledger and the purchased items. Because historical invoices lock in the "price at point-of-sale," changing catalog prices in the future will not retroactively alter past financial records. Furthermore, submitting an order natively deducts stock from the warehouse tracking tables.
+
+### Tracking Fully Landed Cost
+The system now calculates and permanently locks in the "Fully Landed Cost" of an item at the exact moment of sale. The `receive_po()` workflow captures outside carrier freight costs when a truck arrives and updates the item's moving average cost. When a quote is finalized, the base material cost plus the current freight cost is saved directly to the invoice, ensuring that future freight cost increases do not artificially shrink historical gross profit reports.
 
 ### Inventory Control
-Users can check the stock level of a product and if they find a discrepancy, they can
-adjust the inventory level. There are also tools to look up information on items, 
-including current and incoming stock levels. This section of the application also supports receiving of incoming stock.
+Users can check the stock level of a product and if they find a discrepancy, they can adjust the inventory level. There are also tools to look up information on items, including current and incoming stock levels. This section of the application also supports receiving of incoming stock.
 
 ## Technical Architecture
 ### The Stack
-Python 3.x and standard built-in `sqlite3` for pure SQL transaction handling (with legacy 
-support for `pandas` initializing basic operational rule sets).
+Python 3.x and standard built-in `sqlite3` for pure SQL transaction handling (with legacy support for `pandas` initializing basic operational rule sets).
 
 ### Data Model
 The project relies on a 3NF relational layout with 8 core tables:
-* **Lookup Tables (`brands`, `categories`, `sub_categories`)**: Independent structures defining hierarchies so categories can exist without products.
-* **`products`**: The core catalog containing static descriptions (`id`, `brand_id`, `sub_category_id`, `name`, `sub_type`, `unit`, `unit_price`).
-* **`inventory_status`**: The logistical layer tracking fluid data independently (`product_id`, `quantity_on_hand`, `quantity_incoming`, `expected_restock_date`).
-* **`customers`**: Client profiles and active credit/balance ledgers.
-* **`orders` & `order_items`**: Transactional headers and specific line items tracking historical point-of-sale prices.
+- **Lookup Tables (`brands`, `categories`, `sub_categories`)**: Independent structures defining hierarchies so categories can exist without products.
+- **`products`**: The core catalog containing static descriptions (`id`, `brand_id`, `sub_category_id`, `name`, `sub_type`, `unit`, `unit_price`, `base_cost`, `avg_freight_cost`).
+- **`inventory_status`**: The logistical layer tracking fluid data independently (`product_id`, `quantity_on_hand`, `quantity_incoming`, `expected_restock_date`).
+- **`customers`**: Client profiles and active credit/balance ledgers.
+- **`orders` & `order_items`**: Transactional headers and specific line items tracking historical point-of-sale prices and locked-in landed costs.
 
-The `requirements.csv` and `category_rules.csv` continue to serve as the local 
-"rulebooks" determining how many accessories map to hero products and how color 
-matching is handled per material type.
+The `requirements.csv` and `category_rules.csv` continue to serve as the local "rulebooks" determining how many accessories map to hero products and how color matching is handled per material type.
 
 ### Environment Safety
-The application features a function called `check_setup()` which verifies the local 
-instance of the virtual environment and checks the integrity of the required SQLite 
-database tables. If any structural problems are detected, it returns False which causes 
-the application to close after warning the user.
+The application features a function called `check_setup()` which verifies the local instance of the virtual environment and checks the integrity of the required SQLite database tables. If any structural problems are detected, it returns False which causes the application to close after warning the user.
+
+### Automated Testing
+The application employs a comprehensive unit testing suite built with `pytest`. To protect the integrity of the live data, tests are configured to use an isolated, in-memory SQLite database (`sqlite3.connect(':memory:')`) initialized via a shared `conftest.py` fixture. This ensures the complex business logic—like push order date constraints and landed cost calculations—remains stable as new features are added.
 
 ## Challenges and Solutions
 ### Database Normalization Migration
-Initially, the project relied heavily on the `pandas` library to load, read, and write 
-entirely from flat `.csv` files. This led to immediate structural issues: if a product 
-price changed, previous order histories would break, and tracking inventory dynamically 
-proved dangerous due to transitive dependencies. 
+Initially, the project relied heavily on the `pandas` library to load, read, and write entirely from flat `.csv` files. This led to immediate structural issues: if a product price changed, previous order histories would break, and tracking inventory dynamically proved dangerous due to transitive dependencies.
 
-I successfully designed a fully 3NF normalized schema and wrote a custom ETL (Extract, 
-Transform, Load) script (`migrate.py`) to safely parse the legacy flat data, establish 
-unique primary/foreign key relationships, and construct a robust SQLite database. The 
-application was then refactored to execute native SQL queries rather than in-memory 
-dataframe manipulations, drastically improving transaction safety and performance.
+I successfully designed a fully 3NF normalized schema and wrote a custom ETL (Extract, Transform, Load) script (`migrate.py`) to safely parse the legacy flat data, establish unique primary/foreign key relationships, and construct a robust SQLite database. The application was then refactored to execute native SQL queries rather than in-memory dataframe manipulations, drastically improving transaction safety and performance.
 
 ### Scalability
-Adding a new product line has been planned for. Thanks to the normalized database 
-design, a new brand or category can be initialized independently in the system, and 
-new products instantly hook into existing validation rules without breaking historical 
-inventory structures.
+Adding a new product line has been planned for. Thanks to the normalized database design, a new brand or category can be initialized independently in the system, and new products instantly hook into existing validation rules without breaking historical inventory structures.
 
 ### The 'Hyphen' Bug
-Early in developing the application, when I named the columns, I habitually hyphenated 
-sub-categories instead of using an underscore. This led to an issue where the SQL query 
-tried to subtract the value of a column named `sub` from the value of a column named 
-`category`. I quickly pivoted to standard snake_case styling (`sub_category`) to ensure 
-universal code friendliness.
+Early in developing the application, when I named the columns, I habitually hyphenated sub-categories instead of using an underscore. This led to an issue where the SQL query tried to subtract the value of a column named `sub` from the value of a column named `category`. I quickly pivoted to standard snake_case styling (`sub_category`) to ensure universal code friendliness.
 
 ### The 'color' Category Expansion
-While constructing the Siding category, I included a `color` column, as vinyl siding 
-costs often scale with darker pigments. However, as I expanded into Sheetrock and 
-Insulation, "color" became entirely irrelevant compared to "R-Value" or "Thickness". 
-I realized my schema was too rigid. I refactored the database architecture, pivoting 
-the `color` column into a broader `sub_type` attribute. This allowed all product 
-categories to logically utilize the modifier column without forcing attributes that 
-didn't make sense.
+While constructing the Siding category, I included a `color` column, as vinyl siding costs often scale with darker pigments. However, as I expanded into Sheetrock and Insulation, "color" became entirely irrelevant compared to "R-Value" or "Thickness". I realized my schema was too rigid. I refactored the database architecture, pivoting the `color` column into a broader `sub_type` attribute. This allowed all product categories to logically utilize the modifier column without forcing attributes that didn't make sense.
 
 ### The Separation of Concerns update
-After adding receiving tools and inventory control tools, I started having trouble 
-keeping track of where each function lied in the growing main.py file. To address this 
-I separated out each function into five new modules which would only contain functions 
-and classes related to their concerns. `database.py` handles initialization of the 
-database and the integrity check upon startup of the application. `customers.py` handles 
-customer lookup and credit check functions, and in the future will include more for 
-adding new customers and managing their accounts. `inventory.py` handles all inventory 
-control functions like receiving, item lookup, and more. `orders.py` is where the order 
-history functions live and is also where the invoice lookup and management tools are. 
-`quotes.py` holds all the quote generation logic. This modular approach improves both 
-readability of the code and maintainability of the entire codebase. It is now much easier 
-to locate and fix or update a function.
+After adding receiving tools and inventory control tools, I started having trouble keeping track of where each function lied in the growing main.py file. To address this I separated out each function into five new modules which would only contain functions and classes related to their concerns. `database.py` handles initialization of the database and the integrity check upon startup of the application. `customers.py` handles customer lookup and credit check functions, and in the future will include more for adding new customers and managing their accounts. `inventory.py` handles all inventory control functions like receiving, item lookup, and more. `orders.py` is where the order history functions live and is also where the invoice lookup and management tools are. `quotes.py` holds all the quote generation logic. This modular approach improves both readability of the code and maintainability of the entire codebase. It is now much easier to locate and fix or update a function.
 
 ## Planned Future Features
 ### Business Analysis Tools
-Once the order history component has been built, adding this feature would allow a user 
-to run data analysis tools to draw conclusions about the simulated business. Sales 
-trends, popular items, and more could be useful tools to have.
-
-### Unit Tests
-Testing each new update to the function is quickly becoming a large endeavor in itself. 
-Building tests to ensure each piece works as it should, will enable more focus on 
-improving and updating and less focus on re-running the same commands.
+Now that the application safely locks in Landed Cost alongside point-of-sale pricing, the next logical step is to build a suite of data analysis tools. I plan to build automated reporting that visualizes gross profit margins, revenue variance, and historical sales trends for the simulated business.
 
 ### Inventory Control Tools
-While basic inventory control tools have been built, I still need to add a "generate 
-purchase order" flow and a "cycle count book" generator that randomly selects a group 
-of items and requests the inventory control worker to go out and physically count these
-items, then enter their counts and confirm larger discrepancies.
+While basic inventory control tools have been built, I still need to add a "generate purchase order" flow and a "cycle count book" generator that randomly selects a group of items and requests the inventory control worker to go out and physically count these items, then enter their counts and confirm larger discrepancies.
 
-I also need to add item maintenance tools in the inventory control menu. So an inventory
-specialist should be able to create, read, update, and delete information about each product
-that the company carries. This interface will fill the role of a Product Catalog CRUD Interface.
+I also need to add item maintenance tools in the inventory control menu. So an inventory specialist should be able to create, read, update, and delete information about each product that the company carries. This interface will fill the role of a Product Catalog CRUD Interface.
 
-The inventory control menu is also where users should be able to allocate storage space for
-products the warehouse holds in stock. For example, if the company has the space to store 
-40 pallets of a specific product, users should be able to find that information, and if they
-choose, reallocate space from one product to another (product A is selling well, maybe we 
-should make more room for it, etc.).
+The inventory control menu is also where users should be able to allocate storage space for products the warehouse holds in stock. For example, if the company has the space to store 40 pallets of a specific product, users should be able to find that information, and if they choose, reallocate space from one product to another (product A is selling well, maybe we should make more room for it, etc.).
 
 ### Warehouse Mapping Tools
-All organized warehouse operations employ some organization tool so that the people that 
-work in the facility can easily know where a product belongs and where to find it to 
-fulfill an order. This update will be a fairly hefty one because it will have to be adaptable
-for numerous different types of products, different types of storage requirements, and different
-methods of order selection. 
+All organized warehouse operations employ some organization tool so that the people that work in the facility can easily know where a product belongs and where to find it to fulfill an order. This update will be a fairly hefty one because it will have to be adaptable for numerous different types of products, different types of storage requirements, and different methods of order selection.
 
-So the goal for this piece is to have a tool to assign a "pick slot" or "bin" location to an item,
-and to assign storage locations to an item. When a user looks up the information about an item,
-the storage locations and the pick slot should be easy to find. Items should also have a "maximum capacity"
-which represents the absolute maximum quantity of that item the warehouse can safely and properly
-store. These features will be beneficial to order fulfillment, receiving personnel, and purchasing personnel.
-
-Ultimately, once these tools are constructed, I'll be able to research methods for implementing a Pick-Path Optimization
-tool. It'll check which items are sold more often (using data analysis applied to the order history), account for the 
-weight and bulk of each product, and assign pick slot locations for each product.
+So the goal for this piece is to have a tool to assign a "pick slot" or "bin" location to an item, and to assign storage locations to an item. When a user looks up the information about an item, the storage locations and the pick slot should be easy to find. Items should also have a "maximum capacity" which represents the absolute maximum quantity of that item the warehouse can safely and properly store. These features will be beneficial to order fulfillment, receiving personnel, and purchasing personnel.
 
 ### Order Allocation vs. Fulfillment
-A big issue I've encountered where I currently work is the timing of items being ordered and delivered. 
-This causes issues with inventory levels because the system used there immediately removes an item from the inventory
-"on-hand" count once an order is generated for that item. The item is sold, but still sitting in the warehouse,
-taking up space. Spread this effect across many customers, orders, and products, and it appears that the warehouse has
-much more open space than it should. 
+A big issue I've encountered where I currently work is the timing of items being ordered and delivered. This causes issues with inventory levels because the system used there immediately removes an item from the inventory "on-hand" count once an order is generated for that item. The item is sold, but still sitting in the warehouse, taking up space. Spread this effect across many customers, orders, and products, and it appears that the warehouse has much more open space than it should.
 
-In order to prevent that issue from arising within this application, I need to redesign the order stage so that items are
-still in inventory, and add a shipping stage. Once orders are loaded on trucks to be delivered, then they should be 
-removed from on-hand inventory. In the industry, reserving stock for an order is referred to as "Soft Allocation", and 
-deducting stock only when it is loaded on a truck for shipment is referred to as "Hard Allocation". The plan is to 
-implement a careful combination of both.
+In order to prevent that issue from arising within this application, I need to redesign the order stage so that items are still in inventory, and add a shipping stage. Once orders are loaded on trucks to be delivered, then they should be removed from on-hand inventory. In the industry, reserving stock for an order is referred to as "Soft Allocation", and deducting stock only when it is loaded on a truck for shipment is referred to as "Hard Allocation". The plan is to implement a careful combination of both.
 
 ### Role-Based Access Control
-This application is growing into a full on Warehouse Management System (WMS), and as such it could theoretically be
-used by a variety of people, from sales personnel to order selectors. Order selectors shouldn't need access to 
-customers' financial information. 
+This application is growing into a full on Warehouse Management System (WMS), and as such it could theoretically be used by a variety of people, from sales personnel to order selectors. Order selectors shouldn't need access to customers' financial information.
 
-I need to implement a simple login system (or maybe just a user-role prompt at first) so that users have access only to
-the parts of the application that they need.
+I need to implement a simple login system (or maybe just a user-role prompt at first) so that users have access only to the parts of the application that they need.
 
 ## How to Run
 To run this project locally, follow these steps:
